@@ -266,72 +266,64 @@ foreach ($user as $row) : $no++; ?>
                 </div>
         <?php endforeach ?>
 
-      <!-- Modal Lihat Detail -->
-      <?php $no = 0;
-      foreach ($user as $row) : $no++; ?>
-<div class="modal fade" id="modaldetail<?php echo $row["id_doswal"]; ?>">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+<!-- Modal Lihat Detail -->
+<?php $no = 0;
+    foreach ($user as $row) : $no++; 
+?>
+      <div class="modal fade" id="modaldetail<?php echo $row["id_doswal"]; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Biodata Dosen Wali</h4>
+              <h5 class="modal-title" id="exampleModalLabel">Detail Dosen Wali</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                  <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            
             <div class="modal-body">
-            <?php
-              $id_doswal=$row['id_doswal'];
-              $result= mysqli_query($koneksi, "SELECT * FROM tb_doswal where id_doswal='$id_doswal'");                
-              while ($bio= mysqli_fetch_array($result)) {
-            ?>
+              <?php
+                $id_doswal=$row['id_doswal'];
+                $result= mysqli_query($koneksi, "SELECT * FROM tb_doswal INNER JOIN tb_pegawai ON tb_doswal.nip_npak = tb_pegawai.nip_npak");                
+                while ($bio= mysqli_fetch_array($result)) {
+              ?>
 
-            <div class="row text-center">
-              <div class="col-1"></div>
-              <div class="col-1 text-center">
-              </div>
+              <form>
+                <div class="card-body box-profile">
+                  <div class="text-center"></div>
+                    <h3 class="profile-username text-center"><?php echo $row['nama_pegawai'] ?></h3>
+                        <ul class="list-group list-group-unbordered mb-3">
+                          <li class="list-group-item">
+                            <b>ID</b> <a class="float-right"><?php echo $row['id_doswal'] ?></a>
+                          </li>
 
-              <div class="col-3  text-left">
-                <ul>
-                  <li class="p-2"><b>Id Dosen Wali</b></li>
-                  <li class="p-2"><b>NIP/NPAK</b></li>
-                  <li class="p-2"><b>Nama Pegawai</b></li>
-                  <li class="p-2"><b>Username</b></li>
-                  <li class="p-2"><b>Password</b></li>
-                  <li class="p-2"><b>Nama Kelas</b></li>
-                  <li class="p-2"><b>Tahun Jabatan</b></li>
-                  <li class="p-2"><b>Status</b></li>
-                </ul>
-              </div>
+                          <li class="list-group-item">
+                            <b>NIP/NPAK</b> <a class="float-right"><?php echo $row['nip_npak'] ?></a>
+                          </li>
+
+                          <li class="list-group-item">
+                            <b>Username</b> <a class="float-right"><?php echo $row['username_doswal'] ?></a>
+                          </li>
+
+                          <li class="list-group-item">
+                            <b>Password</b> <a class="float-right"><?php echo $row['password_doswal'] ?></a>
+                          </li>
+
+                          <li class="list-group-item">
+                            <b>Nama Kelas</b> <a class="float-right"><?php echo $row['nama_kelas'] ?></a>
+                          </li>
+
+                          <li class="list-group-item">
+                            <b>Tahun Jabatan</b> <a class="float-right"><?php echo $row['thn_jabatan'] ?></a>
+                          </li>
+
+                          <li class="list-group-item">
+                            <b>Status</b> <a class="float-right"><?php echo $row['status_doswal'] ?></a>
+                          </li>
+                        </ul>
+                </div>
               
-              <ul>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
-                </ul>
-
-              <div class="col text-left">
-                <ul>
-                  <li class="p-2" class="text-center"><b><?php echo $row['id_doswal']; ?></b></li>
-                  <li class="p-2"><b><?php echo $row['nip_npak']; ?></li>
-                  <li class="p-2"><b><?php echo $row['nama_pegawai']; ?></b></li>
-                  <li class="p-2"><b><?php echo $row['username_doswal']; ?></b></li>
-                  <li class="p-2"><b><?php echo $row['password_doswal']; ?></b></li>
-                  <li class="p-2"><b><?php echo $row['nama_kelas']; ?></b></li>
-                  <li class="p-2"><b><?php echo $row['thn_jabatan']; ?></b></li>
-                  <li class="p-2"><b><?php echo $row['status_doswal']; ?></b></li>
-                </ul>
-              </div>
-            </div>
-
-            <?php
-              }
-            ?>
+              <?php
+                  }
+              ?>
 
             </div>
             <div class="modal-footer justify-content-between">
@@ -345,6 +337,7 @@ foreach ($user as $row) : $no++; ?>
 </div>
 <!-- /.modal -->
 <?php endforeach ?>
+
 
 
   <?php

@@ -267,72 +267,63 @@ foreach ($user as $row) : $no++; ?>
                 </div>
         <?php endforeach ?>
 
-      <!-- Modal Lihat Detail -->
-      <?php $no = 0;
-      foreach ($user as $row) : $no++; ?>
-<div class="modal fade" id="modaldetail<?php echo $row["id_jurusan"]; ?>">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+<!-- Modal Lihat Detail -->
+<?php $no = 0;
+    foreach ($user as $row) : $no++; 
+?>
+      <div class="modal fade" id="modaldetail<?php echo $row["id_jurusan"]; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Biodata Ketua Jurusan</h4>
+              <h5 class="modal-title" id="exampleModalLabel">Detail Ketua Jurusan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                  <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            
             <div class="modal-body">
-            <?php
-              $id_jurusan=$row['id_jurusan'];
-              $result= mysqli_query($koneksi, "SELECT * FROM tb_jurusan where id_jurusan='$id_jurusan'");                
-              while ($bio= mysqli_fetch_array($result)) {
-            ?>
-            
-            <div class="row text-center">
-              <div class="col-1"></div>
-              <div class="col-1 text-center">
-              </div>
+              <?php
+                $id_jurusan=$row['id_jurusan'];
+                $result= mysqli_query($koneksi, "SELECT * FROM tb_jurusan INNER JOIN tb_pegawai ON tb_jurusan.nip_npak = tb_pegawai.nip_npak");                
+                while ($bio= mysqli_fetch_array($result)) {
+              ?>
+              <form>
+                <div class="card-body box-profile">
+                  <div class="text-center"></div>
+                    <h3 class="profile-username text-center"><?php echo $row['nama_pegawai'] ?></h3>
+                        <ul class="list-group list-group-unbordered mb-3">
+                          <li class="list-group-item">
+                            <b>ID</b> <a class="float-right"><?php echo $row['id_jurusan'] ?></a>
+                          </li>
 
-              <div class="col-3 text-left">
-                <ul>
-                  <li class="p-2"><b>Id Jurusan</b></li>
-                  <li class="p-2"><b>Nama Jurusan</b></li>
-                  <li class="p-2"><b>NIP/NPAK</b></li>
-                  <li class="p-2"><b>Username</b></li>
-                  <li class="p-2"><b>Password</b></li>
-                  <li class="p-2"><b>Nama Pegawai</b></li>
-                  <li class="p-2"><b>Tahun Jabatan</b></li>
-                  <li class="p-2"><b>Status</b></li>
-                </ul>
-              </div>
+                          <li class="list-group-item">
+                            <b>NIP/NPAK</b> <a class="float-right"><?php echo $row['nip_npak'] ?></a>
+                          </li>
 
-              <ul>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
-                </ul>
+                          <li class="list-group-item">
+                            <b>Username</b> <a class="float-right"><?php echo $row['username_kajur'] ?></a>
+                          </li>
 
-              <div class="col text-left">
-                <ul>
-                  <li class="p-2"><b><?php echo $row['id_jurusan']; ?></b></li>
-                  <li class="p-2"><b><?php echo $row['nama_jurusan']; ?></b></li>
-                  <li class="p-2"><b><?php echo $row['nip_npak']; ?></li>
-                  <li class="p-2"><b><?php echo $row['username_kajur']; ?></b></li>
-                  <li class="p-2"><b><?php echo $row['password_kajur']; ?></li>
-                  <li class="p-2"><b><?php echo $row['nama_pegawai']; ?></b></li>
-                  <li class="p-2"><b><?php echo $row['thn_jabatan_kajur']; ?></b></li>
-                  <li class="p-2"><b><?php echo $row['status_kajur']; ?></b></li>
-                </ul>
-              </div>
-            </div>
+                          <li class="list-group-item">
+                            <b>Password</b> <a class="float-right"><?php echo $row['password_kajur'] ?></a>
+                          </li>
 
-            <?php
-              }
-            ?>
+                          <li class="list-group-item">
+                            <b>Nama Jurusan</b> <a class="float-right"><?php echo $row['nama_jurusan'] ?></a>
+                          </li>
+
+                          <li class="list-group-item">
+                            <b>Tahun Jabatan</b> <a class="float-right"><?php echo $row['thn_jabatan_kajur'] ?></a>
+                          </li>
+
+                          <li class="list-group-item">
+                            <b>Status</b> <a class="float-right"><?php echo $row['status_kajur'] ?></a>
+                          </li>
+                        </ul>
+                </div>
+              
+              <?php
+                  }
+              ?>
 
             </div>
             <div class="modal-footer justify-content-between">
@@ -346,6 +337,7 @@ foreach ($user as $row) : $no++; ?>
 </div>
 <!-- /.modal -->
 <?php endforeach ?>
+
 
   <?php
   include "../../AdminLTE/footer.php"
