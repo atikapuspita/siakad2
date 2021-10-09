@@ -1,7 +1,6 @@
 <?php
   include "../../koneksi/config.php";
 
-  include "c_tambahkajur.php";
   include "c_editkajur.php";
 
 ?>
@@ -32,8 +31,8 @@
 <div class="wrapper">
 
   <?php
-      include "../../AdminLTE/header.php";
-      include "../../AdminLTE/sidebar.php";
+      include "../header.php";
+      include "../sidebar.php";
       
       $user = mysqli_query($koneksi, "SELECT * FROM tb_jurusan INNER JOIN tb_pegawai ON tb_jurusan.nip_npak = tb_pegawai.nip_npak");
   ?>
@@ -45,7 +44,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data Ketua Jurusan</h1>
+            <h1></h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -68,7 +67,6 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-secondary" style ="width : 10%">Tambah Data</a><br>
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
@@ -92,9 +90,8 @@
                             <td><center><?php echo $row["thn_jabatan_kajur"]; ?></center></td>
                             <td><?php echo $row["status_kajur"]; ?></td>
                             <td><center>
-                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row["id_jurusan"]; ?>" class ="btn btn-app"><i class="far fa-eye"></i></a> 
+                            <a data-toggle ="modal" data-target="#modaldetail<?php echo $row["id_jurusan"]; ?>" class ="btn btn-app"><i class="far fa-eye"></i></a> 
                                 <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_jurusan']; ?>" class ="btn btn-app"><i class="nav-icon fas fa-edit"></i></a>
-                                <a href="hapuskajur.php?id_jurusan=<?= $row["id_jurusan"]; ?>"class ="btn btn-app"><i class="fas fa-trash-alt"></i></a>
                             </td></center>
                           </tr>
                           
@@ -119,75 +116,7 @@
     <!-- /.content-wrapper -->
   </div>
 
-  <!-- /.Modals Tambah --> 
-  <div class="modal fade" id="modal-tambah">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Tambah Data Ketua Jurusan</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-        <form method ="post" action ="index.php">
-          <div class="modal-body">
-
-          <div class="form-group">
-                  <label for="exampleSelectRounded0">Nama Pegawai</label>
-                    <select type="text" class="form-control" aria-describedby="emailHelp" name="nip_npak" id="nip_npak">
-                      <option> Silahkan Pilih</option>
-                        <?php $tb_pegawai = mysqli_query($koneksi, "SELECT * FROM tb_pegawai ");
-                          foreach ($tb_pegawai as $dtg) : 
-                        ?>
-                          <option value="<?php echo $dtg['nip_npak'] ?>" nama_pegawai="<?php echo $dtg['nama_pegawai'] ?>"><?php echo $dtg['nama_pegawai'] ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                  </div>
-
-            <div class="form-group">
-              <label>Username</label>
-              <input name = "username_kajur" type="text" class="form-control" id="username_kajur" placeholder="username" required/>
-            </div>
-
-            <div class="form-group">
-              <label>Password</label>
-              <input name = "password_kajur" type="text" class="form-control" id="password_kajur" placeholder="password" required/>
-            </div>
-
-            <div class="form-group">
-              <label for="nama_jurusan">Nama Jurusan</label>
-              <input name = "nama_jurusan" type="text" class="form-control" id="nama_jurusan" placeholder="nama jurusan" required/>
-            </div>
-
-            <div class="form-group">
-              <label>Masa Jabatan</label>
-              <input name = "thn_jabatan_kajur" type="text" class="form-control" id="thn_jabatan_kajur" placeholder="Masa Jabatan" required/>
-            </div>
-
-            <div class="form-group">
-              <label for ="status_kajur">Status</label>
-              <select class = "custom-select rounded-0" id ="status_kajur" name ="status_kajur" required>
-                <option>--- Pilih Salah Satu ---</option>
-                <option value = "Aktif">Aktif</option>
-                <option value = "Tidak Aktif">Tidak Aktif</option>
-                </select>
-            </div>
-
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" name = "tambah">Save changes</button>
-            </div>
-          </div>
-        </form>
-
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
-
+  
 <!-- / modal edit  -->
 <?php $no = 0;
 foreach ($user as $row) : $no++; ?>
@@ -270,61 +199,69 @@ foreach ($user as $row) : $no++; ?>
       <!-- Modal Lihat Detail -->
       <?php $no = 0;
       foreach ($user as $row) : $no++; ?>
-<div class="modal fade" id="modaldetail<?php echo $row['id_jurusan']; ?>">
-    <div class="modal-dialog">
+<div class="modal fade" id="modaldetail<?php echo $row["id_jurusan"]; ?>">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Biodata Pegawai</h4>
+                <h4 class="modal-title">Biodata Ketua Jurusan</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             
             <div class="modal-body">
-              <?php
-                $id_jurusan=$row['id_jurusan'];
-                $result= mysqli_query($koneksi, "SELECT * FROM tb_jurusan INNER JOIN tb_pegawai ON tb_jurusan.nip_npak = tb_pegawai.nip_npak");                
-                while ($bio= mysqli_fetch_array($result)) {
-              ?>
+            <?php
+              $id_jurusan=$row['id_jurusan'];
+              $result= mysqli_query($koneksi, "SELECT * FROM tb_jurusan where id_jurusan='$id_jurusan'");                
+              while ($bio= mysqli_fetch_array($result)) {
+            ?>
+            
+            <div class="row text-center">
+              <div class="col-1"></div>
+              <div class="col-1 text-center">
+              </div>
 
-<form>
-                <div class="card-body box-profile">
-                  <div class="text-center"></div>
-                    <h3 class="profile-username text-center"><?php echo $row['nama_pegawai'] ?></h3>
-                        <ul class="list-group list-group-unbordered mb-3">
-                          <li class="list-group-item">
-                            <b>ID</b> <a class="float-right"><?php echo $row['id_jurusan'] ?></a>
-                          </li>
+              <div class="col-3 text-left">
+                <ul>
+                  <li class="p-2"><b>Id Jurusan</b></li>
+                  <li class="p-2"><b>Nama Jurusan</b></li>
+                  <li class="p-2"><b>NIP/NPAK</b></li>
+                  <li class="p-2"><b>Username</b></li>
+                  <li class="p-2"><b>Password</b></li>
+                  <li class="p-2"><b>Nama Pegawai</b></li>
+                  <li class="p-2"><b>Tahun Jabatan</b></li>
+                  <li class="p-2"><b>Status</b></li>
+                </ul>
+              </div>
 
-                          <li class="list-group-item">
-                            <b>NIP/NPAK</b> <a class="float-right"><?php echo $row['nip_npak'] ?></a>
-                          </li>
+              <ul>
+                  <li class="p-2"><b>:</b></li>
+                  <li class="p-2"><b>:</b></li>
+                  <li class="p-2"><b>:</b></li>
+                  <li class="p-2"><b>:</b></li>
+                  <li class="p-2"><b>:</b></li>
+                  <li class="p-2"><b>:</b></li>
+                  <li class="p-2"><b>:</b></li>
+                  <li class="p-2"><b>:</b></li>
+                </ul>
 
-                          <li class="list-group-item">
-                            <b>Username</b> <a class="float-right"><?php echo $row['username_kajur'] ?></a>
-                          </li>
+              <div class="col text-left">
+                <ul>
+                  <li class="p-2"><b><?php echo $row['id_jurusan']; ?></b></li>
+                  <li class="p-2"><b><?php echo $row['nama_jurusan']; ?></b></li>
+                  <li class="p-2"><b><?php echo $row['nip_npak']; ?></li>
+                  <li class="p-2"><b><?php echo $row['username_kajur']; ?></b></li>
+                  <li class="p-2"><b><?php echo $row['password_kajur']; ?></li>
+                  <li class="p-2"><b><?php echo $row['nama_pegawai']; ?></b></li>
+                  <li class="p-2"><b><?php echo $row['thn_jabatan_kajur']; ?></b></li>
+                  <li class="p-2"><b><?php echo $row['status_kajur']; ?></b></li>
+                </ul>
+              </div>
+            </div>
 
-                          <li class="list-group-item">
-                            <b>Password</b> <a class="float-right"><?php echo $row['password_kajur'] ?></a>
-                          </li>
-
-                          <li class="list-group-item">
-                            <b>Nama Jurusan</b> <a class="float-right"><?php echo $row['nama_jurusan'] ?></a>
-                          </li>
-
-                          <li class="list-group-item">
-                            <b>Tahun Jabatan</b> <a class="float-right"><?php echo $row['thn_jabatan_kajur'] ?></a>
-                          </li>
-
-                          <li class="list-group-item">
-                            <b>Status</b> <a class="float-right"><?php echo $row['status_kajur'] ?></a>
-                          </li>
-                          </ul>
-                </div>
-              
-              <?php
-                  }
-              ?>
+            <?php
+              }
+            ?>
 
             </div>
             <div class="modal-footer justify-content-between">
@@ -338,7 +275,6 @@ foreach ($user as $row) : $no++; ?>
 </div>
 <!-- /.modal -->
 <?php endforeach ?>
-
 
   <?php
   include "../../AdminLTE/footer.php"

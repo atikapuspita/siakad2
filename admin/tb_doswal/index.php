@@ -1,9 +1,8 @@
 <?php
   include "../../koneksi/config.php";
 
-  include "c_tambahkajur.php";
-  include "c_editkajur.php";
-
+  include "c_tambahdoswal.php";
+  include "c_editdoswal.php";
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +34,7 @@
       include "../../AdminLTE/header.php";
       include "../../AdminLTE/sidebar.php";
       
-      $user = mysqli_query($koneksi, "SELECT * FROM tb_jurusan INNER JOIN tb_pegawai ON tb_jurusan.nip_npak = tb_pegawai.nip_npak");
+      $user = mysqli_query($koneksi, "SELECT * FROM tb_doswal INNER JOIN tb_pegawai ON tb_doswal.nip_npak = tb_pegawai.nip_npak");
   ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -45,12 +44,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data Ketua Jurusan</h1>
+            <h1>Data Dosen Wali</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data Ketua Jurusan</li>
+              <li class="breadcrumb-item active">Data Dosen Wali</li>
             </ol>
           </div>
         </div>
@@ -58,7 +57,7 @@
     </section>
 
       <!-- Main content -->
-    <section class="content">
+      <section class="content">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
@@ -74,7 +73,7 @@
                       <tr>
                           <th><center>No</center></th>
                           <th><center>Nama Pegawai</center></th>
-                          <th><center>Jurusan</center></th>
+                          <th><center>Kelas</center></th>
                           <th><center>Masa Jabatan</center></th>
                           <th><center>Status</center></th>
                           <th><center>Aksi</center></th>
@@ -88,13 +87,13 @@
                           <tr>
                             <td><center><?= $i ?></center></td>
                             <td><?php echo $row['nama_pegawai']; ?></td>
-                            <td><?php echo $row['nama_jurusan']; ?></td>
-                            <td><center><?php echo $row["thn_jabatan_kajur"]; ?></center></td>
-                            <td><?php echo $row["status_kajur"]; ?></td>
+                            <td><?php echo $row['nama_kelas']; ?></td>
+                            <td><center><?php echo $row["thn_jabatan"]; ?></center></td>
+                            <td><?php echo $row["status_doswal"]; ?></td>
                             <td><center>
-                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row["id_jurusan"]; ?>" class ="btn btn-app"><i class="far fa-eye"></i></a> 
-                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_jurusan']; ?>" class ="btn btn-app"><i class="nav-icon fas fa-edit"></i></a>
-                                <a href="hapuskajur.php?id_jurusan=<?= $row["id_jurusan"]; ?>"class ="btn btn-app"><i class="fas fa-trash-alt"></i></a>
+                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row["id_doswal"]; ?>" class ="btn btn-app"><i class="far fa-eye"></i></a> 
+                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_doswal']; ?>" class ="btn btn-app"><i class="nav-icon fas fa-edit"></i></a>
+                                <a href="hapusdoswal.php?id_doswal=<?= $row["id_doswal"]; ?>"class ="btn btn-app"><i class="fas fa-trash-alt"></i></a>                                
                             </td></center>
                           </tr>
                           
@@ -124,7 +123,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Tambah Data Ketua Jurusan</h4>
+          <h4 class="modal-title">Tambah Data Dosen Wali</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -132,7 +131,6 @@
 
         <form method ="post" action ="index.php">
           <div class="modal-body">
-
           <div class="form-group">
                   <label for="exampleSelectRounded0">Nama Pegawai</label>
                     <select type="text" class="form-control" aria-describedby="emailHelp" name="nip_npak" id="nip_npak">
@@ -147,27 +145,27 @@
 
             <div class="form-group">
               <label>Username</label>
-              <input name = "username_kajur" type="text" class="form-control" id="username_kajur" placeholder="username" required/>
+              <input name = "username_doswal" type="text" class="form-control" id="username_doswal" placeholder="username" required/>
             </div>
 
             <div class="form-group">
               <label>Password</label>
-              <input name = "password_kajur" type="text" class="form-control" id="password_kajur" placeholder="password" required/>
+              <input name = "password_doswal" type="password" class="form-control" id="password_doswal" placeholder="password" required/>
             </div>
 
             <div class="form-group">
-              <label for="nama_jurusan">Nama Jurusan</label>
-              <input name = "nama_jurusan" type="text" class="form-control" id="nama_jurusan" placeholder="nama jurusan" required/>
+              <label for="nama_kelas">Kelas</label>
+              <input name = "nama_kelas" type="text" class="form-control" id="nama_kelas" placeholder="Jabatan" required/>
             </div>
 
             <div class="form-group">
               <label>Masa Jabatan</label>
-              <input name = "thn_jabatan_kajur" type="text" class="form-control" id="thn_jabatan_kajur" placeholder="Masa Jabatan" required/>
+              <input name = "thn_jabatan" type="text" class="form-control" id="thn_jabatan" placeholder="Ex : 2015-2020" required/>
             </div>
 
             <div class="form-group">
-              <label for ="status_kajur">Status</label>
-              <select class = "custom-select rounded-0" id ="status_kajur" name ="status_kajur" required>
+              <label for ="status_doswal">Status</label>
+              <select class = "custom-select rounded-0" id ="status_doswal" name ="status_doswal" required>
                 <option>--- Pilih Salah Satu ---</option>
                 <option value = "Aktif">Aktif</option>
                 <option value = "Tidak Aktif">Tidak Aktif</option>
@@ -191,28 +189,28 @@
 <!-- / modal edit  -->
 <?php $no = 0;
 foreach ($user as $row) : $no++; ?>
-  <div class="modal fade" id="myModal<?php echo $row['id_jurusan']; ?>" role="dialog">
+  <div class="modal fade" id="myModal<?php echo $row['id_doswal']; ?>" role="dialog">
     <div class="modal-dialog">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Edit Data Ketua Jurusan</h4>
+            <h4 class="modal-title">Edit Data Dosen Wali</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
           </div>
 
-          <form role="form" action="c_editkajur.php" method="get">
+          <form role="form" action="c_editdoswal.php" method="get">
             <div class="modal-body">
               <?php
-                $id_jurusan=$row['id_jurusan'];
-                $result= mysqli_query($koneksi, "SELECT * FROM tb_jurusan where id_jurusan='$id_jurusan'");                
+                $id_doswal=$row['id_doswal'];
+                $result= mysqli_query($koneksi, "SELECT * FROM tb_doswal where id_doswal='$id_doswal'");                
                 while ($bio= mysqli_fetch_array($result)) {
               ?>
 
             <div class="form-group">
-              <label>Id Ketua Jurusan</label>
-              <input name = "id_jurusan" type="text" class="form-control" value="<?php echo $bio['id_jurusan']; ?>" readonly/>
+              <label>Id Dosen Wali</label>
+              <input name = "id_doswal" type="text" class="form-control" value="<?php echo $bio['id_doswal']; ?>" readonly/>
             </div>
 
             <div class="form-group">
@@ -220,30 +218,31 @@ foreach ($user as $row) : $no++; ?>
               <input name = "nip_npak" type="text" class="form-control" value="<?php echo $bio['nip_npak']; ?>" readonly/>
             </div>
 
+            
+            <div class="form-group" hidden>
+              <label>Nama Kelas</label>
+              <input name = "nama_kelas" type="text" class="form-control" value="<?php echo $bio['nama_kelas']; ?>" >
+            </div>
+ 
             <div class="form-group">
               <label>Username</label>
-              <input name = "username_kajur" type="text" class="form-control" value="<?php echo $bio['username_kajur']; ?>">
+              <input name = "username_doswal" type="text" class="form-control" value="<?php echo $bio['username_doswal']; ?>">
             </div>
 
             <div class="form-group">
               <label>Password</label>
-              <input name = "password_kajur" type="text" class="form-control" value="<?php echo $bio['password_kajur']; ?>">
-            </div>
-
-            <div class="form-group" hidden>
-              <label>Nama Jurusan</label>
-              <input name = "nama_jurusan" type="text" class="form-control" value="<?php echo $bio['nama_jurusan']; ?>" >
+              <input name = "password_doswal" type="password" class="form-control" value="<?php echo $bio['password_doswal']; ?>">
             </div>
 
             <div class="form-group" hidden>
               <label>Masa Jabatan</label>
-              <input name = "thn_jabatan_kajur" type="text" class="form-control" value="<?php echo $bio['thn_jabatan_kajur']; ?>">
+              <input name = "thn_jabatan" type="text" class="form-control" value="<?php echo $bio['thn_jabatan']; ?>">
             </div>
 
             <div class="form-group">
-              <label for ="status_kajur">Status</label>
-              <select class = "custom-select rounded-0" id ="status_kajur" name ="status_kajur" required>
-                <option><?php echo $bio['status_kajur']; ?></option>
+              <label for ="status_doswal">Status</label>
+              <select class = "custom-select rounded-0" id ="status_doswal" name ="status_doswal" required>
+                <option><?php echo $bio['status_doswal']; ?></option>
                 <option value = "Aktif">Aktif</option>
                 <option value = "Tidak Aktif">Tidak Aktif</option>
               </select>
@@ -267,33 +266,33 @@ foreach ($user as $row) : $no++; ?>
                 </div>
         <?php endforeach ?>
 
-      <!-- Modal Lihat Detail -->
-      <?php $no = 0;
-      foreach ($user as $row) : $no++; ?>
-<div class="modal fade" id="modaldetail<?php echo $row['id_jurusan']; ?>">
-    <div class="modal-dialog">
-        <div class="modal-content">
+<!-- Modal Lihat Detail -->
+<?php $no = 0;
+    foreach ($user as $row) : $no++; 
+?>
+      <div class="modal fade" id="modaldetail<?php echo $row["id_doswal"]; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Biodata Pegawai</h4>
+              <h5 class="modal-title" id="exampleModalLabel">Biodata Dosen Wali</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                  <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            
             <div class="modal-body">
               <?php
-                $id_jurusan=$row['id_jurusan'];
-                $result= mysqli_query($koneksi, "SELECT * FROM tb_jurusan INNER JOIN tb_pegawai ON tb_jurusan.nip_npak = tb_pegawai.nip_npak");                
+                $id_doswal=$row['id_doswal'];
+                $result= mysqli_query($koneksi, "SELECT * FROM tb_doswal INNER JOIN tb_pegawai ON tb_doswal.nip_npak = tb_pegawai.nip_npak WHERE id_doswal = $row[id_doswal]");                
                 while ($bio= mysqli_fetch_array($result)) {
               ?>
 
-<form>
+              <form>
                 <div class="card-body box-profile">
                   <div class="text-center"></div>
                     <h3 class="profile-username text-center"><?php echo $row['nama_pegawai'] ?></h3>
                         <ul class="list-group list-group-unbordered mb-3">
                           <li class="list-group-item">
-                            <b>ID</b> <a class="float-right"><?php echo $row['id_jurusan'] ?></a>
+                            <b>ID</b> <a class="float-right"><?php echo $row['id_doswal'] ?></a>
                           </li>
 
                           <li class="list-group-item">
@@ -301,25 +300,25 @@ foreach ($user as $row) : $no++; ?>
                           </li>
 
                           <li class="list-group-item">
-                            <b>Username</b> <a class="float-right"><?php echo $row['username_kajur'] ?></a>
+                            <b>Username</b> <a class="float-right"><?php echo $row['username_doswal'] ?></a>
                           </li>
 
                           <li class="list-group-item">
-                            <b>Password</b> <a class="float-right"><?php echo $row['password_kajur'] ?></a>
+                            <b>Password</b> <a class="float-right"><?php echo $row['password_doswal'] ?></a>
                           </li>
 
                           <li class="list-group-item">
-                            <b>Nama Jurusan</b> <a class="float-right"><?php echo $row['nama_jurusan'] ?></a>
+                            <b>Nama Kelas</b> <a class="float-right"><?php echo $row['nama_kelas'] ?></a>
                           </li>
 
                           <li class="list-group-item">
-                            <b>Tahun Jabatan</b> <a class="float-right"><?php echo $row['thn_jabatan_kajur'] ?></a>
+                            <b>Tahun Jabatan</b> <a class="float-right"><?php echo $row['thn_jabatan'] ?></a>
                           </li>
 
                           <li class="list-group-item">
-                            <b>Status</b> <a class="float-right"><?php echo $row['status_kajur'] ?></a>
+                            <b>Status</b> <a class="float-right"><?php echo $row['status_doswal'] ?></a>
                           </li>
-                          </ul>
+                        </ul>
                 </div>
               
               <?php
@@ -338,6 +337,7 @@ foreach ($user as $row) : $no++; ?>
 </div>
 <!-- /.modal -->
 <?php endforeach ?>
+
 
 
   <?php
@@ -385,6 +385,12 @@ foreach ($user as $row) : $no++; ?>
     });
   });
 </script>
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+  </script>
+  
 
 <script type="text/javascript">
   $(document).ready(function(){

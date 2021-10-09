@@ -138,7 +138,7 @@
             <div class="form-row">
               <div class="form-group  col-6">
                   <label>NIP / NPAK</label>
-                  <input name = "nip_npak" type="text" class="form-control" id="nip_npak" placeholder="NIP/NPAK" required/>
+                  <input name = "nip_npak" type="text" class="form-control" id="nip_npak" placeholder="Ex : 1901020290393456" required/>
               </div>
 
               <div class="form-group col-6">
@@ -148,26 +148,26 @@
             </div>
 
             <div class="form-row">
-              <div class="form-group col-6">
-                  <label>Password</label>
-                  <input name = "password" type="text" class="form-control" id="password" placeholder="password" required/>
-              </div>
-
-              <div class="form-group  col-6">
+            <div class="form-group  col-6">
                   <label>Username</label>
                   <input name = "username" type="text" class="form-control" id="username" placeholder="username" required/>
+              </div>
+
+              <div class="form-group col-6">
+                  <label>Password</label>
+                  <input name = "password" type="password" class="form-control" id="password" placeholder="password" required/>
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group col-6">
                   <label>Jabatan</label>
-                  <input name = "jabatan" type="text" class="form-control" id="jabatan" placeholder="jabatan" required/>
+                  <input name = "jabatan" type="text" class="form-control" id="jabatan" placeholder="Ex : Dosen Wali" required/>
               </div>
 
               <div class="form-group col-6">
                   <label>No.Telp</label>
-                  <input name = "no_telp_pegawai" type="number" class="form-control" id="no_telp_pegawai" placeholder="no telp" required/>
+                  <input name = "no_telp_pegawai" type="number" class="form-control" id="no_telp_pegawai" placeholder="Ex : 0856xxx" required/>
               </div>
             </div> 
 
@@ -178,6 +178,7 @@
                         <input type="file" class="form-control" id="foto_pegawai" name = "foto_pegawai">
                       </div>
                     </div>
+                    <i style="float: left;font-size: 14px;color: black">Tipe file JPEG/JPG/PNG dengan batas max 5 mb</i> <br>
                 </div>
 
                 <div class="form-group">
@@ -187,6 +188,7 @@
                         <input type="file" class="form-control" id="ttd_pegawai" name = "ttd_pegawai">
                     </div>
                     </div>
+                    <i style="float: left;font-size: 14px;color: black">Tipe file JPEG/JPG/PNG dengan batas max 5 mb</i> <br>
                     </div>
                 </div>
 
@@ -238,7 +240,7 @@
               <div class="form-row">
               <div class="form-group col-6">
                   <label>Password</label>
-                  <input name = "password" type="text" class="form-control" value="<?php echo $bio['password']; ?>">
+                  <input name = "password" type="password" class="form-control" value="<?php echo $bio['password']; ?>">
               </div>
 
               <div class="form-group col-6">

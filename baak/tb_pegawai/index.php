@@ -33,8 +33,8 @@
 
 <?php
     
-    include "../../AdminLTE/header.php";
-    include "../../AdminLTE/sidebar.php";
+    include "../header.php";
+    include "../sidebar.php";
     
     $user = mysqli_query($koneksi, "SELECT * FROM tb_pegawai");
 ?>
@@ -95,7 +95,7 @@
                                 <td><?php echo $row['nama_pegawai']; ?></td>
                                 <td><?php echo $row["jabatan"]; ?></td>
                                 <td><?php echo $row["no_telp_pegawai"]; ?></td>
-                                <td><center><img src="img/foto/<?php echo $row['foto_pegawai'];?>"width="100px" height="100px"></center></td>
+                                <td><img src="img/foto/<?php echo $row['foto_pegawai'];?>"width="100px" height="100px"></td>
                                 <td><center>
                                     <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['nip_npak']; ?>" class ="btn btn-app"><i class="far fa-eye"></i></a> 
                                     <a data-toggle ="modal" data-target="#myModal<?php echo $row['nip_npak']; ?>" class ="btn btn-app"><i class="nav-icon fas fa-edit"></i></a>
@@ -303,7 +303,7 @@
       <?php $no = 0;
       foreach ($user as $row) : $no++; ?>
 <div class="modal fade" id="modaldetail<?php echo $row['nip_npak']; ?>">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Biodata Pegawai</h4>
@@ -318,42 +318,51 @@
               $result= mysqli_query($koneksi, "SELECT * FROM tb_pegawai where nip_npak='$nip_npak'");                
               while ($bio= mysqli_fetch_array($result)) {
             ?>
-                <form>
-                <div class="card-body box-profile">
-                  <div class="text-center"></div>
-                  <center>
-                  <img src="img/foto/<?php echo $row['foto_pegawai'];?>" alt="Foto" width="150" class="rounded-circle"></center><br>
-                    <h3 class="profile-username text-center"><?php echo $row['nama_pegawai'] ?></h3>
-                        <ul class="list-group list-group-unbordered mb-3">
-                          <li class="list-group-item">
-                            <b>NIP/NPAK</b> <a class="float-right"><?php echo $row['nip_npak'] ?></a>
-                          </li>
+            <form>
+            <div class="row text-center">
+              <div class="col-1"></div>
+              <div class="col-3 text-center">
+                <div class="p-2"> </div>
+                <img src="img/foto/<?php echo $row['foto_pegawai'];?>" alt="Foto" width="150px" height="150px" class="pt-5">
+              </div>
+              <div class="col-3 text-left">
+                <ul>
+                  <li class="p-2"><b>NIP/NPAK</b></li>
+                  <li class="p-2"><b>Nama Pegawai</b></li>
+                  <li class="p-2"><b>Username</b></li>
+                  <li class="p-2"><b>Password</b></li>
+                  <li class="p-2"><b>Jabatan</b></li>
+                  <li class="p-2"><b>No.Telp</b></li>
+                  <li class="p-2"><b>Tanda Tangan</b></li>
+                </ul>
+              </div>
 
-                          <li class="list-group-item">
-                            <b>Username</b> <a class="float-right"><?php echo $row['username'] ?></a>
-                          </li>
-
-                          <li class="list-group-item">
-                            <b>Password</b> <a class="float-right"><?php echo $row['password'] ?></a>
-                          </li>
-
-                          <li class="list-group-item">
-                            <b>No.Telp</b> <a class="float-right"><?php echo $row['no_telp_pegawai'] ?></a>
-                          </li>
-
-                          <li class="list-group-item">
-                            <b>Jabatan</b> <a class="float-right"><?php echo $row['jabatan'] ?></a>
-                          </li>
-
-                          <li class="list-group-item">
-                            <b>Tanda Tangan</b> <img src="img/ttd/<?php echo $row['ttd_pegawai'];?>" alt="Foto" width="100px" height="100px" class="float-right">
-                          </li>
-                        </ul>
-                </div>
+              <ul>
+                  <li class="p-2"><b>:</b></li>
+                  <li class="p-2"><b>:</b></li>
+                  <li class="p-2"><b>:</b></li>
+                  <li class="p-2"><b>:</b></li>
+                  <li class="p-2"><b>:</b></li>
+                  <li class="p-2"><b>:</b></li>
+                  <li class="p-2"><b>:</b></li>
+                </ul>
               
-              <?php
-                  }
-              ?>
+              <div class="col text-left">
+                <ul>
+                  <li class="p-2"><b><?php echo $row['nip_npak']; ?></b></li>
+                  <li class="p-2"><b><?php echo $row['nama_pegawai']; ?></b></li>
+                  <li class="p-2"><b><?php echo $row['username']; ?></b></li>
+                  <li class="p-2"><b><?php echo $row['password']; ?></b></li>
+                  <li class="p-2"><b><?php echo $row['jabatan']; ?></b></li>
+                  <li class="p-2"><b><?php echo $row['no_telp_pegawai']; ?></b></li>
+                  <li class="p-2"><b><img src="img/ttd/<?php echo $row['ttd_pegawai'];?>"width="100px" height="100px"></b></li>
+                </ul>
+               </div>
+            </div>
+            
+            <?php
+               }
+            ?>
 
             </div>
             <div class="modal-footer justify-content-between">

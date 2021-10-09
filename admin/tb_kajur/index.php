@@ -152,7 +152,7 @@
 
             <div class="form-group">
               <label>Password</label>
-              <input name = "password_kajur" type="text" class="form-control" id="password_kajur" placeholder="password" required/>
+              <input name = "password_kajur" type="password" class="form-control" id="password_kajur" placeholder="password" required/>
             </div>
 
             <div class="form-group">
@@ -162,7 +162,7 @@
 
             <div class="form-group">
               <label>Masa Jabatan</label>
-              <input name = "thn_jabatan_kajur" type="text" class="form-control" id="thn_jabatan_kajur" placeholder="Masa Jabatan" required/>
+              <input name = "thn_jabatan_kajur" type="text" class="form-control" id="thn_jabatan_kajur" placeholder="Ex : 2015-2020" required/>
             </div>
 
             <div class="form-group">
@@ -227,7 +227,7 @@ foreach ($user as $row) : $no++; ?>
 
             <div class="form-group">
               <label>Password</label>
-              <input name = "password_kajur" type="text" class="form-control" value="<?php echo $bio['password_kajur']; ?>">
+              <input name = "password_kajur" type="password" class="form-control" value="<?php echo $bio['password_kajur']; ?>">
             </div>
 
             <div class="form-group" hidden>
@@ -283,7 +283,7 @@ foreach ($user as $row) : $no++; ?>
             <div class="modal-body">
               <?php
                 $id_jurusan=$row['id_jurusan'];
-                $result= mysqli_query($koneksi, "SELECT * FROM tb_jurusan INNER JOIN tb_pegawai ON tb_jurusan.nip_npak = tb_pegawai.nip_npak");                
+                $result= mysqli_query($koneksi, "SELECT * FROM tb_jurusan INNER JOIN tb_pegawai ON tb_jurusan.nip_npak = tb_pegawai.nip_npak WHERE id_jurusan = $row[id_jurusan]");                
                 while ($bio= mysqli_fetch_array($result)) {
               ?>
 
