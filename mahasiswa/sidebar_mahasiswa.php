@@ -26,7 +26,7 @@ $user = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa WHERE username_mhs = 
         <div class="info">
           <a class="d-block">
             <?php foreach ($user as $row) :
-            echo $ ['nama_mhs']; 
+            echo $row ['nama_mhs']; 
             endforeach; ?></a>
         </div>
       </div>
@@ -49,35 +49,40 @@ $user = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa WHERE username_mhs = 
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-            <a href="index.php" class="nav-link">
-              <i class="nav-icon fas fa-home"></i>
-              <p>Dashboard</p>
-            </a>
-          </li> 
+                  <a href="index.php" class="nav-link">
+                  <i class="nav-icon fas fa-home"></i>
+                    <p>Dashboard</p>
+                  </a>
+              </li> 
 
+                <li class="nav-item">
+                  <a href="profile.php" class="nav-link">
+                  <i class="nav-icon fas fa-user-friends"></i>
+                    <p> Profile Mahasiswa</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="data_nilai.php" class="nav-link">
+                  <i class="nav-icon fas fa-file-download"></i>
+                    <p> Data Nilai</p>
+                  </a>
+                </li>
+          
               <li class="nav-item">
-                <a href="data_nilai.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Nilai</p>
+                <a href="data_pengajuan.php" class="nav-link">
+                <i class="nav-icon fas fa-edit"></i>
+                  <p>Pengajuan</p>
                 </a>
               </li>
-          
-            <li class="nav-item">
-            <a href="data_pengajuan.php" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>Pengajuan</p>
-            </a>
-          </li>
 
-          <li class="nav-item">
-            <a href="../logout.php" class="nav-link">
-              <i class="nav-icon fas fa-sign-out-alt"></i>
-              <p>Logout</p>
-            </a>
-          </li>
-          </li>
-            </ul>
-          </li>
+            <li class="nav-item">
+              <a href="../logout.php" class="nav-link">
+                <i class="nav-icon fas fa-sign-out-alt"></i>
+                <p>Logout</p>
+              </a>
+            </li>
+        </ul>
       </nav>
   </div>
 </aside>

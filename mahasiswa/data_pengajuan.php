@@ -1,8 +1,6 @@
 <?php
   include "../koneksi/config.php";
-
   include "c_tambahpengajuan.php";
-  include "c_editpengajuan.php";
 
   session_start();
 ?>
@@ -33,8 +31,8 @@
 <div class="wrapper">
 
   <?php
-      include "header_admin.php";
-      include "sidebar_admin.php";
+      include "header_mahasiswa.php";
+      include "sidebar_mahasiswa.php";
       
       $user = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan INNER JOIN tb_mahasiswa ON tb_pengajuan.npm = tb_mahasiswa.npm;");
   ?>
@@ -96,8 +94,6 @@
                             <td><?php echo $row["status_pengajuan"]; ?></td>
                             <td><center>
                                 <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['id_pengajuan']; ?>" class ="btn btn-app"><i class="far fa-eye"></i></a> 
-                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_pengajuan']; ?>" class ="btn btn-app"><i class="nav-icon fas fa-edit"></i></a>
-                                <a href="hapus_pengajuan.php?id_pengajuan=<?= $row["id_pengajuan"]; ?>"class ="btn btn-app"><i class="fas fa-trash-alt"></i></a>                                
                             </td></center>
                           </tr>
                           
@@ -183,90 +179,6 @@
       </div>
       <!-- /.modal -->
 
-         <!-- / modal edit  -->
-         <?php $no = 0;
-      foreach ($user as $row) : $no++; ?>
-      <div class="modal fade" id="myModal<?php echo $row['id_pengajuan']; ?>" role="dialog">
-        <div class="modal-dialog">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Edit Data Pengajuan</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <form role="form" action="c_editpengajuan.php" method="post" enctype="multipart/form-data">
-            <div class="modal-body">
-            <?php
-              $id_pengajuan=$row['id_pengajuan'];
-              $result= mysqli_query($koneksi, "SELECT * FROM tb_pengajuan where id_pengajuan='$id_pengajuan'");                
-              while ($bio= mysqli_fetch_array($result)) {
-            ?>
-
-            <div class="form-group">
-                  <label>Id Pengajuan</label>
-                  <input name = "id_pengajuan" type="text" class="form-control" value="<?php echo $bio['id_pengajuan']; ?>" readonly/>
-              </div>
-
-              <div class="form-group">
-                  <label>NPM</label>
-                  <input name = "npm" type="text" class="form-control" value="<?php echo $bio['npm']; ?>" readonly/>
-              </div>
-
-              <div class="form-group">
-                  <label>Alasan</label>
-                  <input name = "alasan" type="text" class="form-control" value="<?php echo $bio['alasan']; ?>" readonly/>
-              </div>
-
-              <div class="form-group">
-                  <label>Tanggal Pengajuan</label>
-                  <input name = "tgl_pengajuan" type="date" class="form-control" value="<?php echo $bio['tgl_pengajuan']; ?>" readonly/>
-              </div>
-
-              <div class="form-group">
-                  <label>Nama Orang Tua</label>
-                  <input name = "nama_ortu" type="text" class="form-control" value="<?php echo $bio['nama_ortu']; ?>" readonly/>
-              </div>
-
-              <div class="form-group">
-                <label for="ttd_ortu">Tanda Tangan</label>
-                  <div class="input-group">
-                    <div class="custom-file">
-                    <input type="hidden" name = "ttd_ortu" class="form-control" value="<?php echo $bio['ttd_ortu']; ?>" >
-                        <input type="file" name = "ttd_ortu" id="ttd_ortu" class="form-control" />
-                    </div>
-                  </div>
-              </div>
-
-              <div class="form-group">
-              <label for ="status">Status</label>
-              <select class = "custom-select rounded-0" id ="status_pengajuan" name ="status_pengajuan" required>
-                <option><?php echo $bio['status_pengajuan']; ?></option>
-                <option value = "Ditolak">Ditolak</option>
-                <option value = "Disetujui Dosen Wali">Disetujui Dosen Wali</option>
-                <option value = "Disetujui Ketua Jurusan">Disetujui Ketua Jurusan</option>
-              </select>
-              </div>
-
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" name = "edit_data">Save changes</button>
-              </div>
-              <?php 
-                }
-              ?>  
-            </form>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-              </div>
-      <?php endforeach ?>
-
             <!-- Modal Lihat Detail -->
             <?php $no = 0;
       foreach ($user as $row) : $no++; ?>
@@ -299,10 +211,12 @@
                   <li class="p-2"><b>Nama Mahasiswa</b></li>
                   <li class="p-2"><b>Tanggal Pengajuan</b></li>
                   <li class="p-2"><b>Berkas</b></li>
+                  <li class="p-2"><b>File Surat Keputusan</b></li>
                 </ul>
               </div>
 
               <ul>
+                  <li class="p-2"><b>:</b></li>
                   <li class="p-2"><b>:</b></li>
                   <li class="p-2"><b>:</b></li>
                   <li class="p-2"><b>:</b></li>
@@ -317,6 +231,7 @@
                   <li class="p-2"><b><?php echo $row['nama_mhs']; ?></b></li>
                   <li class="p-2"><b><?php echo $row['tgl_pengajuan']; ?></b></li>
                   <li class="p-2"><b><?php echo $row['berkas']; ?></b></li>
+                  <li class="p-2"><b><?php echo $row['file_sk']; ?></b></li>
                 </ul>
                </div>
             </div>

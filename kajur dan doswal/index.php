@@ -45,7 +45,7 @@ session_start();
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid ">
-        <h1><center>Log In sebagai</center></h1>
+        <h1><center>Log In Akun</center></h1>
             <div class="row col-12">
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-info">

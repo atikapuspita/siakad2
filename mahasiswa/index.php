@@ -1,6 +1,5 @@
 <?php
     include "../koneksi/config.php";
-    include "c_editmahasiswa.php";
 
 session_start();
 
@@ -77,71 +76,10 @@ session_start();
         <div class="container-fluid">
             <div class="row col-12">
                 <div class="col-lg-3 col-6">
-                    <div class="small-box bg-info">
-                        <div class="inner">
-                            <h3><?php echo $jumlah_pengajuan; ?></h3>
-                            <p>Pengajuan Pengunduran Diri</p>
-                        </div>  
-                        <div class="icon">
-                            <i class="ion ion-easel"></i>
-                        </div>
-                        <a href="data_pengajuan.php" class="small-box-footer">More info <i class="fas fa-arrow-alt-circle-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-6">
-                    <div class="small-box bg-info">
-                        <div class="inner">
-                            <h3><?php echo $jumlah_verifikasi; ?></h3>
-                            <p>Verifikasi Pengunduran Diri</p>
-                        </div>  
-                        <div class="icon">
-                            <i class="ion ion-easel"></i>
-                        </div>
-                        <a href="data_verifikasi.php" class="small-box-footer">More info <i class="fas fa-arrow-alt-circle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row col-12">
-                <div class="col-lg-3 col-6">
-                    <div class="card card-secondary">
-                        <div class="card-header">
-                            <h3 class="card-title">Profil</h3>
-                        </div> 
-                        <div class="card card-secondary card-outline">
-                            <div class="card-body box-profile">
-                                <ul class="list-group list-group-unbordered mb-3">
-                                <center>
-                                    <img src="../admin/img/foto_mahasiswa/<?php echo $row['foto_mhs'];?>" alt="Foto" width="150" class="rounded-circle"></center><br>
-                                    <li class="list-group-item">
-                                        <b>NPM</b> <a class="float-right text-secondary"><td><?php echo $row['npm']; ?></td></a>
-                                    </li>
-
-                                    <li class="list-group-item">
-                                        <b>Nama Lengkap</b> <a class="float-right text-secondary"><td><?php echo $row['nama_mhs']; ?></td></a>
-                                    </li>
-
-                                    <li class="list-group-item">
-                                        <b>Username</b> <a class="float-right text-secondary"><td><?php echo $row['username_mhs']; ?></td></a>
-                                    </li>
-
-                                    <li class="list-group-item">
-                                        <b>No.Telp</b> <a class="float-right text-secondary"><td><?php echo $row['no_telp_mhs']; ?></td></a>
-                                    </li>
-                                </ul>
-                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['npm']; ?>" class="btn btn-secondary btn-block"><b>Edit Profil</b></a>
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-6">
                     <div class="card">
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
-                                <li class="nav-item col-12"><a class="nav-link active" href="#activity" data-toggle="tab"><center>Syarat dan Ketentuan Pengajuan Peminjaman</center></a></li>
+                                <li class="nav-item col-12"><a class="nav-link active" href="#activity" data-toggle="tab"><center>Syarat dan Ketentuan Pengajuan Pengunduran Diri</center></a></li>
                             <ul>
                         </div>
                         <div class="card-body">
@@ -149,8 +87,7 @@ session_start();
                                 <div class="active tab-pane" id="activity">
                                     <div class="post">
                                         <p><ol>
-                                            <li>......................................</li>
-                                            <li>......................................</li>
+                                            <li>Formulir pengajuan yang telah di tandatangani</li>
                                         </ol></p>
                                     </div>
                                 </div>
@@ -159,133 +96,20 @@ session_start();
                     </div>
                 </div>
             </div>
+            </div>
+          </div>
+          <div class="col-2 float-sm-right">
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <p><center>Ajukan Pengunduran Diri</center></p>
+                        </div>  
+                        <div class="icon">
+                            <i class="ion ion-easel"></i>
+                        </div>
+                        <a href="data_pengajuan.php" class="small-box-footer">Klik Here <i class="fas fa-arrow-alt-circle-right"></i></a>
+                    </div>
     </section>
     </div>
-
-             <!-- / modal edit  -->
-             <?php $no = 0;
-      foreach ($user as $row) : $no++; ?>
-      <div class="modal fade" id="myModal<?php echo $row['npm']; ?>" role="dialog">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Edit Data Mahasiswa</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <form role="form" action="c_editmahasiswa.php" method="post" enctype="multipart/form-data">
-            <div class="modal-body">
-            <?php
-              $npm=$row['npm'];
-              $result= mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa where npm='$npm'");                
-              while ($bio= mysqli_fetch_array($result)) {
-            ?>
-            <div class="form-row">
-              <div class="form-group col-6">
-                  <label>NPM</label>
-                  <input name = "npm" type="text" class="form-control" value="<?php echo $bio['npm']; ?>" readonly>
-              </div>
-
-              <div class="form-grou col-6">
-                  <label for="nama_mhs">Nama Mahasiswa</label>
-                  <input name = "nama_mhs" type="text" class="form-control" value="<?php echo $bio['nama_mhs']; ?>">
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group col-6">
-                  <label>Username</label>
-                  <input name = "username_mhs" type="text" class="form-control" value="<?php echo $bio['username_mhs']; ?>" readonly>
-              </div>
-
-              <div class="form-grou col-6">
-                  <label>Password</label><span class="text-red">*</span></label>
-                  <input type="password" class="form-control" name="password_mhs" placeholder="Password" id="myPassword" value="<?php echo $bio['password_mhs']; ?>">
-                  <input type="checkbox" onclick="myFunction()"> Lihat Password
-              </div>
-            </div>
-            
-            <div class="form-row" hidden>
-              <div class="form-group col-6">
-                  <label>Id Jurusan</label>
-                  <input name = "id_jurusan" type="text" class="form-control" value="<?php echo $bio['id_jurusan']; ?>">
-              </div>
-
-            <div class="form-group col-6">
-                  <label>Id Dosen Wali</label>
-                  <input name = "id_doswal" type="text" class="form-control" value="<?php echo $bio['id_doswal']; ?>">
-              </div>
-            </div>
-
-            <div class="form-row" >
-            <div class="form-group col-6">
-              <label for ="jk">Jenis Kelamin</label>
-              <select class = "custom-select rounded-0" id ="jk" name ="jk" required>
-              <option><?php echo $bio['jk']; ?></option>
-                <option value = "Laki - Laki">Laki - Laki</option>
-                <option value = "Perempuan">Perempuan</option>
-              </select>
-            </div>
-
-              <div class="form-group col-6" >
-                  <label for="thn_angkatan">Tahun Angkatan</label>
-                  <input name = "thn_angkatan" type="number" class="form-control" value="<?php echo $bio['thn_angkatan']; ?>">
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group col-6">
-                  <label for="alamat">Alamat</label>
-                  <input name = "alamat" type="text" class="form-control" value="<?php echo $bio['alamat']; ?>">
-              </div>
-
-              <div class="form-group col-6">
-                  <label>No.Telp</label>
-                  <input name = "no_telp_mhs" type="number" class="form-control" value="<?php echo $bio['no_telp_mhs']; ?>">
-              </div>
-            </div> 
-
-           <div class="form-group">
-              <label>Foto Mahasiswa</label>
-              <div class="input-group">
-                <div class="custom-file">
-                  <input type="hidden" name = "foto_mhs" class="form-control" value="<?php echo $bio['foto_mhs']; ?>" >
-                  <input type="file" name = "foto_mhs" id="foto_mhs" class="form-control" />
-                </div>
-              </div>
-                <i style="float: left;font-size: 14px;color: red">Abaikan jika tidak merubah foto</i> <br>
-           </div>
-
-            <div class="form-group">
-              <label>Tanda Tangan</label>
-                <div class="input-group">
-                  <div class="custom-file">
-                  <input type="hidden" name = "ttd_mhs" class="form-control" value="<?php echo $bio['ttd_mhs']; ?>" >
-                  <input type="file" name = "ttd_mhs" id="ttd_mhs" class="form-control" />
-                </div>
-              </div>
-                <i style="float: left;font-size: 14px;color: red">Abaikan jika tidak merubah tanda tangan</i> <br>
-            </div>
-
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" name = "edit_data">Save changes</button>
-            </div>
-              <?php 
-                }
-              ?>  
-            </form>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-              </div>
-      <?php endforeach ?>
-
 
 
     <?php include "../AdminLTE/footer.php" ?>

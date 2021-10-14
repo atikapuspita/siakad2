@@ -113,6 +113,10 @@ session_start();
                             <div class="card-body box-profile">
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
+                                        <b>Id Dosen Wali</b> <a class="float-right text-secondary"><td><?php echo $row['id_doswal']; ?></td></a>
+                                    </li>
+
+                                    <li class="list-group-item">
                                         <b>NIP/NPAK</b> <a class="float-right text-secondary"><td><?php echo $row['nip_npak']; ?></td></a>
                                     </li>
 
@@ -122,6 +126,10 @@ session_start();
 
                                     <li class="list-group-item">
                                         <b>Username</b> <a class="float-right text-secondary"><td><?php echo $row['username']; ?></td></a>
+                                    </li>
+
+                                    <li class="list-group-item">
+                                        <b>Status</b> <a class="float-right text-secondary"><td><?php echo $row['status_doswal']; ?></td></a>
                                     </li>
 
                                     <li class="list-group-item">

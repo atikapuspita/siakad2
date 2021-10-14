@@ -28,6 +28,9 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
+    <center>
+      <br><img src="AdminLTE/dist/img/logo_pnc.png" alt="Foto" width="120" class="rounded-circle">
+    </center><br>
       <a  class="h1"><b>Sistem Informasi Akademik PNC</b></a>
     </div>
     <div class="card-body">
