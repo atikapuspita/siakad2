@@ -1,14 +1,17 @@
 <?php
-    include "../koneksi/config.php";
-    include "c_editadmin.php";
+    include '../koneksi/config.php';
 
 session_start();
 
+if(!isset($_SESSION['username']))
+{
+    header("Location: index.php");
+}
 ?>
 
 <?php
  $username = $_SESSION["username"];
- $user = mysqli_query($koneksi, "SELECT * FROM tb_pegawai WHERE username = '$username'");
+ $user = mysqli_query($koneksi, "SELECT * FROM tb_kajur INNER JOIN tb_pegawai ON tb_kajur.nip_npak = tb_pegawai.nip_npak WHERE username = '$username'");
  ?>
 
 <?php
@@ -17,7 +20,7 @@ session_start();
 ?>
 
 <?php
-    $data_verifikasi = mysqli_query($koneksi, "SELECT * FROM tb_verifikasi");
+    $data_verifikasi = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan");
     $jumlah_verifikasi = mysqli_num_rows($data_verifikasi);
 ?>
 
@@ -44,8 +47,8 @@ session_start();
 
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-    <?php include "header_admin.php"; ?>
-    <?php include "sidebar_admin.php"; ?>
+    <?php include "header_kajur.php"; ?>
+    <?php include "sidebar_kajur.php"; ?>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -75,7 +78,7 @@ session_start();
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <div class="row col-12">
+            <div class="row">
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-info">
                         <div class="inner">
@@ -112,8 +115,6 @@ session_start();
                         <div class="card card-secondary card-outline">
                             <div class="card-body box-profile">
                                 <ul class="list-group list-group-unbordered mb-3">
-                                <center>
-                                    <img src="img/foto_pegawai/<?php echo $row['foto_pegawai'];?>" alt="Foto" width="150" class="rounded-circle"></center><br>
                                     <li class="list-group-item">
                                         <b>NIP/NPAK</b> <a class="float-right text-secondary"><td><?php echo $row['nip_npak']; ?></td></a>
                                     </li>
@@ -127,10 +128,14 @@ session_start();
                                     </li>
 
                                     <li class="list-group-item">
+                                        <b>Password</b> <a class="float-right text-secondary"><td><?php echo $row['password']; ?></td></a>
+                                    </li>
+
+                                    <li class="list-group-item">
                                         <b>No.Telp</b> <a class="float-right text-secondary"><td><?php echo $row['no_telp_pegawai']; ?></td></a>
                                     </li>
                                 </ul>
-                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['nip_npak']; ?>" class="btn btn-secondary btn-block"><b>Edit Profil</b></a>
+                                <a href="data_pegawai.php#myModal<?php echo $row['nip_npak']; ?>" class="btn btn-secondary btn-block"><b>Edit Profil</b></a>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -141,7 +146,7 @@ session_start();
                     <div class="card">
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
-                                <li class="nav-item col-12"><a class="nav-link active" href="#activity" data-toggle="tab"><center>Syarat dan Ketentuan Pengajuan Peminjaman</center></a></li>
+                                <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Syarat dan Ketentuan Pengajuan Pengunduran Diri</a></li>
                             <ul>
                         </div>
                         <div class="card-body">
@@ -161,106 +166,6 @@ session_start();
             </div>
     </section>
     </div>
-
-           <!-- / modal edit  -->
-           <?php $no = 0;
-      foreach ($user as $row) : $no++; ?>
-      <div class="modal fade" id="myModal<?php echo $row['nip_npak']; ?>" role="dialog">
-        <div class="modal-dialog">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Edit Data Pegawai</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <form role="form" action="c_editadmin.php" method="post" enctype="multipart/form-data">
-            <div class="modal-body">
-            <?php
-              $nip_npak=$row['nip_npak'];
-              $result= mysqli_query($koneksi, "SELECT * FROM tb_pegawai where nip_npak='$nip_npak'");                
-              while ($bio= mysqli_fetch_array($result)) {
-            ?>
-            
-            <div class="form-row">
-            <div class="form-group col-6">
-                  <label>NIP/NPAK</label>
-                  <input name = "nip_npak" type="text" class="form-control" value="<?php echo $bio['nip_npak']; ?>" readonly>
-              </div>
-
-              <div class="form-group col-6">
-                  <label>Nama Pegawai</label>
-                  <input name = "nama_pegawai" type="text" class="form-control" value="<?php echo $bio['nama_pegawai']; ?>">
-              </div>
-              </div>
-
-              <div class="form-row">
-              <div class="form-group col-6">
-                  <label>Username</label>
-                  <input name = "username" type="text" class="form-control" value="<?php echo $bio['username']; ?>" readonly>
-              </div>
-              
-              <div class="form-group col-6">
-                  <label>Password</label><span class="text-red">*</span></label>
-                  <input type="password" class="form-control" name="password" placeholder="Password" id="myPassword" value="<?php echo $bio['password']; ?>">
-                  <input type="checkbox" onclick="myFunction()"> Lihat Password
-              </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group col-6">
-                <label>Jabatan</label>
-                  <input name = "jabatan" type="text" class="form-control" value="<?php echo $bio['jabatan']; ?>" readonly>
-             </div>
-
-              <div class="form-group col-6">
-                  <label>No.Telp</label>
-                  <input name = "no_telp_pegawai" type="number" class="form-control" value="<?php echo $bio['no_telp_pegawai']; ?>">
-              </div>
-              </div>
-
-              <div class="form-group">
-                    <label>Foto Pegawai</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="hidden" name = "foto_pegawai" class="form-control" value="<?php echo $bio['foto_pegawai']; ?>" >
-                        <input type="file" name = "foto_pegawai" id="foto_pegawai" class="form-control" />
-                      </div>
-                    </div>
-                    <i style="float: left;font-size: 14px;color: red">Abaikan jika tidak merubah tanda tangan</i> <br>
-                    </div>
-
-              <div class="form-group">
-                <label>Tanda Tangan</label>
-                  <div class="input-group">
-                    <div class="custom-file">
-                      <input type="hidden" name = "ttd_pegawai" class="form-control" value="<?php echo $bio['ttd_pegawai']; ?>" >
-                      <input type="file" name = "ttd_pegawai" id="ttd_pegawai" class="form-control" />
-                    </div>
-                  </div>
-                  <i style="float: left;font-size: 14px;color: red">Abaikan jika tidak merubah tanda tangan</i>
-                  </div>
-            </div>
-
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" name = "edit_data">Save changes</button>
-              </div>
-              <?php 
-                }
-              ?>  
-            </form>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-              </div>
-      <?php endforeach ?>
-
-
     <?php include "../AdminLTE/footer.php" ?>
 </div>
 
@@ -303,17 +208,5 @@ endforeach;
 <script src="../AdminLTE/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="../AdminLTE/dist/js/pages/dashboard.js"></script>
-
-<script>
-  function myFunction() {
-  var x = document.getElementById("myPassword");
-    if (x.type === "password") {
-      x.type = "text";
-    } else {
-    x.type = "password";
-    }
-  }
-</script>
-
 </body>
 </html>
