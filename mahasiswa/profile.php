@@ -79,7 +79,11 @@ session_start();
                                     </li>
 
                                     <li class="list-group-item">
-                                        <b>Username</b> <a class="float-right text-secondary"><td><?php echo $row['username_mhs']; ?></td></a>
+                                        <b>Tahun Anggkatan</b> <a class="float-right text-secondary"><td><?php echo $row['thn_angkatan']; ?></td></a>
+                                    </li>
+
+                                    <li class="list-group-item">
+                                        <b>Alamat</b> <a class="float-right text-secondary"><td><?php echo $row['alamat']; ?></td></a>
                                     </li>
 
                                     <li class="list-group-item">

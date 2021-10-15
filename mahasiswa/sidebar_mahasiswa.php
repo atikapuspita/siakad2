@@ -65,16 +65,9 @@ $user = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa WHERE username_mhs = 
                 <li class="nav-item">
                   <a href="data_nilai.php" class="nav-link">
                   <i class="nav-icon fas fa-file-download"></i>
-                    <p> Data Nilai</p>
+                    <p>Nilai Mahasiswa</p>
                   </a>
                 </li>
-          
-              <li class="nav-item">
-                <a href="data_pengajuan.php" class="nav-link">
-                <i class="nav-icon fas fa-edit"></i>
-                  <p>Pengajuan</p>
-                </a>
-              </li>
 
             <li class="nav-item">
               <a href="../logout.php" class="nav-link">

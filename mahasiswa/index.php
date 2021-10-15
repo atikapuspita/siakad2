@@ -75,7 +75,7 @@ session_start();
     <section class="content">
         <div class="container-fluid">
             <div class="row col-12">
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-6 col-6">
                     <div class="card">
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
@@ -87,7 +87,7 @@ session_start();
                                 <div class="active tab-pane" id="activity">
                                     <div class="post">
                                         <p><ol>
-                                            <li>Formulir pengajuan yang telah di tandatangani</li>
+                                            <li>Formulir yang di ajukan telah mendapat tanda tangan</li>
                                         </ol></p>
                                     </div>
                                 </div>

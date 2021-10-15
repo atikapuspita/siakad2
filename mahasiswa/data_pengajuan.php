@@ -83,23 +83,37 @@
                   
                     <tbody>
                       <?php $i = 1; ?>
-                      
-                      <?php foreach ($user as $row) : ?>
+                      <?php 
+                          $username_mhs = $_SESSION['username_mhs'];
+
+                          $sql = "SELECT npm FROM tb_mahasiswa WHERE username_mhs='$username_mhs'"; 
+                          $result = mysqli_query($koneksi, $sql);
+                          while($row = mysqli_fetch_array($result)) {
+                            $npm=$row['npm'];
+                          }
+                      ?>
+                      <?php                                                  
+                        $sql = "SELECT * FROM tb_pengajuan INNER JOIN tb_mahasiswa ON tb_pengajuan.npm = tb_mahasiswa.npm WHERE username_mhs='$username_mhs'";
+                        $result = mysqli_query($koneksi,$sql);
+                        $no= 1;
+                        while($d = mysqli_fetch_array($result)) {
+                          ?>
                           <tr>
                             <td><center><?= $i ?></center></td>
-                            <td><?php echo $row['nama_mhs']; ?></td>
-                            <td><?php echo $row['alasan']; ?></td>
-                            <td><?php echo $row['tgl_pengajuan']; ?></td>
-                            <td><?php echo $row["nama_ortu"]; ?></td>
-                            <td><?php echo $row["status_pengajuan"]; ?></td>
+                            <td><?php echo $d['nama_mhs']; ?></td>
+                            <td><?php echo $d['alasan']; ?></td>
+                            <td><?php echo $d['tgl_pengajuan']; ?></td>
+                            <td><?php echo $d["nama_ortu"]; ?></td>
+                            <td><?php echo $d["status_pengajuan"]; ?></td>
                             <td><center>
-                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['id_pengajuan']; ?>" class ="btn btn-app"><i class="far fa-eye"></i></a> 
+                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $d['id_pengajuan']; ?>" class ="btn btn-app"><i class="far fa-eye"></i></a> 
                             </td></center>
                           </tr>
                           
                             <?php $i++ ; ?>
-  
-                      <?php endforeach; ?>
+                            <?php
+                            }
+                          ?>
                     </tbody>
                   </table>
               </div>
@@ -131,15 +145,19 @@
             <form method ="post" action ="data_pengajuan.php" enctype="multipart/form-data">
             <div class="modal-body">
             <div class="form-group">
-                  <label for="exampleSelectRounded0">Nama Mahasiswa</label>
-                    <select type="text" class="form-control" aria-describedby="emailHelp" name="npm" id="npm">
-                      <option> Silahkan Pilih</option>
-                        <?php $tb_mahasiswa = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa ");
-                          foreach ($tb_mahasiswa as $mhs) : 
+                <label for="">NPM</label>
+                       <?php
+                      include "../koneksi/config.php";
+
+                      $username_mhs = $_SESSION['username_mhs'];
+
+                      $result= mysqli_query($koneksi, "SELECT npm FROM tb_mahasiswa WHERE username_mhs='$username_mhs'");                
+                      while ($row= mysqli_fetch_array($result)) { 
                         ?>
-                          <option value="<?php echo $mhs['npm'] ?>" nama_pegawai="<?php echo $mhs['nama_mhs'] ?>"><?php echo $mhs['nama_mhs'] ?></option>
-                        <?php endforeach; ?>
-                    </select>
+                        <input type="text" class="form-control" id="npm" name='npm' value="<?php echo $row['npm'];?>" readonly>
+                      <?php
+                      }
+                      ?>
                   </div>
               
               <div class="form-group">
@@ -181,9 +199,9 @@
 
             <!-- Modal Lihat Detail -->
             <?php $no = 0;
-      foreach ($user as $row) : $no++; ?>
-<div class="modal fade" id="modaldetail<?php echo $row['id_pengajuan']; ?>">
-    <div class="modal-dialog modal-lg">
+      foreach ($user as $d) : $no++; ?>
+<div class="modal fade" id="modaldetail<?php echo $d['id_pengajuan']; ?>">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Pengajuan Pengunduran Diri</h4>
@@ -194,47 +212,45 @@
             
             <div class="modal-body">
             <?php
-              $id_pengajuan=$row['id_pengajuan'];
+              $id_pengajuan=$d['id_pengajuan'];
               $result= mysqli_query($koneksi, "SELECT * FROM tb_pengajuan where id_pengajuan='$id_pengajuan'");                
               while ($bio= mysqli_fetch_array($result)) {
             ?>
             <form>
-            <div class="row text-center">
-              <div class="col-1"></div>
+            <div class="row text-left">
               <div class="col-1 text-center">
               </div>
 
-              <div class=" text-left">
                 <ul>
-                  <li class="p-2"><b>Id Pengajuan</b></li>
-                  <li class="p-2"><b>NPM</b></li>
-                  <li class="p-2"><b>Nama Mahasiswa</b></li>
-                  <li class="p-2"><b>Tanggal Pengajuan</b></li>
-                  <li class="p-2"><b>Berkas</b></li>
-                  <li class="p-2"><b>File Surat Keputusan</b></li>
+                  <li class="p-1"><b>Id Pengajuan</b></li>
+                  <li class="p-1"><b>NPM</b></li>
+                  <li class="p-1"><b>Nama Mahasiswa</b></li>
+                  <li class="p-1"><b>Tanggal Pengajuan</b></li>
+                  <li class="p-1"><b>Berkas</b></li>
+                  <li class="p-1"><b>File Surat Keputusan</b></li>
                 </ul>
-              </div>
 
-              <ul>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
-                  <li class="p-2"><b>:</b></li>
+              <ul class ="p-2">
+                  <li class="p-1"><b>:</b></li>
+                  <li class="p-1"><b>:</b></li>
+                  <li class="p-1"><b>:</b></li>
+                  <li class="p-1"><b>:</b></li>
+                  <li class="p-1"><b>:</b></li>
+                  <li class="p-1"><b>:</b></li>
                 </ul>
-              
-              <div class="col text-left">
-                <ul>
-                  <li class="p-2"><b><?php echo $row['id_pengajuan']; ?></b></li>
-                  <li class="p-2"><b><?php echo $row['npm']; ?></b></li>
-                  <li class="p-2"><b><?php echo $row['nama_mhs']; ?></b></li>
-                  <li class="p-2"><b><?php echo $row['tgl_pengajuan']; ?></b></li>
-                  <li class="p-2"><b><?php echo $row['berkas']; ?></b></li>
-                  <li class="p-2"><b><?php echo $row['file_sk']; ?></b></li>
+          
+ 
+                <ul class ="p-2">
+                  <li class="p-1"><b><?php echo $d['id_pengajuan']; ?></b></li>
+                  <li class="p-1"><b><?php echo $d['npm']; ?></b></li>
+                  <li class="p-1"><b><?php echo $d['nama_mhs']; ?></b></li>
+                  <li class="p-1"><b><?php echo $d['tgl_pengajuan']; ?></b></li>
+                  <li class="p-1"><b><?php echo $d['berkas']; ?></b></li>
+                  <li class="p-1"><b><?php echo $d['file_sk']; ?></b></li>
                 </ul>
-               </div>
+           
             </div>
+         
             
             <?php
                }

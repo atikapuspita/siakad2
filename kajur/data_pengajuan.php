@@ -165,7 +165,7 @@
                   <input name = "nama_ortu" type="text" class="form-control" value="<?php echo $bio['nama_ortu']; ?>" readonly/>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" hidden>
                 <label for="ttd_ortu">Tanda Tangan</label>
                   <div class="input-group">
                     <div class="custom-file">

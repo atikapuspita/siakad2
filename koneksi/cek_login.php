@@ -19,6 +19,7 @@ if ($cek2 > 0) {
     $data2 = mysqli_fetch_assoc($login2);
         $_SESSION['username_mhs'] = $username;
         $_SESSION['password_mhs'] = $password;
+        $_SESSION['npm'] = $npm;
 
         header("location:../mahasiswa/index.php");
     } 

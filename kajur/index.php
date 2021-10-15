@@ -107,7 +107,7 @@ if(!isset($_SESSION['username']))
             </div>
 
             <div class="row col-12">
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-4 col-6">
                     <div class="card card-secondary">
                         <div class="card-header">
                             <h3 class="card-title">Profil</h3>
@@ -139,28 +139,6 @@ if(!isset($_SESSION['username']))
                             </div>
                             <!-- /.card-body -->
                         </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-6">
-                    <div class="card">
-                        <div class="card-header p-2">
-                            <ul class="nav nav-pills">
-                                <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Syarat dan Ketentuan Pengajuan Pengunduran Diri</a></li>
-                            <ul>
-                        </div>
-                        <div class="card-body">
-                            <div class="tab-content">
-                                <div class="active tab-pane" id="activity">
-                                    <div class="post">
-                                        <p><ol>
-                                            <li>......................................</li>
-                                            <li>......................................</li>
-                                        </ol></p>
-                                    </div>
-                                </div>
-                            <div>
-                         </div>
                     </div>
                 </div>
             </div>
