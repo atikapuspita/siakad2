@@ -1,5 +1,6 @@
 <?php
     include "../koneksi/config.php";
+    include "c_tambahpengajuan.php";
 
 session_start();
 
@@ -106,12 +107,75 @@ session_start();
                         <div class="icon">
                             <i class="ion ion-easel"></i>
                         </div>
-                        <a href="data_pengajuan.php" class="small-box-footer">Klik Here <i class="fas fa-arrow-alt-circle-right"></i></a>
+                        <a data-toggle ="modal" data-target ="#modal-tambah" class="small-box-footer">Klik Here <i class="fas fa-arrow-alt-circle-right"></i></a>
                     </div>
     </section>
     </div>
 
+<!-- /.Modals Tambah --> 
+<div class="modal fade" id="modal-tambah">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Tambah Pengajuan Pengunduran Diri</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form method ="post" action ="c_tambahpengajuan.php" enctype="multipart/form-data">
+            <div class="modal-body">
+            <div class="form-group">
+                <label for="">NPM</label>
+                       <?php
+                      include "../koneksi/config.php";
 
+                      $username_mhs = $_SESSION['username_mhs'];
+
+                      $result= mysqli_query($koneksi, "SELECT npm FROM tb_mahasiswa WHERE username_mhs='$username_mhs'");                
+                      while ($row= mysqli_fetch_array($result)) { 
+                        ?>
+                        <input type="text" class="form-control" id="npm" name='npm' value="<?php echo $row['npm'];?>" readonly>
+                      <?php
+                      }
+                      ?>
+                  </div>
+              
+              <div class="form-group">
+                  <label>Alasan</label>
+                  <input name = "alasan" type="text" class="form-control" id="alasan" placeholder="alasan" required/>
+              </div>
+
+            <div class="form-group">
+                  <label>Tanggal Pengajuan</label>
+                  <input name = "tgl_pengajuan" type="date" class="form-control" id="tgl_pengajuan" placeholder="tgl_pengajuan" required/>
+              </div>
+
+              <div class="form-group">
+                  <label>Nama Orang Tua</label>
+                  <input name = "nama_ortu" type="text" class="form-control" id="nama_ortu" placeholder="nama ortu" required/>
+              </div>
+
+                <div class="form-group">
+                    <label>Tanda Tangan</label>
+                    <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" class="form-control" id="ttd_ortu" name = "ttd_ortu">
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+              <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" name = "tambah">Save changes</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
     <?php include "../AdminLTE/footer.php" ?>
 </div>
 

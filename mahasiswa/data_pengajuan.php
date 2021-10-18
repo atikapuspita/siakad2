@@ -67,8 +67,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-secondary" style ="width : 15%">Tambah Data</a><br>
-                  <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
                           <th><center>No</center></th>
@@ -106,7 +105,7 @@
                             <td><?php echo $d["nama_ortu"]; ?></td>
                             <td><?php echo $d["status_pengajuan"]; ?></td>
                             <td><center>
-                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $d['id_pengajuan']; ?>" class ="btn btn-app"><i class="far fa-eye"></i></a> 
+                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $d['id_pengajuan']; ?>" class ="btn btn-primary"><i class="far fa-eye"></i> Details</a> 
                             </td></center>
                           </tr>
                           

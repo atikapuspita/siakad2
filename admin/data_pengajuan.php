@@ -69,7 +69,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-secondary" style ="width : 15%">Tambah Data</a><br>
+                <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-success" style ="width : 10%"><i class="fas fa-plus-circle"></i>  Tambah Data</a><br>
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
@@ -95,10 +95,11 @@
                             <td><?php echo $row["nama_ortu"]; ?></td>
                             <td><?php echo $row["status_pengajuan"]; ?></td>
                             <td><center>
-                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['id_pengajuan']; ?>" class ="btn btn-app"><i class="far fa-eye"></i></a> 
-                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_pengajuan']; ?>" class ="btn btn-app"><i class="nav-icon fas fa-edit"></i></a>
-                                <a href="hapus_pengajuan.php?id_pengajuan=<?= $row["id_pengajuan"]; ?>"class ="btn btn-app"><i class="fas fa-trash-alt"></i></a>                                
-                            </td></center>
+                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['id_pengajuan']; ?>" class ="btn btn-primary"><i class="far fa-eye"></i> Details</a> 
+                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_pengajuan']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i> Update</a>
+                                <a href="hapus_pengajuan.php?id_pengajuan=<?= $row["id_pengajuan"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>                                
+                                  <a herf="formulir.php" class="btn btn-secondary"><i  class="fas fa-download"></i> Cetak</a>
+                              </td></center>
                           </tr>
                           
                             <?php $i++ ; ?>
@@ -121,7 +122,7 @@
     </div>
     <!-- /.content-wrapper -->
   </div>
-
+  
   <!-- /.Modals Tambah --> 
 <div class="modal fade" id="modal-tambah">
         <div class="modal-dialog">

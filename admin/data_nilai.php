@@ -67,7 +67,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-secondary" style ="width : 15%">Tambah Data</a> 
+              <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-success" style ="width : 10%"><i class="fas fa-plus-circle"></i>  Tambah Data</a>
               <br>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
@@ -96,7 +96,7 @@
                                 <td><center><img src="img/smt4/<?php echo $row['nilai_smt4'];?>"width="100px" height="100px"></center></td>
                                 <td><center><img src="img/smt5/<?php echo $row['nilai_smt5'];?>"width="100px" height="100px"></center></td>
                                 <td><center>
-                                    <a href="hapus_nilai.php?id_nilai=<?= $row["id_nilai"]; ?>"class ="btn btn-app"><i class="fas fa-trash-alt"></i></a>                                
+                                    <a href="hapus_nilai.php?id_nilai=<?= $row["id_nilai"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>                                
                                 </td></center>
                             </tr>
                         <?php $i++ ; ?>

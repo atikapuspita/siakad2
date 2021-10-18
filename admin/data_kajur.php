@@ -69,7 +69,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-secondary" style ="width : 10%">Tambah Data</a><br>
+                <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-success" style ="width : 10%"><i class="fas fa-plus-circle"></i>  Tambah Data</a> <br>
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
@@ -93,9 +93,9 @@
                             <td><center><?php echo $row["thn_jabatan_kajur"]; ?></center></td>
                             <td><?php echo $row["status_kajur"]; ?></td>
                             <td><center>
-                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row["id_jurusan"]; ?>" class ="btn btn-app"><i class="far fa-eye"></i></a> 
-                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_jurusan']; ?>" class ="btn btn-app"><i class="nav-icon fas fa-edit"></i></a>
-                                <a href="hapus_kajur.php?id_jurusan=<?= $row["id_jurusan"]; ?>"class ="btn btn-app"><i class="fas fa-trash-alt"></i></a>
+                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row["id_jurusan"]; ?>" class ="btn btn-primary"><i class="far fa-eye"></i> Details</a> 
+                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_jurusan']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i> Update</a>
+                                <a href="hapus_kajur.php?id_jurusan=<?= $row["id_jurusan"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
                             </td></center>
                           </tr>
                           

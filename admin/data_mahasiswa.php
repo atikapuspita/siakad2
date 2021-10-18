@@ -70,7 +70,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-secondary" style ="width : 10%">Tambah Data</a> </br>
+              <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-success" style ="width : 10%"><i class="fas fa-plus-circle"></i>  Tambah Data</a> <br>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -98,9 +98,9 @@
                                 <td><?php echo $row['no_telp_mhs']; ?></td>
                                 <td><img src="img/foto_mahasiswa/<?php echo $row['foto_mhs'];?>"width="100px" height="100px"></td>
                                 <td><center>
-                                    <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['npm']; ?>" class ="btn btn-app"><i class="far fa-eye"></i></a> 
-                                    <a data-toggle ="modal" data-target="#myModal<?php echo $row['npm']; ?>" class ="btn btn-app"><i class="nav-icon fas fa-edit"></i></a>
-                                    <a href="hapus_mahasiswa.php?npm=<?= $row["npm"]; ?>"class ="btn btn-app"><i class="fas fa-trash-alt"></i></a>                                
+                                    <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['npm']; ?>" class ="btn btn-primary"><i class="far fa-eye"></i> Details</a> 
+                                    <a data-toggle ="modal" data-target="#myModal<?php echo $row['npm']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i> Update</a>
+                                    <a href="hapus_mahasiswa.php?npm=<?= $row["npm"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>                                
                                 </td></center>
                             </tr>
                         <?php $i++ ; ?>

@@ -103,8 +103,7 @@ session_start();
                 </div>
             </div>
 
-            <div class="row col-12">
-                <div class="col-lg-3 col-6">
+                <div class="col-4">
                     <div class="card card-secondary">
                         <div class="card-header">
                             <h3 class="card-title">Profil</h3>
@@ -123,10 +122,6 @@ session_start();
                                     </li>
 
                                     <li class="list-group-item">
-                                        <b>Username</b> <a class="float-right text-secondary"><td><?php echo $row['username']; ?></td></a>
-                                    </li>
-
-                                    <li class="list-group-item">
                                         <b>No.Telp</b> <a class="float-right text-secondary"><td><?php echo $row['no_telp_pegawai']; ?></td></a>
                                     </li>
                                 </ul>
@@ -137,27 +132,6 @@ session_start();
                     </div>
                 </div>
                 
-                <div class="col-lg-3 col-6">
-                    <div class="card">
-                        <div class="card-header p-2">
-                            <ul class="nav nav-pills">
-                                <li class="nav-item col-12"><a class="nav-link active" href="#activity" data-toggle="tab"><center>Syarat dan Ketentuan Pengajuan Peminjaman</center></a></li>
-                            <ul>
-                        </div>
-                        <div class="card-body">
-                            <div class="tab-content">
-                                <div class="active tab-pane" id="activity">
-                                    <div class="post">
-                                        <p><ol>
-                                            <li>......................................</li>
-                                            <li>......................................</li>
-                                        </ol></p>
-                                    </div>
-                                </div>
-                            <div>
-                         </div>
-                    </div>
-                </div>
             </div>
     </section>
     </div>
