@@ -253,7 +253,7 @@
               </div>
               
               <div class="form-group col-6">
-                  <label>Password</label><span class="text-red">*</span></label>
+                  <label>Password</label>
                   <input type="password" class="form-control" name="password" placeholder="Password" id="myPassword" value="<?php echo $bio['password']; ?>">
                   <input type="checkbox" onclick="myFunction()"> Lihat Password
               </div>

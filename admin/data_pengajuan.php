@@ -98,8 +98,8 @@
                                 <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['id_pengajuan']; ?>" class ="btn btn-primary"><i class="far fa-eye"></i> Details</a> 
                                 <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_pengajuan']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i> Update</a>
                                 <a href="hapus_pengajuan.php?id_pengajuan=<?= $row["id_pengajuan"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>                                
-                                  <a herf="formulir.php" class="btn btn-secondary"><i  class="fas fa-download"></i> Cetak</a>
-                              </td></center>
+                                <a href="formulir.php?id_pengajuan=<?= $row["id_pengajuan"]; ?>" class="btn btn-secondary"><i  class="fas fa-download"></i> Download</a>
+                            </td></center>
                           </tr>
                           
                             <?php $i++ ; ?>

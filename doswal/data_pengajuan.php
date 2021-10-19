@@ -93,7 +93,7 @@
                             <td><?php echo $row["nama_ortu"]; ?></td>
                             <td><?php echo $row["status_pengajuan"]; ?></td>
                             <td><center>
-                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['id_pengajuan']; ?>" class ="btn btn-app"><i class="far fa-eye"></i></a> 
+                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['id_pengajuan']; ?>" class ="btn btn-primary"><i class="far fa-eye"></i> Details</a> 
                                 <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_pengajuan']; ?>" class ="btn btn-app"><i class="nav-icon fas fa-edit"></i></a>
                             </td></center>
                           </tr>
