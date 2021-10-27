@@ -63,10 +63,6 @@
         </div>
       </form>
 
-      <p class="mb-1">
-        <a href="lupa password/lupa_password.php"><br>Forgot Password ?</a>
-      </p>
-
     </div>
     <!-- /.card-body -->
   </div>

@@ -1,8 +1,6 @@
 <?php
   include "../koneksi/config.php";
 
-  include "c_tambahnilai.php";
-
   session_start();
 ?>
 
@@ -31,8 +29,8 @@
 <div class="wrapper">
 
   <?php
-      include "header_admin.php";
-      include "sidebar_admin.php";
+      include "header_mahasiswa.php";
+      include "sidebar_mahasiswa.php";
       
       $user = mysqli_query($koneksi, "SELECT * FROM tb_nilai INNER JOIN tb_mahasiswa ON tb_nilai.npm = tb_mahasiswa.npm");
   ?>
@@ -67,8 +65,6 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-success" style ="width : 10%"><i class="fas fa-plus-circle"></i>  Tambah Data</a>
-              <br>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -79,7 +75,6 @@
                       <th><center>Semester III</center></th>
                       <th><center>Semester IV</center></th>
                       <th><center>Semester V</center></th>
-                      <th><center>Aksi</center></th>
                   </tr>
                   </thead>
                 
@@ -90,15 +85,11 @@
                             <tr>
                                 <td><center><?= $i ?></center></td>
                                 <td><?php echo $row['nama_mhs']; ?></td>
-                                <td><center><a href="img/smt1/<?php echo $row['nilai_smt1'];?>" class ="badge badge-success">Unduh Nilai</center></td>
-                                <td><center><a href="img/smt2/<?php echo $row['nilai_smt2'];?>" class ="badge badge-success">Unduh Nilai</center></center></td>
-                                <td><center><a href="img/smt3/<?php echo $row['nilai_smt3'];?>" class ="badge badge-success">Unduh Nilai</center></center></td>
-                                <td><center><a href="img/smt4/<?php echo $row['nilai_smt4'];?>" class ="badge badge-success">Unduh Nilai</center></td>
-                                <td><center><a href="img/smt5/<?php echo $row['nilai_smt5'];?>" class ="badge badge-success">Unduh Nilai</center></center></td>
-                                <td><center>
-                                  <!-- <a data-toggle ="modal" data-target ="#myModal<?php echo $row['id_nilai']; ?>" class = "btn btn-primary"><i class="nav-icon fas fa-edit"></i>Update</a> -->
-                                  <a href="hapus_nilai.php?id_nilai=<?= $row["id_nilai"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>                                
-                                </td></center>
+                                <td><center><a href="../admin/img/smt1/<?php echo $row['nilai_smt1'];?>" class ="badge badge-success">Unduh Nilai</center></td>
+                                <td><center><a href="../admin/img/smt2/<?php echo $row['nilai_smt2'];?>" class ="badge badge-success">Unduh Nilai</center></center></td>
+                                <td><center><a href="../admin/img/smt3/<?php echo $row['nilai_smt3'];?>" class ="badge badge-success">Unduh Nilai</center></center></td>
+                                <td><center><a href="../admin/img/smt4/<?php echo $row['nilai_smt4'];?>" class ="badge badge-success">Unduh Nilai</center></td>
+                                <td><center><a href="../admin/img/smt5/<?php echo $row['nilai_smt5'];?>" class ="badge badge-success">Unduh Nilai</center></center></td>
                             </tr>
                         <?php $i++ ; ?>
  
