@@ -149,7 +149,7 @@ session_start();
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form role="form" action="c_editadmin.php" method="post" enctype="multipart/form-data">
+            <form role="form" action="c_editadmin.php" method="get" enctype="multipart/form-data">
             <div class="modal-body">
             <?php
               $nip_npak=$row['nip_npak'];
@@ -176,10 +176,23 @@ session_start();
               </div>
               
               <div class="form-group col-6">
-                  <label>Password</label><span class="text-red">*</span></label>
-                  <input type="password" class="form-control" name="password" placeholder="Password" id="myPassword" value="<?php echo $bio['password']; ?>">
+                  <label>PasswordLama</label><span class="text-red">*</span></label>
+                  <input type="password" class="form-control" name="passwordLama" placeholder="Password" id="myPassword" value="<?php echo $bio['password']; ?>">
                   <input type="checkbox" onclick="myFunction()"> Lihat Password
               </div>
+              </div>
+
+              <div class= "form-row">
+              <div class="form-group col-6">
+                  <label>Password Baru</label><span class="text-red">*</span></label>
+                  <input type="password" class="form-control" name="password1" id="password1" placeholder="Masukan password baru" >
+              </div>
+
+              <div class="form-group col-6">
+                  <label>Ulangi Password Baru</label><span class="text-red">*</span></label>
+                  <input type="password" class="form-control" name="password2" id="password2" placeholder="Ulangi password baru" >
+              </div>
+
               </div>
 
               <div class="form-row">

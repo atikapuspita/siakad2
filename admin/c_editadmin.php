@@ -2,15 +2,15 @@
   // memanggil file koneksi.php untuk melakukan koneksi database
   include "../koneksi/config.php";
 
-  if(isset($_POST['edit_data'])){
+  if(isset($_GET['edit_data'])){
 
     // membuat variabel untuk menampung data dari form
-    $nip_npak= $_POST['nip_npak'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $nama_pegawai = $_POST['nama_pegawai'];
-    $jabatan = $_POST['jabatan'];
-    $no_telp_pegawai = $_POST['no_telp_pegawai'];
+    $nip_npak= $_GET['nip_npak'];
+    $username = $_GET['username'];
+    $passwordLama = $_GET['passwordLama'];
+    $nama_pegawai = $_GET['nama_pegawai'];
+    $jabatan = $_GET['jabatan'];
+    $no_telp_pegawai = $_GET['no_telp_pegawai'];
     
     //Membuat Variabel untuk menyimpan Foto atau Gambar
     $nama_file = $_FILES['foto_pegawai']['name'];
@@ -58,6 +58,24 @@ else
   {
     echo "<script> 
           alert ('Data Gagal di Update'); window.location = 'index.php' </script> ";
+  }
+}
+
+$cekPassword = mysqli_query($koneksi, "SELECT * FROM tb_pegawai WHERE username = '$username' AND password = '$password' ");
+if($cekPassword -> num_rows > 0) {
+  $password1 = $_GET['password1'];
+  $password2 = $_GET['password2'];
+
+  //$password = md5($_GET['password']);
+
+  if(!empty($password1 && $password2)){
+    if($password1 == $password2){
+      $sql = mysqli_query($koneksi, "UPDATE tb_pegawai SET password ='$password1' WHERE nip_npak='$nip_npak'");
+    }
+    else {
+      echo "<script> 
+          alert ('Password Gagal di Update'); window.location = 'index.php' </script> ";
+    }
   }
 }
   
