@@ -42,37 +42,28 @@ session_start();
       </div><!-- /.container-fluid -->
     </div>
 
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid ">
-        <h1><center>Log In Akun</center></h1>
-            <div class="row col-12">
-                <div class="col-lg-3 col-6">
-                    <div class="small-box bg-info">
-                        <div class="inner">
-                            <p><center>Ketua Jurusan</center></p>
-                        </div>  
-                        <div class="icon">
-                            <i class="ion ion-easel"></i>
+    <!-- Services-->
+    <section class="page-section" id="services">
+            <div class="container px-4 px-lg-5">
+                <h2 class="text-center mt-0">Login Akun</h2>
+                <hr class="divider" />
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="fas fa-users" style ="size : 50%"></i></div>
+                            <h3 class="h4 mb-2"><a href="../kajur/index.php">Ketua Jurusan</h3>
                         </div>
-                        <a href="../kajur/index.php" class="small-box-footer">Klik Here <i class="fas fa-arrow-alt-circle-right"></i></a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="fas fa-users"></i></div>
+                            <h3 class="h4 mb-2"><a href="../doswal/index.php">Dosen Wali</h3>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="col-lg-3 col-6">
-                    <div class="small-box bg-info">
-                        <div class="inner">
-                            <p><center>Dosen Wali</center></p>
-                        </div>  
-                        <div class="icon">
-                            <i class="ion ion-easel"></i>
-                        </div>
-                        <a href="../doswal/index.php" class="small-box-footer">Klik Here <i class="fas fa-arrow-alt-circle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            </div>
-    </section>
     </div>
 
 <!-- jQuery -->

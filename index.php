@@ -1,80 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SIAKAD PNC | Log in</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="AdminLTE/plugins/fontawesome-free/css/all.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="AdminLTE/dist/css/adminlte.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="landing page/bs5/dist/css/bootstrap.min.css">
+
+    <!-- CSS Lainnya -->
+    <link rel="stylesheet" href="landing page/css/navbar.css">
+    <link rel="stylesheet" href="landing page/css/body.css">
+
+    <title>Landing Page | SIAKAD PNC</title>
 </head>
-<body class="hold-transition login-page">
-<?php
-        if (isset($_GET['pesan'])) {
-          if ($_GET['pesan'] == "gagal") {
-            echo "<script>alert('Username Atau Password Salah'); document.location.href = 'index.php'; </script>";
-          } else if ($_GET['pesan'] == "logout") {
-            echo "<script>alert('Telah Berhasil logout'); document.location.href = 'index.php'; </script>";
-          }
-        }
-      ?>
-<div class="login-box" style="width: 420px">
-  <!-- /.login-logo -->
-  <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-    <center>
-      <br><img src="AdminLTE/dist/img/logo_pnc.png" alt="Foto" width="100px" class="rounded-circle">
-    </center><br>
-      <a  class="h4"><b>Sistem Informasi Akademik <br>PNC</b></a>
-    </div>
-    <div class="card-body">
-      <p class="login-box-msg">Log in to start SIAKAD</p>
 
-      <form action="koneksi/cek_login.php" method="post">
-        <div class="input-group mb-3">
-          <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+<body>
+
+    <!-- navbar menu -->
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="landing page/assets/vector-logo.png" height="100%">
+            </a>
+            <button class="navbar-toggler mb-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link link tebel-sedang" href="#">Home &nbsp;&nbsp;</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link tebel-sedang" href="#">About &nbsp;&nbsp;</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link tebel-sedang" href="#">Services &nbsp;&nbsp;</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link tebel-sedang" href="#">Contact &nbsp;&nbsp;</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active tebel-sedang rounded-pill bg-ungu shadow" href="koneksi/login.php">Log In</a>
+                    </li>
+                </ul>
             </div>
-          </div>
         </div>
+    </nav>
 
-        <div class="input-group mb-3">
-          <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+    <!-- konten -->
+
+    <div class="container">
+
+        <div class="row mt-5 mb-5">
+
+            <div class="col-lg-12 gambar">
+                <img src="landing page/assets/vector-content.png" width="100%">
             </div>
-          </div>
-        </div>
 
-        <div class="row">
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block">Log In</button>
-          </div>
-          <!-- /.col -->
+            <div class="col-sm-12 position-relative p-4">
+
+                <div class="position-absolute top-0 end-0">
+                    <img src="landing page/assets/vector-content.png" class="img">
+                </div>
+
+                <h1 class="display-1 text-truncate tebel-banget"><b>SIAKAD PNC</b></h1>
+
+                <div class="desc mt-4">
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                        sed diam nonummy nibh euismod tincidunt ut laoreet
+                        dolore magna </p>
+                </div>
+
+            </div>
+
         </div>
-      </form>
 
     </div>
-    <!-- /.card-body -->
-  </div>
-  <!-- /.card -->
-</div>
-<!-- /.login-box -->
 
-<!-- jQuery -->
-<script src="AdminLTE/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="AdminLTE/dist/js/adminlte.min.js"></script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="landing page/bs5/dist/js/bootstrap.bundle.min.js"></script>
+    
 </body>
+
 </html>

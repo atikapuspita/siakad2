@@ -90,7 +90,7 @@ session_start();
                 </div>
 
                 <div class="col-lg-3 col-6">
-                    <div class="small-box bg-info">
+                    <div class="small-box bg-warning">
                         <div class="inner">
                             <h3><?php echo $jumlah_verifikasi; ?></h3>
                             <p>Verifikasi Pengunduran Diri</p>

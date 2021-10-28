@@ -1,5 +1,6 @@
 <?php
     include '../koneksi/config.php';
+    include 'c_editprofile.php';
 
 session_start();
 
@@ -135,7 +136,7 @@ if(!isset($_SESSION['username']))
                                         <b>No.Telp</b> <a class="float-right text-secondary"><td><?php echo $row['no_telp_pegawai']; ?></td></a>
                                     </li>
                                 </ul>
-                                <a href="data_pegawai.php#myModal<?php echo $row['nip_npak']; ?>" class="btn btn-secondary btn-block"><b>Edit Profil</b></a>
+                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_jurusan']; ?>" class="btn btn-secondary btn-block"><b>Edit Profil</b></a>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -144,6 +145,95 @@ if(!isset($_SESSION['username']))
             </div>
     </section>
     </div>
+
+             <!-- / modal edit  -->
+             <?php $no = 0;
+      foreach ($user as $row) : $no++; ?>
+      <div class="modal fade" id="myModal<?php echo $row['id_jurusan']; ?>" role="dialog">
+        <div class="modal-dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Edit Data Pegawai</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form role="form" action="c_editprofile.php" method="get" enctype="multipart/form-data">
+            <div class="modal-body">
+            <?php
+              $id_jurusan=$row['id_jurusan'];
+              $result= mysqli_query($koneksi, "SELECT * FROM tb_jurusan where id_jurusan='$id_jurusan'");                
+              while ($bio= mysqli_fetch_array($result)) {
+            ?>
+            
+            <div class="form-group">
+              <label>Id Ketua Jurusan</label>
+              <input name = "id_jurusan" type="text" class="form-control" value="<?php echo $bio['id_jurusan']; ?>" readonly/>
+            </div>
+
+            <div class="form-group">
+              <label>NIP/NPAK</label>
+              <input name = "nip_npak" type="text" class="form-control" value="<?php echo $bio['nip_npak']; ?>" readonly/>
+            </div>
+
+            <div class="form-group">
+              <label>Username</label>
+              <input name = "username_kajur" type="text" class="form-control" value="<?php echo $bio['username_kajur']; ?>">
+            </div>
+
+            <div class="form-group ">
+                  <label>PasswordLama</label><span class="text-red">*</span></label>
+                  <input type="password" class="form-control" name="passwordLama" placeholder="Password" id="myPassword" value="<?php echo $bio['password_kajur']; ?>">
+                  <input type="checkbox" onclick="myFunction()"> Lihat Password
+              </div>
+
+              <div class="form-group">
+                  <label>Password Baru</label><span class="text-red">*</span></label>
+                  <input type="password" class="form-control" name="password_kajur1" id="password_kajur1" placeholder="Masukan password baru" >
+              </div>
+
+              <div class="form-group">
+                  <label>Ulangi Password Baru</label><span class="text-red">*</span></label>
+                  <input type="password" class="form-control" name="password_kajur2" id="password_kajur2" placeholder="Ulangi password baru" >
+              </div>
+
+            <div class="form-group" hidden>
+              <label>Nama Jurusan</label>
+              <input name = "nama_jurusan" type="text" class="form-control" value="<?php echo $bio['nama_jurusan']; ?>" >
+            </div>
+
+            <div class="form-group" hidden>
+              <label>Masa Jabatan</label>
+              <input name = "thn_jabatan_kajur" type="text" class="form-control" value="<?php echo $bio['thn_jabatan_kajur']; ?>">
+            </div>
+
+            <div class="form-group">
+              <label for ="status_kajur">Status</label>
+              <select class = "custom-select rounded-0" id ="status_kajur" name ="status_kajur" required>
+                <option><?php echo $bio['status_kajur']; ?></option>
+                <option value = "Aktif">Aktif</option>
+                <option value = "Tidak Aktif">Tidak Aktif</option>
+              </select>
+            </div>
+
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" name = "edit_data">Save changes</button>
+              </div>
+              <?php 
+                }
+              ?>  
+            </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+              </div>
+      <?php endforeach ?>
+
     <?php include "../AdminLTE/footer.php" ?>
 </div>
 

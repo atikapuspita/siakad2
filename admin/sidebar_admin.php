@@ -123,7 +123,7 @@ $user = mysqli_query($koneksi, "SELECT * FROM tb_pegawai WHERE username = '$user
           </li>
           </li>
           <li class="nav-item">
-            <a href="../logout.php" class="nav-link">
+            <a href="../koneksi/logout.php" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>Logout</p>
             </a>
