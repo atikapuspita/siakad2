@@ -58,10 +58,7 @@
         <div class="row text-right">
           <div class="col text-right">
           <a href="../index.php" class="btn btn-danger" >Back</a>
-          </div>
-          
-          <div class="col text-right">
-            <button type="submit" class="btn btn-primary">Log In</button>
+          <button type="submit" class="btn btn-primary">Log In</button>
           </div>
           </div>
           <!-- /.col -->

@@ -21,7 +21,7 @@ $user = mysqli_query($koneksi, "SELECT * FROM tb_pegawai WHERE username = '$user
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../AdminLTE/dist/img/logo_pnc.png" class="img-circle elevation-2" alt="User Image">
+          <img src="../AdminLTE/dist/img/user.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a class="d-block">

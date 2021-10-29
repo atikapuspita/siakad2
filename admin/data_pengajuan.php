@@ -95,10 +95,10 @@
                             <td><?php echo $row["nama_ortu"]; ?></td>
                             <td><?php echo $row["status_pengajuan"]; ?></td>
                             <td><center>
-                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['id_pengajuan']; ?>" class ="btn btn-primary"><i class="far fa-eye"></i> Details</a> 
-                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_pengajuan']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i> Update</a>
-                                <a href="hapus_pengajuan.php?id_pengajuan=<?= $row["id_pengajuan"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>                                
-                                <a href="formulir.php?id_pengajuan=<?= $row["id_pengajuan"]; ?>" class="btn btn-secondary"><i  class="fas fa-download"></i> Download</a>
+                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['id_pengajuan']; ?>" class ="btn btn-primary"><i class="far fa-eye"></i> <br><h6> Details</h6></a> 
+                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_pengajuan']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i><br> Update</a>
+                                <a href="hapus_pengajuan.php?id_pengajuan=<?= $row["id_pengajuan"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i><br> Delete</a>                                
+                                <a href="formulir.php?id_pengajuan=<?= $row["id_pengajuan"]; ?>" class="btn btn-secondary"><i  class="fas fa-download"></i><br> Download</a>
                             </td></center>
                           </tr>
                           

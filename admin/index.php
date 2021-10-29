@@ -76,7 +76,7 @@ session_start();
     <section class="content">
         <div class="container-fluid">
             <div class="row col-12">
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-2 col-6">
                     <div class="small-box bg-info">
                         <div class="inner">
                             <h3><?php echo $jumlah_pengajuan; ?></h3>
@@ -89,7 +89,7 @@ session_start();
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-2 col-6">
                     <div class="small-box bg-warning">
                         <div class="inner">
                             <h3><?php echo $jumlah_verifikasi; ?></h3>

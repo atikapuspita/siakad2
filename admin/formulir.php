@@ -2,8 +2,22 @@
 
     include "../koneksi/config.php";
 
-    $query = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan INNER JOIN tb_mahasiswa ON tb_pengajuan.npm = tb_mahasiswa.npm;");
+    $id_pengajuan = $_GET['id_pengajuan'];
+    $query = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan INNER JOIN tb_mahasiswa ON tb_pengajuan.npm = tb_mahasiswa.npm WHERE id_pengajuan = '$id_pengajuan'");
     $data  = mysqli_fetch_array($query);
+
+    $jurusan = mysqli_query($koneksi, "SELECT * FROM tb_jurusan INNER JOIN tb_mahasiswa ON tb_jurusan.id_jurusan = tb_mahasiswa.id_jurusan");
+    $j = mysqli_fetch_array($jurusan);
+
+    $doswal = mysqli_query($koneksi, "SELECT * FROM tb_doswal INNER JOIN tb_mahasiswa ON tb_doswal.id_doswal = tb_mahasiswa.id_doswal");
+    $d = mysqli_fetch_array($doswal);
+
+    $pegawai = mysqli_query($koneksi, "SELECT * FROM tb_jurusan INNER JOIN tb_pegawai ON tb_jurusan.nip_npak = tb_pegawai.nip_npak");
+    $p = mysqli_fetch_array($pegawai);
+
+    $dosen = mysqli_query($koneksi, "SELECT * FROM tb_doswal INNER JOIN tb_pegawai ON tb_doswal.nip_npak = tb_pegawai.nip_npak");
+    $s = mysqli_fetch_array($dosen);
+
 
 ?>
 
@@ -83,17 +97,16 @@
 
                 <!-- HASIL KONVERT PASTE DI SINI !! -->
                 <div>
-                    <div style="clear:both;">
-                        <p style="margin-top:0pt; margin-left:36pt; margin-bottom:0pt; text-indent:36pt; line-height:normal; font-size:14pt;"><img src="https://myfiles.space/user_files/101828_3d498f4d43cab83c/1634544123_formulir-permohonan-pengunduran-diri/1634544123_formulir-permohonan-pengunduran-diri-1.png" width="95" height="95" alt="logo-150x150" style="float: left; display: inline-block; text-align:left;"></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:14pt;"><span style="width:50.18pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">KEMENTRIAN PENDIDIKAN, KEBUDAYAAN,</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:14pt;"><span style="width:120.46pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">RISET DAN TEKNOLOGI</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:14pt;"><span style="width:100.29pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">POLITEKNIK NEGERI CILACAP</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><span style="width:55.02pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">Jalan: Dr. Soetomo No.1 Sidakaya, Cilacap 53212 Jawa Tengah</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><span style="width:100.1pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">Telepon: (0282) 533329, Fax: (0282) 537992</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><a href="http://www.pnc.ac.id" style="text-decoration:none;"><span style="width:200.86pt; display:inline-block;">&nbsp;</span><u><span style="font-family:'Times New Roman'; color:#0563c1;">www.pnc.ac.id</span></u></a><span style="font-family:'Times New Roman';">&nbsp;&nbsp;</span><span style="font-family:'Times New Roman';">Email:&nbsp;</span><a href="mailto:sekretariat@pnc.ac.id" style="text-decoration:none;"><u><span style="font-family:'Times New Roman'; color:#0563c1;">sekretariat@pnc.ac.id</span></u></a></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><span style="height:0pt; display:block; position:absolute; z-index:-65536;"><img src="https://myfiles.space/user_files/101828_3d498f4d43cab83c/1634544123_formulir-permohonan-pengunduran-diri/1634544123_formulir-permohonan-pengunduran-diri-3.png" width="719" height="1" alt="" style="margin: 0 auto 0 0; display: block; text-align:left;"></span><span style="height:0pt; display:block; position:absolute; z-index:-65535;"><img src="https://myfiles.space/user_files/101828_3d498f4d43cab83c/1634544123_formulir-permohonan-pengunduran-diri/1634544123_formulir-permohonan-pengunduran-diri-2.png" width="720" height="2" alt="" style="margin: 0 auto 0 0; display: block; text-align:left;"></span>&nbsp;</p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;">&nbsp;</p>
-                    </div>
+                <div style="clear:both;">
+                    <p style="margin-top:0pt; margin-left:36pt; margin-bottom:0pt; text-indent:36pt; line-height:normal; font-size:14pt;"><img src="https://myfiles.space/user_files/101828_3d498f4d43cab83c/1634544123_formulir-permohonan-pengunduran-diri/1634544123_formulir-permohonan-pengunduran-diri-1.png" width="95" height="95" alt="logo-150x150" style="float: left; display: inline-block; text-align:left;"></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:14pt;"><span style="width:.19pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman'; font-size:12pt;">KEMENTRIAN PENDIDIKAN, KEBUDAYAAN, RISET DAN TEKNOLOGI</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:14pt;"><span style="width:115.67pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman'; font-size:12pt;">POLITEKNIK NEGERI CILACAP</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><span style="width:55.02pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">Jalan: Dr. Soetomo No.1 Sidakaya, Cilacap 53212 Cilacap Tengah</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><span style="width:90.1pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">Telepon: (0282) 533329, Fax: (0282) 537992</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><a href="http://www.pnc.ac.id" style="text-decoration:none;"><span style="width:90.86pt; display:inline-block;">&nbsp;</span><u><span style="font-family:'Times New Roman'; color:#0563c1;">www.pnc.ac.id</span></u></a><span style="font-family:'Times New Roman';">&nbsp;&nbsp;</span><span style="font-family:'Times New Roman';">Email:&nbsp;</span><a href="mailto:sekretariat@pnc.ac.id" style="text-decoration:none;"><u><span style="font-family:'Times New Roman'; color:#0563c1;">sekretariat@pnc.ac.id</span></u></a></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><span style="height:0pt; display:block; position:absolute; z-index:-65536;"><img src="https://myfiles.space/user_files/101828_3d498f4d43cab83c/1634544123_formulir-permohonan-pengunduran-diri/1634544123_formulir-permohonan-pengunduran-diri-3.png" width="719" height="1" alt="" style="margin: 0 auto 0 0; display: block; text-align:left;"></span><span style="height:0pt; display:block; position:absolute; z-index:-65535;"><img src="https://myfiles.space/user_files/101828_3d498f4d43cab83c/1634544123_formulir-permohonan-pengunduran-diri/1634544123_formulir-permohonan-pengunduran-diri-2.png" width="720" height="2" alt="" style="margin: 0 auto 0 0; display: block; text-align:left;"></span>&nbsp;</p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;">&nbsp;</p>
+                </div>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:center; line-height:150%; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">PERMOHONAN PENGUNDURAN DIRI</span></strong></p>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Kepada Yth.&nbsp;</span></p>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Direktur Politeknik Negeri Cilacap</span></p>
@@ -101,7 +114,7 @@
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Yang bertanda tangan di bawah ini:</span></p>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Nama</span><span style="width:7.35pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: <?php echo $data['nama_mhs']; ?></span></p>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">NPM</span><span style="width:9.99pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: <?php echo $data['npm']; ?></span></p>
-                    <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Kelas / Semester</span><span style="width:27.36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: TI 3C</span><span style="font-family:'Times New Roman';">&nbsp;&nbsp;</span><span style="font-family:'Times New Roman';">/ 5</span></p>
+                    <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Kelas / Semester</span><span style="width:27.36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: <?php echo $d['nama_kelas']; ?></span><span style="font-family:'Times New Roman';">&nbsp;&nbsp;</span><span style="font-family:'Times New Roman';">/ 5</span></p>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Jurusan</span><span style="width:35.34pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: Teknik Informatika</span></p>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">No.Telp /HP</span><span style="width:10.67pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: <?php echo $data['no_telp_mhs']; ?></span></p>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Alamat Lengkap</span><span style="width:27.7pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: <?php echo $data['alamat']; ?>&nbsp;</span></p>
@@ -138,18 +151,29 @@
                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
-                    <div style="clear:both;">
-                        <p style="margin-top:0pt; margin-left:36pt; margin-bottom:0pt; text-indent:36pt; line-height:normal; font-size:14pt;"><img src="https://myfiles.space/user_files/101828_3d498f4d43cab83c/1634544123_formulir-permohonan-pengunduran-diri/1634544123_formulir-permohonan-pengunduran-diri-1.png" width="95" height="95" alt="logo-150x150" style="float: left; display: inline-block; text-align:left;"></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:14pt;"><span style="width:50.18pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">KEMENTRIAN PENDIDIKAN, KEBUDAYAAN,</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:14pt;"><span style="width:120.46pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">RISET DAN TEKNOLOGI</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:14pt;"><span style="width:100.29pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">POLITEKNIK NEGERI CILACAP</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><span style="width:55.02pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">Jalan: Dr. Soetomo No.1 Sidakaya, Cilacap 53212 Jawa Tengah</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><span style="width:100.1pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">Telepon: (0282) 533329, Fax: (0282) 537992</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><a href="http://www.pnc.ac.id" style="text-decoration:none;"><span style="width:200.86pt; display:inline-block;">&nbsp;</span><u><span style="font-family:'Times New Roman'; color:#0563c1;">www.pnc.ac.id</span></u></a><span style="font-family:'Times New Roman';">&nbsp;&nbsp;</span><span style="font-family:'Times New Roman';">Email:&nbsp;</span><a href="mailto:sekretariat@pnc.ac.id" style="text-decoration:none;"><u><span style="font-family:'Times New Roman'; color:#0563c1;">sekretariat@pnc.ac.id</span></u></a></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><span style="height:0pt; display:block; position:absolute; z-index:-65536;"><img src="https://myfiles.space/user_files/101828_3d498f4d43cab83c/1634544123_formulir-permohonan-pengunduran-diri/1634544123_formulir-permohonan-pengunduran-diri-3.png" width="719" height="1" alt="" style="margin: 0 auto 0 0; display: block; text-align:left;"></span><span style="height:0pt; display:block; position:absolute; z-index:-65535;"><img src="https://myfiles.space/user_files/101828_3d498f4d43cab83c/1634544123_formulir-permohonan-pengunduran-diri/1634544123_formulir-permohonan-pengunduran-diri-2.png" width="720" height="2" alt="" style="margin: 0 auto 0 0; display: block; text-align:left;"></span>&nbsp;</p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;">&nbsp;</p>
-                    </div>
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
+            
+            </div>
+        </div>
+    </div>
+
+    <!-- Halaman Kedua -->
+    <div class="book">
+        <div class="page">
+            <div class="subpage">
+
+
+                <!-- HASIL KONVERT PASTE DI SINI !! -->
+                <div style="clear:both;">
+                    <p style="margin-top:0pt; margin-left:36pt; margin-bottom:0pt; text-indent:36pt; line-height:normal; font-size:14pt;"><img src="https://myfiles.space/user_files/101828_3d498f4d43cab83c/1634544123_formulir-permohonan-pengunduran-diri/1634544123_formulir-permohonan-pengunduran-diri-1.png" width="95" height="95" alt="logo-150x150" style="float: left; display: inline-block; text-align:left;"></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:14pt;"><span style="width:.19pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman'; font-size:12pt;">KEMENTRIAN PENDIDIKAN, KEBUDAYAAN, RISET DAN TEKNOLOGI</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:14pt;"><span style="width:115.67pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman'; font-size:12pt;">POLITEKNIK NEGERI CILACAP</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><span style="width:55.02pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">Jalan: Dr. Soetomo No.1 Sidakaya, Cilacap 53212 Cilacap Tengah</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><span style="width:90.1pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">Telepon: (0282) 533329, Fax: (0282) 537992</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><a href="http://www.pnc.ac.id" style="text-decoration:none;"><span style="width:90.86pt; display:inline-block;">&nbsp;</span><u><span style="font-family:'Times New Roman'; color:#0563c1;">www.pnc.ac.id</span></u></a><span style="font-family:'Times New Roman';">&nbsp;&nbsp;</span><span style="font-family:'Times New Roman';">Email:&nbsp;</span><a href="mailto:sekretariat@pnc.ac.id" style="text-decoration:none;"><u><span style="font-family:'Times New Roman'; color:#0563c1;">sekretariat@pnc.ac.id</span></u></a></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><span style="height:0pt; display:block; position:absolute; z-index:-65536;"><img src="https://myfiles.space/user_files/101828_3d498f4d43cab83c/1634544123_formulir-permohonan-pengunduran-diri/1634544123_formulir-permohonan-pengunduran-diri-3.png" width="719" height="1" alt="" style="margin: 0 auto 0 0; display: block; text-align:left;"></span><span style="height:0pt; display:block; position:absolute; z-index:-65535;"><img src="https://myfiles.space/user_files/101828_3d498f4d43cab83c/1634544123_formulir-permohonan-pengunduran-diri/1634544123_formulir-permohonan-pengunduran-diri-2.png" width="720" height="2" alt="" style="margin: 0 auto 0 0; display: block; text-align:left;"></span>&nbsp;</p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;">&nbsp;</p>
+                </div>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Menyetujui</span></p>
                     <table cellpadding="0" cellspacing="0" style="width:469.8pt; border-collapse:collapse;">
                         <tbody>
@@ -157,12 +181,12 @@
                                 <td style="width:224.1pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Ketua Jurusan</span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Teknik Informatika</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';"><?php echo $j['nama_jurusan']; ?></span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Nur Wahyu Rahardi</span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">NPAK.192032087432312</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';"><?php echo $p['nama_pegawai']; ?></span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">NPAK.<?php echo $j['nip_npak']; ?></span></p>
                                 </td>
                                 <td style="width:224.1pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
@@ -171,8 +195,8 @@
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Andesita&nbsp;</span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">NPAK.25496812377549</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';"><?php echo $s['nama_pegawai']; ?>&nbsp;</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">NPAK.<?php echo $d['nip_npak']; ?></span></p>
                                 </td>
                             </tr>
                         </tbody>
@@ -188,18 +212,6 @@
                         <li style="margin-left:32pt; margin-bottom:8pt; text-align:justify; line-height:150%; padding-left:4pt; font-family:'Times New Roman'; font-size:12pt;">Arsip</li>
                     </ol>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Halaman Kedua -->
-    <div class="book">
-        <div class="page">
-            <div class="subpage">
-
-
-                <!-- HASIL KONVERT PASTE DI SINI !! -->
-
 
             </div>
 
@@ -208,9 +220,8 @@
 
 
     </div>
-
     <script>
-        window.print();
+         window.print();
     </script>
 </body>
 

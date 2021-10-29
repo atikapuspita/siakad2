@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="landing page/assets/vector-logo.png" height="100%">
+                <img src="landing page/assets/pnc.png" height="70">
             </a>
             <button class="navbar-toggler mb-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link link tebel-sedang" href="#">Home &nbsp;&nbsp;</a>
+                        <a class="nav-link link tebel-sedang" href="landing page/home.php">Home &nbsp;&nbsp;</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link tebel-sedang" href="#">About &nbsp;&nbsp;</a>
@@ -58,7 +58,7 @@
         <div class="row mt-5 mb-5">
 
             <div class="col-lg-12 gambar">
-                <img src="landing page/assets/vector-content.png" width="100%">
+                <img src="landing page/assets/study.png">
             </div>
 
             <div class="col-sm-12 position-relative p-4">
@@ -67,12 +67,11 @@
                     <img src="landing page/assets/vector-content.png" class="img">
                 </div>
 
-                <h1 class="display-1 text-truncate tebel-banget"><b>SIAKAD PNC</b></h1>
+                <h1 class="display-1 text-truncate tebel-banget"><b>SIAKAD</b></h1>
 
                 <div class="desc mt-4">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                        sed diam nonummy nibh euismod tincidunt ut laoreet
-                        dolore magna </p>
+                    <p>Sistem Informasi Akademik yang digunakan untuk melayani Permohonan Pengunduran
+                        diri Mahasiswa Politeknik Negeri Cilacap </p>
                 </div>
 
             </div>
