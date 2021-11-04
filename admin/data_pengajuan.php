@@ -148,6 +148,15 @@
                   </div>
               
               <div class="form-group">
+                  <label>Tingkat</label>
+                  <input name = "tingkat" type="text" class="form-control" id="tingkat" placeholder="Ex: 2 (Dua)" required/>
+              </div>
+
+              <div class="form-group">
+                  <label>Semester</label>
+                  <input name = "semester" type="text" class="form-control" id="semester" placeholder="Ex: 2" required/>
+              </div>
+              <div class="form-group">
                   <label>Alasan</label>
                   <input name = "alasan" type="text" class="form-control" id="alasan" placeholder="alasan" required/>
               </div>
@@ -163,7 +172,7 @@
               </div>
 
                 <div class="form-group">
-                    <label>Tanda Tangan</label>
+                    <label>Tanda Tangan Orang Tua</label>
                     <div class="input-group">
                     <div class="custom-file">
                       <input type="file" class="form-control" id="ttd_ortu" name = "ttd_ortu">
@@ -231,7 +240,7 @@
               </div>
 
               <div class="form-group">
-                <label for="ttd_ortu">Tanda Tangan</label>
+                <label for="ttd_ortu">Tanda Tangan Orang Tua</label>
                   <div class="input-group">
                     <div class="custom-file">
                     <input type="hidden" name = "ttd_ortu" class="form-control" value="<?php echo $bio['ttd_ortu']; ?>" >
@@ -297,6 +306,8 @@
                 <ul>
                   <li class="p-2"><b>Id Pengajuan</b></li>
                   <li class="p-2"><b>NPM</b></li>
+                  <li class="p-2"><b>Tingkat</b></li>
+                  <li class="p-2"><b>Semester</b></li>
                   <li class="p-2"><b>Nama Mahasiswa</b></li>
                   <li class="p-2"><b>Tanggal Pengajuan</b></li>
                   <li class="p-2"><b>Berkas</b></li>
@@ -309,12 +320,16 @@
                   <li class="p-2"><b>:</b></li>
                   <li class="p-2"><b>:</b></li>
                   <li class="p-2"><b>:</b></li>
+                  <li class="p-2"><b>:</b></li>
+                  <li class="p-2"><b>:</b></li>
                 </ul>
               
               <div class="col text-left">
                 <ul>
                   <li class="p-2"><b><?php echo $row['id_pengajuan']; ?></b></li>
                   <li class="p-2"><b><?php echo $row['npm']; ?></b></li>
+                  <li class="p-2"><b><?php echo $row['tingkat']; ?></b></li>
+                  <li class="p-2"><b><?php echo $row['semester']; ?></b></li>
                   <li class="p-2"><b><?php echo $row['nama_mhs']; ?></b></li>
                   <li class="p-2"><b><?php echo $row['tgl_pengajuan']; ?></b></li>
                   <li class="p-2"><b><?php echo $row['berkas']; ?></b></li>

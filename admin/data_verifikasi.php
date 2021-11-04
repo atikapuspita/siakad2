@@ -33,8 +33,7 @@
       include "header_admin.php";
       include "sidebar_admin.php";
       
-      $user = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa INNER JOIN tb_pengajuan ON tb_pengajuan.npm = tb_mahasiswa.npm
-                          INNER JOIN tb_verifikasi ON tb_pengajuan.id_pengajuan = tb_verifikasi.id_pengajuan");
+      $user = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa INNER JOIN tb_pengajuan ON tb_pengajuan.npm = tb_mahasiswa.npm");
   ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -44,12 +43,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Laporan Pengunduran Diri</h1>
+            <h1>Data Verifikasi Permohonan</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-              <li class="breadcrumb-item active">Laporan Pengunduran Diri</li>
+              <li class="breadcrumb-item active">Data Verifikasi Permohonan</li>
             </ol>
           </div>
         </div>
@@ -74,8 +73,8 @@
                           <th><center>Nama Mahasiswa</center></th>
                           <th><center>Alasan</center></th>
                           <th><center>Tanggal Pengajuan</center></th>
-                          <th><center>Tanggal Verifikasi</center></th>
                           <th><center>Status Verifikasi</center></th>
+                          <th><center>Aksi</center></th>
                       </tr>
                     </thead>
                   
@@ -88,8 +87,11 @@
                               <td><?php echo $row['nama_mhs']; ?></td>
                               <td><?php echo $row['alasan']; ?></td>
                               <td><?php echo $row['tgl_pengajuan']; ?></td>
-                              <td><?php echo $row["tgl_verifikasi"]; ?></td>
-                              <td><?php echo $row["status_pengajuan"]; ?></td>
+                              <td><?php echo $row["status_pengajuan"];?></td>
+                              <td><center>
+                              <a href="formulir.php?id_pengajuan=<?= $row["id_pengajuan"]; ?>" class="btn btn-secondary"><i  class="fas fa-download"></i><br> Cetak Formulir</a>
+                                <a href="surat_keputusan.php?id_pengajuan=<?= $row["id_pengajuan"]; ?>" class="btn btn-secondary"><i  class="fas fa-download"></i><br> Cetak SK</a>
+                            </td></center>
                           </tr>
                           
                             <?php $i++ ; ?>

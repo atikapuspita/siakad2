@@ -18,7 +18,7 @@
 <?php
         if (isset($_GET['pesan'])) {
           if ($_GET['pesan'] == "gagal") {
-            echo "<script>alert('Username Atau Password Salah'); document.location.href = 'index.php'; </script>";
+            echo "<script>alert('Username Atau Password Salah'); document.location.href = 'login.php'; </script>";
           } else if ($_GET['pesan'] == "logout") {
             echo "<script>alert('Telah Berhasil logout'); document.location.href = 'index.php'; </script>";
           }

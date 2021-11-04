@@ -53,9 +53,9 @@ if ($cek2 > 0) {
         
         header("location:../wadir/index.php");
     } else {
-        header("location:../index.php?pesan=gagal");
+        header("location:login.php?pesan=gagal");
     }
 }
 else {
-    header("location:../index.php?pesan=gagal");
+    header("location:login.php?pesan=gagal");
 }

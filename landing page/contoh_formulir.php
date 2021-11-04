@@ -1,24 +1,6 @@
 <?php 
 
     include "../koneksi/config.php";
-
-    $id_pengajuan = $_GET['id_pengajuan'];
-    $query = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan INNER JOIN tb_mahasiswa ON tb_pengajuan.npm = tb_mahasiswa.npm WHERE id_pengajuan = '$id_pengajuan'");
-    $data  = mysqli_fetch_array($query);
-
-    $jurusan = mysqli_query($koneksi, "SELECT * FROM tb_jurusan INNER JOIN tb_mahasiswa ON tb_jurusan.id_jurusan = tb_mahasiswa.id_jurusan");
-    $j = mysqli_fetch_array($jurusan);
-
-    $doswal = mysqli_query($koneksi, "SELECT * FROM tb_doswal INNER JOIN tb_mahasiswa ON tb_doswal.id_doswal = tb_mahasiswa.id_doswal");
-    $d = mysqli_fetch_array($doswal);
-
-    $pegawai = mysqli_query($koneksi, "SELECT * FROM tb_jurusan INNER JOIN tb_pegawai ON tb_jurusan.nip_npak = tb_pegawai.nip_npak");
-    $p = mysqli_fetch_array($pegawai);
-
-    $dosen = mysqli_query($koneksi, "SELECT * FROM tb_doswal INNER JOIN tb_pegawai ON tb_doswal.nip_npak = tb_pegawai.nip_npak");
-    $s = mysqli_fetch_array($dosen);
-
-
 ?>
 
 <!DOCTYPE html>
@@ -99,8 +81,8 @@
                 <div>
                 <div style="clear:both;">
                     <p style="margin-top:0pt; margin-left:36pt; margin-bottom:0pt; text-indent:36pt; line-height:normal; font-size:14pt;"><img src="https://myfiles.space/user_files/101828_3d498f4d43cab83c/1634544123_formulir-permohonan-pengunduran-diri/1634544123_formulir-permohonan-pengunduran-diri-1.png" width="95" height="95" alt="logo-150x150" style="float: left; display: inline-block; text-align:left;"></p>
-                    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:14pt;"><span style="width:.19pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman'; font-size:12pt;">KEMENTRIAN PENDIDIKAN, KEBUDAYAAN, RISET DAN TEKNOLOGI</span></p>
-                    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:14pt;"><span style="width:115.67pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman'; font-size:12pt;">POLITEKNIK NEGERI CILACAP</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:14pt;"><span style="width:.19pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman'; font-size:12pt;"><b>KEMENTRIAN PENDIDIKAN, KEBUDAYAAN, RISET DAN TEKNOLOGI</span></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal; font-size:14pt;"><span style="width:115.67pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman'; font-size:12pt;">POLITEKNIK NEGERI CILACAP</b></span></p>
                     <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><span style="width:55.02pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">Jalan: Dr. Soetomo No.1 Sidakaya, Cilacap 53212 Cilacap Tengah</span></p>
                     <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><span style="width:90.1pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">Telepon: (0282) 533329, Fax: (0282) 537992</span></p>
                     <p style="margin-top:0pt; margin-bottom:0pt; line-height:normal;"><a href="http://www.pnc.ac.id" style="text-decoration:none;"><span style="width:90.86pt; display:inline-block;">&nbsp;</span><u><span style="font-family:'Times New Roman'; color:#0563c1;">www.pnc.ac.id</span></u></a><span style="font-family:'Times New Roman';">&nbsp;&nbsp;</span><span style="font-family:'Times New Roman';">Email:&nbsp;</span><a href="mailto:sekretariat@pnc.ac.id" style="text-decoration:none;"><u><span style="font-family:'Times New Roman'; color:#0563c1;">sekretariat@pnc.ac.id</span></u></a></p>
@@ -112,17 +94,17 @@
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Direktur Politeknik Negeri Cilacap</span></p>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Yang bertanda tangan di bawah ini:</span></p>
-                    <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Nama</span><span style="width:7.35pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: <?php echo $data['nama_mhs']; ?></span></p>
-                    <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">NPM</span><span style="width:9.99pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: <?php echo $data['npm']; ?></span></p>
-                    <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Kelas / Semester</span><span style="width:27.36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: <?php echo $d['nama_kelas']; ?></span><span style="font-family:'Times New Roman';">&nbsp;&nbsp;</span><span style="font-family:'Times New Roman';">/ 5</span></p>
-                    <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Jurusan</span><span style="width:35.34pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: Teknik Informatika</span></p>
-                    <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">No.Telp /HP</span><span style="width:10.67pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: <?php echo $data['no_telp_mhs']; ?></span></p>
-                    <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Alamat Lengkap</span><span style="width:27.7pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: <?php echo $data['alamat']; ?>&nbsp;</span></p>
+                    <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Nama </span><span style="width:7.35pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..</span></p>
+                    <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">NPM</span><span style="width:9.99pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..</span></p>
+                    <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Kelas / Semester</span><span style="width:27.36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: </span><span style="font-family:'Times New Roman';">&nbsp;&nbsp;</span><span style="font-family:'Times New Roman';"> &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip; / &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.. </span></p>
+                    <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Jurusan</span><span style="width:35.34pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..</span></p>
+                    <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">No.Telp /HP</span><span style="width:10.67pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..</span></p>
+                    <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Alamat Lengkap</span><span style="width:27.7pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: &nbsp;</span></p>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
-                    <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Dengan ini mengajuakan permohonan pengunduran diri sebagai mahasiswa Politeknik Negeri Cilacap karena <?php echo $data['alasan']; ?></span></p>
+                    <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Dengan ini mengajuakan permohonan pengunduran diri sebagai mahasiswa Politeknik Negeri Cilacap karena </span></p>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Demikian permohonan kami, atas perhatian dan kebijaksanaannya kami ucapkan terima kasih.</span></p>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
-                    <p style="margin-top:0pt; margin-left:288pt; margin-bottom:8pt; text-indent:36pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Cilacap, <?php echo $data['tgl_pengajuan']; ?></span></p>
+                    <p style="margin-top:0pt; margin-left:288pt; margin-bottom:8pt; text-indent:36pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Cilacap, </span></p>
                     <table cellpadding="0" cellspacing="0" style="width:469pt; border-collapse:collapse;">
                         <tbody>
                             <tr style="height:155.6pt;">
@@ -130,15 +112,15 @@
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Mengetahui</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">OrangTua/Wali</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';"><img src="img/ttd_orangtua/<?php echo $data['ttd_ortu'];?>"width="100px" height="100px"></span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';"><?php echo $data['nama_ortu']; ?></span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';"></span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">nama orang tua</span></p>
                                 </td>
                                 <td style="width:223.7pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                                 <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Pemohon</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';"><img src="img/ttd_mahasiswa/<?php echo $data['ttd_mhs'];?>"width="100px" height="100px"></span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';"><?php echo $data['nama_mhs']; ?></span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';"></span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">nama mahasiswa</span></p>
                                 </td>
                             </tr>
                         </tbody>
@@ -179,12 +161,12 @@
                                 <td style="width:224.1pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Ketua Jurusan</span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';"><?php echo $j['nama_jurusan']; ?></span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">nama jurusan</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';"><?php echo $p['nama_pegawai']; ?></span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">NPAK.<?php echo $j['nip_npak']; ?></span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">nama ketua jurusan</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">NPAK.xxxxxxxxxx</span></p>
                                 </td>
                                 <td style="width:224.1pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
@@ -193,8 +175,8 @@
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';"><?php echo $s['nama_pegawai']; ?>&nbsp;</span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">NPAK.<?php echo $d['nip_npak']; ?></span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Nama wali dosen&nbsp;</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">NPAK.xxxxxxxx</span></p>
                                 </td>
                             </tr>
                         </tbody>

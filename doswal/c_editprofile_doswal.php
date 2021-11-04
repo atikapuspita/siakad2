@@ -14,7 +14,7 @@
     $status_doswal = $_GET['status_doswal'];
 
   //(id tidak perlu karena dibikin otomatis)
-  $query = "UPDATE tb_doswal SET id_doswal='$id_doswal', nip_npak='$nip_npak',nama_kelas='$nama_kelas',username_doswal='$username_doswal',password_doswal='$password_doswal',
+  $query = "UPDATE tb_doswal SET nip_npak='$nip_npak',nama_kelas='$nama_kelas',username_doswal='$username_doswal',password_doswal='$password_doswal',
             thn_jabatan='$thn_jabatan',status_doswal='$status_doswal' WHERE id_doswal='$id_doswal'";
 
   if (mysqli_query($koneksi,$query) == true) {

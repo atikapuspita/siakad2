@@ -84,7 +84,14 @@ $user = mysqli_query($koneksi, "SELECT * FROM tb_pegawai WHERE username = '$user
                   <p>Data Dosen Wali</p>
                 </a>
               </li>
-              
+
+              <li class="nav-item">
+                <a href="data_prodi.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Program Studi</p>
+                </a>
+              </li>
+
               <li class="nav-item">
                 <a href="data_mahasiswa.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

@@ -8,7 +8,7 @@ session_start();
 
 <?php
  $username = $_SESSION["username"];
- $user = mysqli_query($koneksi, "SELECT * FROM tb_doswal INNER JOIN tb_pegawai ON tb_doswal.nip_npak = tb_pegawai.nip_npak WHERE username = '$username'");
+ $user = mysqli_query($koneksi, "SELECT * FROM tb_doswal  WHERE username_doswal = '$username'");
  ?>
 
 <?php
@@ -17,7 +17,7 @@ session_start();
 ?>
 
 <?php
-    $data_verifikasi = mysqli_query($koneksi, "SELECT * FROM tb_verifikasi");
+    $data_verifikasi = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan WHERE status_pengajuan = 'Disetujui Dosen Wali'");
     $jumlah_verifikasi = mysqli_num_rows($data_verifikasi);
 ?>
 
@@ -113,6 +113,10 @@ session_start();
                             <div class="card-body box-profile">
                                 <ul class="list-group list-group-unbordered mb-3">
 
+                                   <li class="list-group-item">
+                                        <b>Id Dosen</b> <a class="float-right text-secondary"><td><?php echo $row['id_doswal']; ?></td></a>
+                                    </li>
+
                                     <li class="list-group-item">
                                         <b>NIP/NPAK</b> <a class="float-right text-secondary"><td><?php echo $row['nip_npak']; ?></td></a>
                                     </li>
@@ -122,7 +126,7 @@ session_start();
                                     </li>
 
                                     <li class="list-group-item">
-                                        <b>Username</b> <a class="float-right text-secondary"><td><?php echo $row['username']; ?></td></a>
+                                        <b>Username</b> <a class="float-right text-secondary"><td><?php echo $row['username_doswal']; ?></td></a>
                                     </li>
 
                                     <li class="list-group-item">

@@ -12,7 +12,7 @@ if(isset($_POST['tambah'])){
     $nama_mhs = $_POST['nama_mhs'];
     $jk = $_POST['jk'];
     $thn_angkatan = $_POST['thn_angkatan'];
-    $kelas = $_POST['kelas'];
+    $id_prodi = $_POST['id_prodi'];
     $alamat = $_POST['alamat'];
     $no_telp_mhs = $_POST['no_telp_mhs'];
 	
@@ -44,9 +44,9 @@ if(isset($_POST['tambah'])){
 	}
 
 // jalankan query INSERT untuk menambah data ke database pastikan sesuai urutan (id tidak perlu karena dibikin otomatis)
-$query = "INSERT INTO tb_mahasiswa (`npm`, `id_jurusan`, `id_doswal`, `username_mhs`, `password_mhs`, `nama_mhs`, `jk`, `thn_angkatan`, 
+$query = "INSERT INTO tb_mahasiswa (`npm`, `id_jurusan`, `id_doswal`, `username_mhs`, `password_mhs`, `nama_mhs`, `jk`, `thn_angkatan`, `id_prodi`,
          `alamat`, `no_telp_mhs`, `foto_mhs`,`ttd_mhs`) 
-         VALUES ('$npm', '$id_jurusan', '$id_doswal', '$username_mhs', '$password_mhs', '$nama_mhs', '$jk', '$thn_angkatan', 
+         VALUES ('$npm', '$id_jurusan', '$id_doswal', '$username_mhs', '$password_mhs', '$nama_mhs', '$jk', '$thn_angkatan', '$id_prodi',
          '$alamat', '$no_telp_mhs','$nama_foto_mhs', '$nama_ttd_mhs')";
 
 $result = mysqli_query($koneksi, $query);

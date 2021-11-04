@@ -98,9 +98,9 @@
                                 <td><?php echo $row["no_telp_pegawai"]; ?></td>
                                 <td><center><img src="img/foto_pegawai/<?php echo $row['foto_pegawai'];?>"width="100px" height="100px"></center></td>
                                 <td><center>
-                                    <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['nip_npak']; ?>" class ="btn btn-primary"><i class="far fa-eye"></i> Details</a> 
-                                    <a data-toggle ="modal" data-target="#myModal<?php echo $row['nip_npak']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i> Update</a>
-                                    <a href="hapus_pegawai.php?nip_npak=<?= $row["nip_npak"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>                                
+                                    <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['nip_npak']; ?>" class ="btn btn-primary"><i class="far fa-eye"></i><br> Details</a> 
+                                    <a data-toggle ="modal" data-target="#myModal<?php echo $row['nip_npak']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i><br> Update</a>
+                                    <a href="hapus_pegawai.php?nip_npak=<?= $row["nip_npak"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i><br> Delete</a>                                
                                 </td></center>
                             </tr>
                         <?php $i++ ; ?>

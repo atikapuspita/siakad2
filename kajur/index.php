@@ -16,7 +16,7 @@ if(!isset($_SESSION['username']))
  ?>
 
 <?php
-    $data_pengajuan = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan");
+    $data_pengajuan = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan WHERE status_pengajuan = 'Disetujui Dosen Wali'");
     $jumlah_pengajuan = mysqli_num_rows($data_pengajuan);
 ?>
 

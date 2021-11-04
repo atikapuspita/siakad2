@@ -32,10 +32,10 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link link tebel-sedang" href="landing page/home.php">Home &nbsp;&nbsp;</a>
+                        <a class="nav-link link tebel-sedang" href="index.php">Home &nbsp;&nbsp;</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link tebel-sedang" href="#">About &nbsp;&nbsp;</a>
+                        <a class="nav-link link tebel-sedang" href="landing page/home.php">About &nbsp;&nbsp;</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link tebel-sedang" href="#">Services &nbsp;&nbsp;</a>

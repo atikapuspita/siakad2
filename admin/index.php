@@ -17,8 +17,13 @@ session_start();
 ?>
 
 <?php
-    $data_verifikasi = mysqli_query($koneksi, "SELECT * FROM tb_verifikasi");
+    $data_verifikasi = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan WHERE status_pengajuan = 'Disetujui Dosen Wali'");
     $jumlah_verifikasi = mysqli_num_rows($data_verifikasi);
+?>
+
+<?php
+    $data_kajur = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan WHERE status_pengajuan = 'Disetujui Ketua Jurusan'");
+    $jumlah_kajur = mysqli_num_rows($data_kajur);
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +81,7 @@ session_start();
     <section class="content">
         <div class="container-fluid">
             <div class="row col-12">
-                <div class="col-lg-2 col-6">
+                <div class="col-lg-3 col-4">
                     <div class="small-box bg-info">
                         <div class="inner">
                             <h3><?php echo $jumlah_pengajuan; ?></h3>
@@ -89,11 +94,25 @@ session_start();
                     </div>
                 </div>
 
-                <div class="col-lg-2 col-6">
+                <div class="col-lg-3 col-4">
                     <div class="small-box bg-warning">
                         <div class="inner">
                             <h3><?php echo $jumlah_verifikasi; ?></h3>
-                            <p>Verifikasi Pengunduran Diri</p>
+                            <p>Di Verifikasi Dosen Wali</p>
+                        </div>  
+                        <div class="icon">
+                            <i class="ion ion-easel"></i>
+                        </div>
+                        <a href="data_verifikasi.php" class="small-box-footer">More info <i class="fas fa-arrow-alt-circle-right"></i></a>
+                    </div>
+                </div>
+
+                
+            <div class="col-lg-3 col-4">
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3><?php echo $jumlah_kajur; ?></h3>
+                            <p>Di Verifikasi Ketua Jurusan</p>
                         </div>  
                         <div class="icon">
                             <i class="ion ion-easel"></i>

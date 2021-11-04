@@ -10,6 +10,8 @@
     $alasan = $_POST['alasan'];
     $tgl_pengajuan = $_POST['tgl_pengajuan'];
     $nama_ortu = $_POST['nama_ortu'];
+    $tingkat = $_POST['tingkat'];
+    $semester = $_POST['semester'];
     $status_pengajuan = $_POST['status_pengajuan'];
     
     
@@ -26,7 +28,7 @@
 
       $update = mysqli_query($koneksi, "UPDATE tb_pengajuan SET id_pengajuan='$id_pengajuan',npm='$npm',alasan='$alasan',
                 tgl_pengajuan='$tgl_pengajuan',nama_ortu='$nama_ortu',status_pengajuan='$status_pengajuan',
-                ttd_ortu='$nama_file' WHERE id_pengajuan='$id_pengajuan'");
+                ttd_ortu='$nama_file',tingkat='$tingkat',semester='$semester' WHERE id_pengajuan='$id_pengajuan'");
 
       if($update) {
         echo "<script> 
@@ -41,7 +43,7 @@
     else
     {
       $update = mysqli_query($koneksi, "UPDATE tb_pengajuan SET id_pengajuan='$id_pengajuan',npm='$npm',alasan='$alasan',
-                tgl_pengajuan='$tgl_pengajuan',nama_ortu='$nama_ortu',status_pengajuan='$status_pengajuan'WHERE id_pengajuan='$id_pengajuan'");
+                tgl_pengajuan='$tgl_pengajuan',nama_ortu='$nama_ortu',status_pengajuan='$status_pengajuan' ,tingkat='$tingkat',semester='$semester' WHERE id_pengajuan='$id_pengajuan'");
 
       if($update) {
         echo "<script> 

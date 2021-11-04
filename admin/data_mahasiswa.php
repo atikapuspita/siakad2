@@ -37,7 +37,8 @@
       include "sidebar_admin.php";
       
       $user = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa INNER JOIN tb_jurusan ON tb_mahasiswa.id_jurusan = tb_jurusan.id_jurusan 
-                          INNER JOIN tb_doswal ON tb_mahasiswa.id_doswal = tb_doswal.id_doswal");
+                          INNER JOIN tb_doswal ON tb_mahasiswa.id_doswal = tb_doswal.id_doswal
+                          INNER JOIN tb_prodi ON tb_mahasiswa.id_prodi = tb_prodi.id_prodi");
   ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -78,7 +79,8 @@
                       <th><center>NPM</center></th>
                       <th><center>Nama Mahasiswa</center></th>
                       <th><center>Jurusan</center></th>
-                      <th><center>Tahun Angkatan</center></th>
+                      <th><center>Program Studi</center></th>
+                      <th><center>Tahun Akademik</center></th>
                       <th><center>No.Telp</center></th>
                       <th><center>Foto</center></th>
                       <th><center>Aksi</center></th>
@@ -94,13 +96,14 @@
                                 <td><?php echo $row['npm']; ?></td>
                                 <td><?php echo $row['nama_mhs']; ?></td>
                                 <td><?php echo $row['nama_jurusan']; ?></td>
+                                <td><?php echo $row['nama_prodi']; ?></td>
                                 <td><center><?php echo $row['thn_angkatan']; ?></center></td>
                                 <td><?php echo $row['no_telp_mhs']; ?></td>
                                 <td><img src="img/foto_mahasiswa/<?php echo $row['foto_mhs'];?>"width="100px" height="100px"></td>
                                 <td><center>
-                                    <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['npm']; ?>" class ="btn btn-primary"><i class="far fa-eye"></i> Details</a> 
-                                    <a data-toggle ="modal" data-target="#myModal<?php echo $row['npm']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i> Update</a>
-                                    <a href="hapus_mahasiswa.php?npm=<?= $row["npm"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>                                
+                                    <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['npm']; ?>" class ="btn btn-primary"><i class="far fa-eye"></i><br> Details</a> 
+                                    <a data-toggle ="modal" data-target="#myModal<?php echo $row['npm']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i><br> Update</a>
+                                    <a href="hapus_mahasiswa.php?npm=<?= $row["npm"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i><br> Delete</a>                                
                                 </td></center>
                             </tr>
                         <?php $i++ ; ?>
@@ -189,6 +192,25 @@
 
             <div class="form-row">
             <div class="form-group col-6">
+                  <label for="exampleSelectRounded0">Nama Program Studi</label>
+                    <select type="text" class="form-control" aria-describedby="emailHelp" name="id_prodi" id="id_prodi">
+                      <option> Pilih Program Studi</option>
+                        <?php $prodi = mysqli_query($koneksi, "SELECT * FROM tb_prodi ");
+                          foreach ($prodi as $pro) : 
+                        ?>
+                          <option value="<?php echo $pro['id_prodi'] ?>" nama_prodi="<?php echo $pro['nama_prodi'] ?>"><?php echo $pro['nama_prodi'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                  </div>
+
+              <div class="form-group col-6">
+                  <label for="thn_angkatan">Tahun Akademik</label>
+                  <input name = "thn_angkatan" type="text" class="form-control" id="thn_angkatan" placeholder="Ex : 2019/2020" required/>
+              </div>
+            </div>
+
+            <div class="form-row">
+            <div class="form-group col-6">
               <label for ="jk">Jenis Kelamin</label>
               <select class = "custom-select rounded-0" id ="jk" name ="jk" required>
                 <option>Pilih Jenis Kelamin</option>
@@ -197,23 +219,17 @@
               </select>
             </div>
 
-              <div class="form-group col-6">
-                  <label for="thn_angkatan">Tahun Angkatan</label>
-                  <input name = "thn_angkatan" type="number" class="form-control" id="thn_angkatan" placeholder="Ex : 2019" required/>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group col-6">
-                  <label for="alamat">Alamat</label>
-                  <textarea rows="3" input name = "alamat" type="text" class="form-control" id="alamat" placeholder="alamat" required/></textarea>
-              </div>
 
               <div class="form-group col-6">
                   <label>No.Telp</label>
                   <input name = "no_telp_mhs" type="number" class="form-control" id="no_telp_mhs" placeholder="Ex : 05857668xxxx" required/>
               </div>
             </div> 
+
+            <div class="form-group">
+                  <label for="alamat">Alamat</label>
+                  <textarea rows="3" input name = "alamat" type="text" class="form-control" id="alamat" placeholder="alamat" required/></textarea>
+              </div>
 
               <div class="form-group">
                     <label>Foto Mahasiswa</label>
@@ -292,7 +308,7 @@
               </div>
             </div>
             
-            <div class="form-row" >
+            <div class="form-row">
               <div class="form-group col-6">
                   <label>Id Jurusan</label>
                   <input name = "id_jurusan" type="text" class="form-control" value="<?php echo $bio['id_jurusan']; ?>">
@@ -305,6 +321,18 @@
             </div>
 
             <div class="form-row" >
+              <div class="form-group col-6">
+                  <label>Id Prodi</label>
+                  <input name = "id_prodi" type="text" class="form-control" value="<?php echo $bio['id_prodi']; ?>">
+              </div>
+
+              <div class="form-group col-6" >
+                  <label for="thn_angkatan">Tahun Akademik</label>
+                  <input name = "thn_angkatan" type="text" class="form-control" value="<?php echo $bio['thn_angkatan']; ?>">
+              </div>
+            </div>
+
+            <div class="form-row">
             <div class="form-group col-6">
               <label for ="jk">Jenis Kelamin</label>
               <select class = "custom-select rounded-0" id ="jk" name ="jk" required>
@@ -312,18 +340,6 @@
                 <option value = "Laki - Laki">Laki - Laki</option>
                 <option value = "Perempuan">Perempuan</option>
               </select>
-            </div>
-
-              <div class="form-group col-6" >
-                  <label for="thn_angkatan">Tahun Angkatan</label>
-                  <input name = "thn_angkatan" type="number" class="form-control" value="<?php echo $bio['thn_angkatan']; ?>">
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group col-6">
-                  <label for="alamat">Alamat</label>
-                  <input name = "alamat" type="text" class="form-control" value="<?php echo $bio['alamat']; ?>">
               </div>
 
               <div class="form-group col-6">
@@ -331,6 +347,11 @@
                   <input name = "no_telp_mhs" type="number" class="form-control" value="<?php echo $bio['no_telp_mhs']; ?>">
               </div>
             </div> 
+
+            <div class="form-group">
+                  <label for="alamat">Alamat</label>
+                  <input name = "alamat" type="text" class="form-control" value="<?php echo $bio['alamat']; ?>">
+              </div>
 
            <div class="form-group">
               <label>Foto Mahasiswa</label>
@@ -529,6 +550,17 @@ include "../AdminLTE/footer.php"
 
   });
 </script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#id_prodi").on("change", function(){
+      var nama_prodi = $("#id_prodi option:selected").attr("nama_prodi");
+      $("#nama_prodi").val(nama_prodi);
+    });
+
+  });
+</script>
+
 <script>
   function myFunction() {
   var x = document.getElementById("myPassword");

@@ -91,7 +91,7 @@
                             <td><?php echo $row['nama_jurusan']; ?></td>
                             <td><?php echo $row["no_sk"]; ?></td>
                             <td><?php echo $row['tgl_pengajuan']; ?></td>
-                            <td><?php echo $row["thn_angkatan"]; ?></td>
+                            <td><center><?php echo $row["thn_angkatan"]; ?></center></td>
                           </tr>
                           
                             <?php $i++ ; ?>

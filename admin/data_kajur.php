@@ -69,7 +69,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-success" style ="width : 10%"><i class="fas fa-plus-circle"></i>  Tambah Data</a> <br>
+                <!-- <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-success" style ="width : 10%"><i class="fas fa-plus-circle"></i>  Tambah Data</a> <br> -->
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
@@ -93,9 +93,9 @@
                             <td><center><?php echo $row["thn_jabatan_kajur"]; ?></center></td>
                             <td><?php echo $row["status_kajur"]; ?></td>
                             <td><center>
-                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row["id_jurusan"]; ?>" class ="btn btn-primary"><i class="far fa-eye"></i> Details</a> 
-                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_jurusan']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i> Update</a>
-                                <a href="hapus_kajur.php?id_jurusan=<?= $row["id_jurusan"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row["id_jurusan"]; ?>" class ="btn btn-primary"><i class="far fa-eye"></i><br> Details</a> 
+                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_jurusan']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i><br> Update</a>
+                                <a href="hapus_kajur.php?id_jurusan=<?= $row["id_jurusan"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i><br> Delete</a>
                             </td></center>
                           </tr>
                           
@@ -232,12 +232,12 @@ foreach ($user as $row) : $no++; ?>
                   <input type="checkbox" onclick="myFunction()"> Lihat Password
             </div>
 
-            <div class="form-group" hidden>
+            <div class="form-group">
               <label>Nama Jurusan</label>
               <input name = "nama_jurusan" type="text" class="form-control" value="<?php echo $bio['nama_jurusan']; ?>" >
             </div>
 
-            <div class="form-group" hidden>
+            <div class="form-group">
               <label>Masa Jabatan</label>
               <input name = "thn_jabatan_kajur" type="text" class="form-control" value="<?php echo $bio['thn_jabatan_kajur']; ?>">
             </div>
