@@ -93,10 +93,7 @@
                             <td><?php echo $row["nama_ortu"]; ?></td>
                             <td><?php echo $row["status_pengajuan"]; ?></td>
                             <td><center>
-                            <a href="terima_pengajuan.php?id=<?= $row['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>" class="btn btn-outline-none" onclick="return confirm('Anda yakin menerima pengajuan ini?')"><i class="fas fa-times" style="color: red;"></i>
-                                Acc</a>
-                            <a href="tolak_p.php?id=<?= $row['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>" class="btn btn-outline-none" onclick="return confirm('Anda yakin menolak pengajuan ini?')"><i class="fas fa-times" style="color: red;"></i>
-                                Tolak</a>
+                            <td><?php echo "<a href= 'acc_doswal.php?id_pengajuan=".$row['id_pengajuan']."' class='badge bg-". $warna."'>". $status."</a>";?><br><?php echo "<a>" .$tgl. "<a>"?>
                             </td></center>
                           </tr>
                           
