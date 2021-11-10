@@ -4,8 +4,8 @@ include "../AdminLTE/rel.html";
 include "../AdminLTE/script.html";
 
 
-$username = $_SESSION["username"];
-$user = mysqli_query($koneksi, "SELECT * FROM tb_pegawai WHERE username = '$username'")
+$username = $_SESSION["nip_npak"];
+$user = mysqli_query($koneksi, "SELECT * FROM tb_pegawai WHERE nip_npak = '$username'")
 ?>
 
   <!-- Main Sidebar Container -->

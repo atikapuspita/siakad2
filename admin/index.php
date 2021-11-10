@@ -7,8 +7,12 @@ session_start();
 ?>
 
 <?php
- $username = $_SESSION["username"];
- $user = mysqli_query($koneksi, "SELECT * FROM tb_pegawai WHERE username = '$username'");
+
+ $username = $_SESSION["nip_npak"];
+
+ $user = mysqli_query($koneksi, "SELECT * FROM tb_pegawai WHERE nip_npak = '$username'");
+ $tik = mysqli_fetch_array($user);
+
  ?>
 
 <?php
@@ -61,8 +65,7 @@ session_start();
           <div class="col-sm-10">
             <h1>Selamat Datang, 
             <?php 
-                foreach ($user as $row) : 
-                echo $row['nama_pegawai']; 
+                echo $tik['nama_pegawai']; 
             ?>
              ! 
             </h1>
@@ -131,20 +134,20 @@ session_start();
                             <div class="card-body box-profile">
                                 <ul class="list-group list-group-unbordered mb-3">
                                 <center>
-                                    <img src="img/foto_pegawai/<?php echo $row['foto_pegawai'];?>" alt="Foto" width="150" class="rounded-circle"></center><br>
+                                    <img src="img/foto_pegawai/<?php echo $tik['foto_pegawai'];?>" alt="Foto" width="150" class="rounded-circle"></center><br>
                                     <li class="list-group-item">
-                                        <b>NIP/NPAK</b> <a class="float-right text-secondary"><td><?php echo $row['nip_npak']; ?></td></a>
+                                        <b>NIP/NPAK</b> <a class="float-right text-secondary"><td><?php echo $tik['nip_npak']; ?></td></a>
                                     </li>
 
                                     <li class="list-group-item">
-                                        <b>Nama Lengkap</b> <a class="float-right text-secondary"><td><?php echo $row['nama_pegawai']; ?></td></a>
+                                        <b>Nama Lengkap</b> <a class="float-right text-secondary"><td><?php echo $tik['nama_pegawai']; ?></td></a>
                                     </li>
 
                                     <li class="list-group-item">
-                                        <b>No.Telp</b> <a class="float-right text-secondary"><td><?php echo $row['no_telp_pegawai']; ?></td></a>
+                                        <b>No.Telp</b> <a class="float-right text-secondary"><td><?php echo $tik['no_telp_pegawai']; ?></td></a>
                                     </li>
                                 </ul>
-                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['nip_npak']; ?>" class="btn btn-secondary btn-block"><b>Edit Profil</b></a>
+                                <a data-toggle ="modal" data-target="#myModal<?php echo $tik['nip_npak']; ?>" class="btn btn-secondary btn-block"><b>Edit Profil</b></a>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -158,7 +161,7 @@ session_start();
            <!-- / modal edit  -->
            <?php $no = 0;
       foreach ($user as $row) : $no++; ?>
-      <div class="modal fade" id="myModal<?php echo $row['nip_npak']; ?>" role="dialog">
+      <div class="modal fade" id="myModal<?php echo $tik['nip_npak']; ?>" role="dialog">
         <div class="modal-dialog">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -171,7 +174,7 @@ session_start();
             <form role="form" action="c_editadmin.php" method="get" enctype="multipart/form-data">
             <div class="modal-body">
             <?php
-              $nip_npak=$row['nip_npak'];
+              $nip_npak=$tik['nip_npak'];
               $result= mysqli_query($koneksi, "SELECT * FROM tb_pegawai where nip_npak='$nip_npak'");                
               while ($bio= mysqli_fetch_array($result)) {
             ?>
@@ -191,7 +194,7 @@ session_start();
               <div class="form-row">
               <div class="form-group col-6">
                   <label>Username</label>
-                  <input name = "username" type="text" class="form-control" value="<?php echo $bio['username']; ?>" readonly>
+                  <input name = "username" type="text" class="form-control" value="<?php echo $bio['username']; ?>">
               </div>
               
               <div class="form-group col-6">
@@ -270,11 +273,6 @@ session_start();
     <?php include "../AdminLTE/footer.php" ?>
 </div>
 
-<?php 
-
-endforeach; 
-
-?>
 <!-- jQuery -->
 <script src="../AdminLTE/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
