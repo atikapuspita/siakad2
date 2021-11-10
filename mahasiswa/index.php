@@ -99,10 +99,10 @@ session_start();
             </div>
             </div>
           </div>
-          <div class="col-2 float-sm-right">
+          <div class="col-2 float-sm-left">
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <p><center>Ajukan Pengunduran Diri</center></p>
+                            <p><center>Ajukan Permohonan</center></p>
                         </div>  
                         <div class="icon">
                             <i class="ion ion-easel"></i>
@@ -139,7 +139,12 @@ session_start();
                       }
                       ?>
                   </div>
-              
+
+              <div class="form-group">
+                  <label>Semester</label>
+                  <input name = "semester" type="text" class="form-control" id="semester" placeholder="Ex: 3 (Tiga)" required/>
+              </div>
+
               <div class="form-group">
                   <label>Alasan</label>
                   <input name = "alasan" type="text" class="form-control" id="alasan" placeholder="alasan" required/>
@@ -156,7 +161,7 @@ session_start();
               </div>
 
                 <div class="form-group">
-                    <label>Tanda Tangan</label>
+                    <label>Tanda Tangan Orang Tua</label>
                     <div class="input-group">
                     <div class="custom-file">
                       <input type="file" class="form-control" id="ttd_ortu" name = "ttd_ortu">

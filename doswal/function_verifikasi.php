@@ -1,25 +1,18 @@
 <?php 
 
-include "../koneksi/config.php";
+	include "../koneksi/config.php";
 
-function acc_doswal($id_pengajuan) {
-	global $koneksi;
-	$tgl = date('Y-m-d');
-	
-	$query ="UPDATE tb_pengajuan SET status = 'Disetujui Dosen Wali', tgl_doswal= '$tgl' WHERE id_pengajuan = $id_pengajuan";
+	function acc_doswal(){
+		global $koneksi;
 
-	mysqli_query($koneksi,$query);
-	return mysqli_affected_rows($koneksi);	
-}
-function dec_doswal($id_pengajuan) {
-	global $koneksi;
-	
+		$query = mysqli_query($koneksi, "INSERT INTO tb_verifikasi (`id_pengajuan`, `tgl_verifikasi`, `nip_npak`,`status_verifikasi`)
+		VALUES ($id_pengajuan, NOW(), '$nip_npak','Disetujui')");
+	}
 
-		//insert data
-	$query ="UPDATE tb_pengajuan SET status = 'Ditolak' WHERE id_pengajuan = $id_pengajuan
-	";
+	function tolak_doswal(){
+		global $koneksi;
 
-	mysqli_query($koneksi,$query);
-	return mysqli_affected_rows($koneksi);	
-}
+		$query = mysqli_query($koneksi, "INSERT INTO tb_verifikasi (`id_pengajuan`, `tgl_verifikasi`, `nip_npak`,`status_verifikasi`)
+		VALUES ('$id_pengajuan', NOW(), '$nip_npak','Ditolak')");
+	}
 ?>

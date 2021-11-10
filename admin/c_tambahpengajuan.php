@@ -9,7 +9,6 @@ if(isset($_POST['tambah'])){
     $alasan = $_POST['alasan'];
     $tgl_pengajuan = $_POST['tgl_pengajuan'];
     $nama_ortu = $_POST['nama_ortu'];
-    $tingkat = $_POST['tingkat'];
     $semester = $_POST['semester'];
     $status_pengajuan = $_POST['status_pengajuan'];
 
@@ -27,8 +26,8 @@ if(isset($_POST['tambah'])){
 	}
 
 // jalankan query INSERT untuk menambah data ke database pastikan sesuai urutan (id tidak perlu karena dibikin otomatis)
-$query = "INSERT INTO tb_pengajuan (`id_pengajuan`, `npm`, `alasan`, `tgl_pengajuan`, `nama_ortu`,`status_pengajuan`,`ttd_ortu`,`tingkat`,`semester`) 
-         VALUES ('$id_pengajuan', '$npm', '$alasan', '$tgl_pengajuan', '$nama_ortu','$status_pengajuan', '$nama_ttd_ortu', '$tingkat', '$semester')";
+$query = "INSERT INTO tb_pengajuan (`id_pengajuan`, `npm`, `alasan`, `tgl_pengajuan`, `nama_ortu`,`status_pengajuan`,`ttd_ortu`,`semester`) 
+         VALUES ('$id_pengajuan', '$npm', '$alasan', '$tgl_pengajuan', '$nama_ortu','$status_pengajuan', '$nama_ttd_ortu', '$semester')";
 
 $result = mysqli_query($koneksi, $query);
     if(!$result){

@@ -158,7 +158,12 @@
                       }
                       ?>
                   </div>
-              
+                
+              <div class="form-group">
+                  <label>Semester</label>
+                  <input name = "semester" type="text" class="form-control" id="semester" placeholder="Ex: 3 (Tiga)" required/>
+              </div>
+
               <div class="form-group">
                   <label>Alasan</label>
                   <input name = "alasan" type="text" class="form-control" id="alasan" placeholder="alasan" required/>
@@ -175,7 +180,7 @@
               </div>
 
                 <div class="form-group">
-                    <label>Tanda Tangan</label>
+                    <label>Tanda Tangan Orang Tua</label>
                     <div class="input-group">
                     <div class="custom-file">
                       <input type="file" class="form-control" id="ttd_ortu" name = "ttd_ortu">
@@ -196,64 +201,63 @@
       </div>
       <!-- /.modal -->
 
-            <!-- Modal Lihat Detail -->
-            <?php $no = 0;
-      foreach ($user as $d) : $no++; ?>
-<div class="modal fade" id="modaldetail<?php echo $d['id_pengajuan']; ?>">
+<!-- Modal Lihat Detail -->
+<?php $no = 0;
+      foreach ($user as $row) : $no++; ?>
+<div class="modal fade" id="modaldetail<?php echo $row['id_pengajuan']; ?>">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Pengajuan Pengunduran Diri</h4>
+                <h4 class="modal-title">Detail Pengajuan</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             
             <div class="modal-body">
-            <?php
-              $id_pengajuan=$d['id_pengajuan'];
-              $result= mysqli_query($koneksi, "SELECT * FROM tb_pengajuan where id_pengajuan='$id_pengajuan'");                
-              while ($bio= mysqli_fetch_array($result)) {
-            ?>
-            <form>
-            <div class="row text-left">
-              <div class="col-1 text-center">
-              </div>
+              <?php
+                $id_pengajuan=$row['id_pengajuan'];
+                $result= mysqli_query($koneksi, "SELECT * FROM tb_pengajuan INNER JOIN tb_mahasiswa ON tb_pengajuan.npm = tb_mahasiswa.npm WHERE id_pengajuan = $row[id_pengajuan]");                
+                while ($bio= mysqli_fetch_array($result)) {
+              ?>
 
-                <ul>
-                  <li class="p-1"><b>Id Pengajuan</b></li>
-                  <li class="p-1"><b>NPM</b></li>
-                  <li class="p-1"><b>Nama Mahasiswa</b></li>
-                  <li class="p-1"><b>Tanggal Pengajuan</b></li>
-                  <li class="p-1"><b>Berkas</b></li>
-                  <li class="p-1"><b>File Surat Keputusan</b></li>
-                </ul>
+<form>
+                <div class="card-body box-profile">
+                        <ul class="list-group list-group-unbordered mb-3">
+                          <li class="list-group-item">
+                            <b>Id Pengajuan</b> <a class="float-right"><?php echo $row['id_pengajuan'] ?></a>
+                          </li>
 
-              <ul class ="p-2">
-                  <li class="p-1"><b>:</b></li>
-                  <li class="p-1"><b>:</b></li>
-                  <li class="p-1"><b>:</b></li>
-                  <li class="p-1"><b>:</b></li>
-                  <li class="p-1"><b>:</b></li>
-                  <li class="p-1"><b>:</b></li>
-                </ul>
-          
- 
-                <ul class ="p-2">
-                  <li class="p-1"><b><?php echo $d['id_pengajuan']; ?></b></li>
-                  <li class="p-1"><b><?php echo $d['npm']; ?></b></li>
-                  <li class="p-1"><b><?php echo $d['nama_mhs']; ?></b></li>
-                  <li class="p-1"><b><?php echo $d['tgl_pengajuan']; ?></b></li>
-                  <li class="p-1"><b><?php echo $d['berkas']; ?></b></li>
-                  <li class="p-1"><b><?php echo $d['file_sk']; ?></b></li>
-                </ul>
-           
-            </div>
-         
-            
-            <?php
-               }
-            ?>
+                          <li class="list-group-item">
+                            <b>Nama Mahasiswa</b> <a class="float-right"><?php echo $row['nama_mhs'] ?></a>
+                          </li>
+
+                          <li class="list-group-item">
+                            <b>Semester</b> <a class="float-right"><?php echo $row['semester'] ?></a>
+                          </li>
+
+                          <li class="list-group-item">
+                            <b>Tanggal Pengajuan</b> <a class="float-right"><?php echo $row['tgl_pengajuan'] ?></a>
+                          </li>
+
+                          <li class="list-group-item">
+                            <b>Status Pengajuan</b> <a class="float-right"><?php echo $row['status_pengajuan'] ?></a>
+                          </li>
+
+                          <li class="list-group-item">
+                            <b>Formulir</b> <a class="float-right"><?php echo $row['berkas'] ?></a>
+                          </li>
+
+                          <li class="list-group-item">
+                            <b>Surat Keputusan</b> <a class="float-right"><?php echo $row['file_sk'] ?></a>
+                          </li>
+
+                          </ul>
+                </div>
+              
+              <?php
+                  }
+              ?>
 
             </div>
             <div class="modal-footer justify-content-between">
@@ -266,6 +270,7 @@
     <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
+
 <?php endforeach ?>
 
 

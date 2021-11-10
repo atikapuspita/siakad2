@@ -38,12 +38,6 @@
                         <a class="nav-link link tebel-sedang" href="landing page/home.php">About &nbsp;&nbsp;</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link tebel-sedang" href="#">Services &nbsp;&nbsp;</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link link tebel-sedang" href="#">Contact &nbsp;&nbsp;</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link active tebel-sedang rounded-pill bg-ungu shadow" href="koneksi/login.php">Log In</a>
                     </li>
                 </ul>

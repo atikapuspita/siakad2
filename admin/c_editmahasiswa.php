@@ -15,6 +15,7 @@
     $jk = $_POST['jk'];
     $thn_angkatan = $_POST['thn_angkatan'];
     $alamat = $_POST['alamat'];
+    $ttl = $_POST['ttl'];
     $no_telp_mhs = $_POST['no_telp_mhs'];
     
      //Membuat Variabel untuk menyimpan Foto atau Gambar
@@ -39,7 +40,7 @@
  if($nama_file AND $nama_file1 != '')
  {
    $update = mysqli_query($koneksi, "UPDATE tb_mahasiswa SET npm='$npm',id_jurusan='$id_jurusan',id_doswal='$id_doswal',username_mhs='$username_mhs',password_mhs='$password_mhs',
-             nama_mhs='$nama_mhs',jk='$jk',thn_angkatan='$thn_angkatan',alamat='$alamat',id_prodi='$id_prodi',no_telp_mhs='$no_telp_mhs',
+             nama_mhs='$nama_mhs',jk='$jk',ttl='$ttl',thn_angkatan='$thn_angkatan',alamat='$alamat',id_prodi='$id_prodi',no_telp_mhs='$no_telp_mhs',
              foto_mhs='$nama_file',ttd_mhs='$nama_file1' WHERE npm='$npm'");
    if($update) {
      echo "<script> 
@@ -54,7 +55,7 @@
  else
  {
    $update = mysqli_query($koneksi, "UPDATE tb_mahasiswa SET npm='$npm',id_jurusan='$id_jurusan',id_doswal='$id_doswal',username_mhs='$username_mhs',password_mhs='$password_mhs',
-             nama_mhs='$nama_mhs',jk='$jk',thn_angkatan='$thn_angkatan',alamat='$alamat',no_telp_mhs='$no_telp_mhs' WHERE npm='$npm'");
+             nama_mhs='$nama_mhs',jk='$jk',ttl='$ttl',thn_angkatan='$thn_angkatan',alamat='$alamat',no_telp_mhs='$no_telp_mhs' WHERE npm='$npm'");
    if($update) {
      echo "<script> 
            alert ('Data Berhasil di Update'); window.location = 'data_mahasiswa.php' </script> ";

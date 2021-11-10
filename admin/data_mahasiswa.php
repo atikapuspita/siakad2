@@ -129,7 +129,7 @@
 
 <!-- /.Modals Tambah --> 
 <div class="modal fade" id="modal-tambah">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Tambah Data Mahasiswa</h4>
@@ -141,31 +141,29 @@
             <div class="modal-body">
 
             <div class="form-row">
-            <div class="form-group col-6">
+            <div class="form-group col-4">
                   <label>NPM</label>
                   <input name = "npm" type="text" class="form-control" id="npm" placeholder="Ex : 190202035" required/>
             </div>
             
-            <div class="form-group col-6">
+            <div class="form-group col-4">
                   <label for="nama_mhs">Nama Mahasiswa</label>
                   <input name = "nama_mhs" type="text" class="form-control" id="nama_mhs" placeholder="nama mahasiswa" required/>
             </div>
-            </div>
 
-            <div class="form-row">
-            <div class="form-group col-6">
+            <div class="form-group col-4">
                   <label>Username</label>
                   <input name = "username_mhs" type="text" class="form-control" id="username_mhs" placeholder="username" required/>
               </div>
-
-              <div class="form-group col-6">
-                  <label>Password</label>
-                  <input name = "password_mhs" type="password" class="form-control" id="password_mhs" placeholder="password" required/>
-              </div>
             </div>
 
             <div class="form-row">
-              <div class="form-group col-6">
+              <div class="form-group col-4">
+                  <label>Password</label>
+                  <input name = "password_mhs" type="password" class="form-control" id="password_mhs" placeholder="password" required/>
+              </div>
+
+              <div class="form-group col-4">
                   <label for="exampleSelectRounded0">Nama Jurusan</label>
                     <select type="text" class="form-control" aria-describedby="emailHelp" name="id_jurusan" id="id_jurusan">
                       <option> Pilih Jurusan</option>
@@ -177,7 +175,7 @@
                     </select>
                   </div>
 
-              <div class="form-group col-6">
+              <div class="form-group col-4">
                   <label for="exampleSelectRounded0">Nama Kelas</label>
                     <select type="text" class="form-control" aria-describedby="emailHelp" name="id_doswal" id="id_doswal">
                       <option> Pilih Kelas</option>
@@ -191,7 +189,7 @@
             </div>
 
             <div class="form-row">
-            <div class="form-group col-6">
+            <div class="form-group col-4">
                   <label for="exampleSelectRounded0">Nama Program Studi</label>
                     <select type="text" class="form-control" aria-describedby="emailHelp" name="id_prodi" id="id_prodi">
                       <option> Pilih Program Studi</option>
@@ -203,14 +201,19 @@
                     </select>
                   </div>
 
-              <div class="form-group col-6">
+            <div class="form-group col-4">
+                  <label>Tempat, tanggal lahir</label>
+                  <input name = "ttl" type="text" class="form-control" id="ttl" placeholder="Ex : 3 (Tiga)" required/>
+              </div>
+
+              <div class="form-group col-4">
                   <label for="thn_angkatan">Tahun Akademik</label>
                   <input name = "thn_angkatan" type="text" class="form-control" id="thn_angkatan" placeholder="Ex : 2019/2020" required/>
               </div>
             </div>
 
             <div class="form-row">
-            <div class="form-group col-6">
+            <div class="form-group col-4">
               <label for ="jk">Jenis Kelamin</label>
               <select class = "custom-select rounded-0" id ="jk" name ="jk" required>
                 <option>Pilih Jenis Kelamin</option>
@@ -218,18 +221,17 @@
                 <option value = "Perempuan">Perempuan</option>
               </select>
             </div>
-
-
-              <div class="form-group col-6">
-                  <label>No.Telp</label>
-                  <input name = "no_telp_mhs" type="number" class="form-control" id="no_telp_mhs" placeholder="Ex : 05857668xxxx" required/>
-              </div>
-            </div> 
-
-            <div class="form-group">
+            
+            <div class="form-group col-4">
                   <label for="alamat">Alamat</label>
                   <textarea rows="3" input name = "alamat" type="text" class="form-control" id="alamat" placeholder="alamat" required/></textarea>
               </div>
+            
+              <div class="form-group col-4">
+                  <label>No.Telp</label>
+                  <input name = "no_telp_mhs" type="number" class="form-control" id="no_telp_mhs" placeholder="Ex : 05857468xxxx" required/>
+              </div>
+            </div>
 
               <div class="form-group">
                     <label>Foto Mahasiswa</label>
@@ -268,7 +270,7 @@
              <?php $no = 0;
       foreach ($user as $row) : $no++; ?>
       <div class="modal fade" id="myModal<?php echo $row['npm']; ?>" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Edit Data Mahasiswa</h4>
@@ -284,56 +286,59 @@
               while ($bio= mysqli_fetch_array($result)) {
             ?>
             <div class="form-row">
-              <div class="form-group col-6">
+              <div class="form-group col-4">
                   <label>NPM</label>
                   <input name = "npm" type="text" class="form-control" value="<?php echo $bio['npm']; ?>" readonly>
               </div>
 
-              <div class="form-grou col-6">
+              <div class="form-grou col-4">
                   <label for="nama_mhs">Nama Mahasiswa</label>
                   <input name = "nama_mhs" type="text" class="form-control" value="<?php echo $bio['nama_mhs']; ?>">
               </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group col-6">
+            
+              <div class="form-group col-4">
                   <label>Username</label>
                   <input name = "username_mhs" type="text" class="form-control" value="<?php echo $bio['username_mhs']; ?>">
               </div>
+            </div>
 
-              <div class="form-grou col-6">
+              <div class="form-row">
+              <div class="form-grou col-4">
                   <label>Password</label><span class="text-red">*</span></label>
                   <input type="password" class="form-control" name="password_mhs" placeholder="Password" id="myPassword" value="<?php echo $bio['password_mhs']; ?>">
                   <input type="checkbox" onclick="myFunction()"> Lihat Password
               </div>
-            </div>
             
-            <div class="form-row">
-              <div class="form-group col-6">
+              <div class="form-group col-4">
                   <label>Id Jurusan</label>
                   <input name = "id_jurusan" type="text" class="form-control" value="<?php echo $bio['id_jurusan']; ?>">
               </div>
 
-            <div class="form-group col-6">
+            <div class="form-group col-4">
                   <label>Id Dosen Wali</label>
                   <input name = "id_doswal" type="text" class="form-control" value="<?php echo $bio['id_doswal']; ?>">
               </div>
             </div>
 
             <div class="form-row" >
-              <div class="form-group col-6">
+              <div class="form-group col-4">
                   <label>Id Prodi</label>
                   <input name = "id_prodi" type="text" class="form-control" value="<?php echo $bio['id_prodi']; ?>">
               </div>
 
-              <div class="form-group col-6" >
+              <div class="form-group col-4" >
                   <label for="thn_angkatan">Tahun Akademik</label>
                   <input name = "thn_angkatan" type="text" class="form-control" value="<?php echo $bio['thn_angkatan']; ?>">
+              </div>
+
+            <div class="form-group col-4">
+                  <label>Tempat, tanggal lahir</label>
+                  <input name = "ttl" type="text" class="form-control" value="<?php echo $bio['ttl']; ?>">
               </div>
             </div>
 
             <div class="form-row">
-            <div class="form-group col-6">
+            <div class="form-group col-4">
               <label for ="jk">Jenis Kelamin</label>
               <select class = "custom-select rounded-0" id ="jk" name ="jk" required>
               <option><?php echo $bio['jk']; ?></option>
@@ -342,16 +347,15 @@
               </select>
               </div>
 
-              <div class="form-group col-6">
-                  <label>No.Telp</label>
-                  <input name = "no_telp_mhs" type="number" class="form-control" value="<?php echo $bio['no_telp_mhs']; ?>">
-              </div>
-            </div> 
-
-            <div class="form-group">
+            <div class="form-group col-4">
                   <label for="alamat">Alamat</label>
                   <input name = "alamat" type="text" class="form-control" value="<?php echo $bio['alamat']; ?>">
               </div>
+              <div class="form-group col-4">
+                  <label>No.Telp</label>
+                  <input name = "no_telp_mhs" type="number" class="form-control" value="<?php echo $bio['no_telp_mhs']; ?>">
+              </div>
+            </div>
 
            <div class="form-group">
               <label>Foto Mahasiswa</label>
@@ -419,41 +423,55 @@
                   <img src="img/foto_mahasiswa/<?php echo $row['foto_mhs'];?>" alt="Foto" width="100" class="rounded-circle"></center><br>
                     <h3 class="profile-username text-center"><?php echo $row['nama_mhs'] ?></h3>
                         <ul class="list-group list-group-unbordered mb-3">
-                          <li class="list-group-item">
+                          <div class = "form-row">
+                          <li class="list-group-item col-6">
                             <b>NPM</b> <a class="float-right"><?php echo $row['npm'] ?></a>
                           </li>
 
-                          <li class="list-group-item">
+                          <li class="list-group-item col-6">
                             <b>Jurusan</b> <a class="float-right"><?php echo $row['nama_jurusan'] ?></a>
                           </li>
+                          </div>
 
-                          <li class="list-group-item">
+                          <div class ="form-row">
+                          <li class="list-group-item col-6">
                             <b>Kelas</b> <a class="float-right"><?php echo $row['nama_kelas'] ?></a>
                           </li>
 
-                          <li class="list-group-item">
+                          <li class="list-group-item col-6">
+                            <b>TTL</b> <a class="float-right"><?php echo $row['ttl'] ?></a>
+                          </li>
+                          </div>
+
+                          <div class ="form-row">
+                          <li class="list-group-item col-6">
                             <b>Username</b> <a class="float-right"><?php echo $row['username_mhs'] ?></a>
                           </li>
 
-                          <li class="list-group-item">
+                          <li class="list-group-item col-6">
                             <b>Password</b> <a class="float-right"><?php echo $row['password_mhs'] ?></a>
                           </li>
+                          </div>
 
-                          <li class="list-group-item">
+                          <div class ="form-row">
+                          <li class="list-group-item col-6">
                             <b>Jenis Kelamin</b> <a class="float-right"><?php echo $row['jk'] ?></a>
                           </li>
 
-                          <li class="list-group-item">
+                          <li class="list-group-item col-6">
                             <b>Tahun Angkatan</b> <a class="float-right"><?php echo $row['thn_angkatan'] ?></a>
                           </li>
+                          </div>
 
-                          <li class="list-group-item">
+                          <div class ="form-row">
+                          <li class="list-group-item col-6">
                             <b>Alamat</b> <a class="float-right"><?php echo $row['alamat'] ?></a>
                           </li>
 
-                          <li class="list-group-item">
+                          <li class="list-group-item col-6">
                             <b>No.Telp</b> <a class="float-right"><?php echo $row['no_telp_mhs'] ?></a>
                           </li>
+                          </div>
 
                           <li class="list-group-item">
                             <b>Tanda Tangan</b> <img src="img/ttd_mahasiswa/<?php echo $row['ttd_mhs'];?>" alt="Foto" width="50px" height="50px" class="float-right">

@@ -30,8 +30,8 @@
 <div class="wrapper">
 
   <?php
-      include "header_admin.php";
-      include "sidebar_admin.php";
+      include "header_kajur.php";
+      include "sidebar_kajur.php";
       
       $user = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa INNER JOIN tb_pengajuan ON tb_pengajuan.npm = tb_mahasiswa.npm");
   ?>

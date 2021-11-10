@@ -35,7 +35,7 @@
       include "header_kajur.php";
       include "sidebar_kajur.php";
       
-      $user = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan INNER JOIN tb_mahasiswa ON tb_pengajuan.npm = tb_mahasiswa.npm WHERE status_pengajuan = 'Disetujui Dosen Wali';");
+      $user = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan INNER JOIN tb_mahasiswa ON tb_pengajuan.npm = tb_mahasiswa.npm ;");
   ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -93,9 +93,7 @@
                             <td><?php echo $row["nama_ortu"]; ?></td>
                             <td><?php echo $row["status_pengajuan"]; ?></td>
                             <td><center>
-                                <a href="tolak_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>" class="btn btn-outline-none" onclick="return confirm('Anda yakin menolak pengajuan ini?')"><i class="fas fa-times" style="color: red;"></i> Terima</a>
-                                <a href="tolak_p.php?id=<?= $row_user['id_pengajuan']; ?>&nip_npak=<?= $nip_npak; ?>" class="btn btn-outline-none" onclick="return confirm('Anda yakin menolak pengajuan ini?')"><i class="fas fa-times" style="color: red;"></i> Tolak</a>
-                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['id_pengajuan']; ?>" class ="btn btn-primary"><i class="far fa-eye"><br> Details</i></a> 
+                            <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_pengajuan']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i><br> Update</a>
                             </td></center>
                           </tr>
                           
@@ -141,32 +139,32 @@
               while ($bio= mysqli_fetch_array($result)) {
             ?>
 
-            <div class="form-group">
+            <div class="form-group" hidden>
                   <label>Id Pengajuan</label>
                   <input name = "id_pengajuan" type="text" class="form-control" value="<?php echo $bio['id_pengajuan']; ?>" readonly/>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" hidden>
                   <label>NPM</label>
                   <input name = "npm" type="text" class="form-control" value="<?php echo $bio['npm']; ?>" readonly/>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" hidden>
                   <label>Alasan</label>
                   <input name = "alasan" type="text" class="form-control" value="<?php echo $bio['alasan']; ?>" readonly/>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" hidden>
                   <label>Tanggal Pengajuan</label>
                   <input name = "tgl_pengajuan" type="date" class="form-control" value="<?php echo $bio['tgl_pengajuan']; ?>" readonly/>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" hidden>
                   <label>Nama Orang Tua</label>
                   <input name = "nama_ortu" type="text" class="form-control" value="<?php echo $bio['nama_ortu']; ?>" readonly/>
               </div>
 
-              <div class="form-group" hidden>
+              <div class="form-group" hidden hidden>
                 <label for="ttd_ortu">Tanda Tangan</label>
                   <div class="input-group">
                     <div class="custom-file">
@@ -180,9 +178,9 @@
               <label for ="status">Status</label>
               <select class = "custom-select rounded-0" id ="status_pengajuan" name ="status_pengajuan" required>
                 <option><?php echo $bio['status_pengajuan']; ?></option>
-                <option value = "Ditolak">Ditolak</option>
-                <option value = "Disetujui Dosen Wali">Disetujui Dosen Wali</option>
-                <option value = "Disetujui Ketua Jurusan">Disetujui Ketua Jurusan</option>
+                <option value = "0">Ditolak</option>
+                <option value = "1">Disetujui Dosen Wali</option>
+                <option value = "2">Disetujui Ketua Jurusan</option>
               </select>
               </div>
 

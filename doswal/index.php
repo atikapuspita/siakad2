@@ -7,8 +7,11 @@ session_start();
 ?>
 
 <?php
- $username = $_SESSION["username"];
- $user = mysqli_query($koneksi, "SELECT * FROM tb_doswal  WHERE username_doswal = '$username'");
+ $username = $_SESSION["nip_npak"];
+
+ $user = mysqli_query($koneksi, "SELECT * FROM tb_doswal WHERE nip_npak = '$username'");
+ $tik = mysqli_fetch_array($user);
+
  ?>
 
 <?php
@@ -56,8 +59,8 @@ session_start();
           <div class="col-sm-10">
             <h1>Selamat Datang, 
             <?php 
-                foreach ($user as $row) : 
-                echo $row['nama_pegawai']; 
+               
+                echo $tik['nama_pegawai'];
             ?>
              ! 
             </h1>
@@ -113,27 +116,19 @@ session_start();
                             <div class="card-body box-profile">
                                 <ul class="list-group list-group-unbordered mb-3">
 
-                                   <li class="list-group-item">
-                                        <b>Id Dosen</b> <a class="float-right text-secondary"><td><?php echo $row['id_doswal']; ?></td></a>
+                                    <li class="list-group-item">
+                                        <b>NIP/NPAK</b> <a class="float-right text-secondary"><td><?php echo $tik['nip_npak']; ?></td></a>
                                     </li>
 
                                     <li class="list-group-item">
-                                        <b>NIP/NPAK</b> <a class="float-right text-secondary"><td><?php echo $row['nip_npak']; ?></td></a>
+                                        <b>Nama Lengkap</b> <a class="float-right text-secondary"><td><?php echo $tik['nama_pegawai']; ?></td></a>
                                     </li>
 
                                     <li class="list-group-item">
-                                        <b>Nama Lengkap</b> <a class="float-right text-secondary"><td><?php echo $row['nama_pegawai']; ?></td></a>
-                                    </li>
-
-                                    <li class="list-group-item">
-                                        <b>Username</b> <a class="float-right text-secondary"><td><?php echo $row['username_doswal']; ?></td></a>
-                                    </li>
-
-                                    <li class="list-group-item">
-                                        <b>No.Telp</b> <a class="float-right text-secondary"><td><?php echo $row['no_telp_pegawai']; ?></td></a>
+                                        <b>No.Telp</b> <a class="float-right text-secondary"><td><?php echo $tik['no_telp_pegawai']; ?></td></a>
                                     </li>
                                 </ul>
-                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_doswal']; ?>" class="btn btn-secondary btn-block"><b>Edit Profil</b></a>
+                                <a data-toggle ="modal" data-target="#myModal<?php echo $tik['id_doswal']; ?>" class="btn btn-secondary btn-block"><b>Edit Profil</b></a>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -146,7 +141,7 @@ session_start();
 <!-- / modal edit  -->
 <?php $no = 0;
 foreach ($user as $row) : $no++; ?>
-  <div class="modal fade" id="myModal<?php echo $row['id_doswal']; ?>" role="dialog">
+  <div class="modal fade" id="myModal<?php echo $tik['id_doswal']; ?>" role="dialog">
     <div class="modal-dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -160,7 +155,7 @@ foreach ($user as $row) : $no++; ?>
           <form role="form" action="c_editprofile_doswal.php" method="get">
             <div class="modal-body">
               <?php
-                $id_doswal=$row['id_doswal'];
+                $id_doswal=$tik['id_doswal'];
                 $result= mysqli_query($koneksi, "SELECT * FROM tb_doswal where id_doswal='$id_doswal'");                
                 while ($bio= mysqli_fetch_array($result)) {
               ?>
@@ -190,6 +185,11 @@ foreach ($user as $row) : $no++; ?>
               <label>Password</label><span class="text-red">*</span></label>
                   <input type="password" class="form-control" name="password_doswal" placeholder="Password" id="myPassword" value="<?php echo $bio['password_doswal']; ?>">
                   <input type="checkbox" onclick="myFunction()"> Lihat Password
+            </div>
+
+            <div class="form-group">
+              <label>No Telp</label>
+              <input name = "no_telp_pegawai" type="text" class="form-control" value="<?php echo $bio['no_telp_pegawai']; ?>">
             </div>
 
             <div class="form-group" hidden>
@@ -222,18 +222,14 @@ foreach ($user as $row) : $no++; ?>
         </div>
         <!-- /.modal -->
                 </div>
-        <?php endforeach ?>
+</div>
+        <?php endforeach; ?>
 
 
 
     <?php include "../AdminLTE/footer.php" ?>
 </div>
 
-<?php 
-
-endforeach; 
-
-?>
 <!-- jQuery -->
 <script src="../AdminLTE/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->

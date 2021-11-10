@@ -3,6 +3,7 @@
 
   include "c_editpengajuan.php";
 
+
   session_start();
 ?>
 
@@ -93,7 +94,10 @@
                             <td><?php echo $row["nama_ortu"]; ?></td>
                             <td><?php echo $row["status_pengajuan"]; ?></td>
                             <td><center>
-                            <td><?php echo "<a href= 'acc_doswal.php?id_pengajuan=".$row['id_pengajuan']."' class='badge bg-". $warna."'>". $status."</a>";?><br><?php echo "<a>" .$tgl. "<a>"?>
+                            <form action="c_editpengajuan.php" method="post">
+                              <button type="submit" class="btn btn-default" name = "Ditolak">Close</button>
+                              <button type="submit" class="btn btn-primary" name = "Disetujui">Save changes</button>
+                            </form>
                             </td></center>
                           </tr>
                           
@@ -117,6 +121,22 @@
     </div>
     <!-- /.content-wrapper -->
   </div>
+  
+<?php
+  include "function_verifikasi.php";
+?>
+
+  <?php
+    if(isset($_POST["Disetujui"])){
+      acc_doswal($_POST);
+    };
+  ?>
+
+<?php
+    if(isset($_POST["Ditolak"])){
+      tolak_doswal($_POST);
+    };
+  ?>
 
          <!-- / modal edit  -->
          <?php $no = 0;
@@ -139,32 +159,32 @@
               while ($bio= mysqli_fetch_array($result)) {
             ?>
 
-            <div class="form-group">
+            <div class="form-group" hidden>
                   <label>Id Pengajuan</label>
                   <input name = "id_pengajuan" type="text" class="form-control" value="<?php echo $bio['id_pengajuan']; ?>" readonly/>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" hidden>
                   <label>NPM</label>
                   <input name = "npm" type="text" class="form-control" value="<?php echo $bio['npm']; ?>" readonly/>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" hidden>
                   <label>Alasan</label>
                   <input name = "alasan" type="text" class="form-control" value="<?php echo $bio['alasan']; ?>" readonly/>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" hidden>
                   <label>Tanggal Pengajuan</label>
                   <input name = "tgl_pengajuan" type="date" class="form-control" value="<?php echo $bio['tgl_pengajuan']; ?>" readonly/>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" hidden>
                   <label>Nama Orang Tua</label>
                   <input name = "nama_ortu" type="text" class="form-control" value="<?php echo $bio['nama_ortu']; ?>" readonly/>
               </div>
 
-              <div class="form-group" hidden>
+              <div class="form-group" hidden hidden>
                 <label for="ttd_ortu">Tanda Tangan</label>
                   <div class="input-group">
                     <div class="custom-file">
@@ -178,9 +198,10 @@
               <label for ="status">Status</label>
               <select class = "custom-select rounded-0" id ="status_pengajuan" name ="status_pengajuan" required>
                 <option><?php echo $bio['status_pengajuan']; ?></option>
-                <option value = "Ditolak">Ditolak</option>
-                <option value = "Disetujui Dosen Wali">Disetujui Dosen Wali</option>
-                <option value = "Disetujui Ketua Jurusan">Disetujui Ketua Jurusan</option>
+                <option value = "0">Belum Diverifikasi</option>
+                <option value = "1">Disetujui Dosen Wali</option>
+                <option value = "2">Disetujui Ketua Jurusan</option>
+                <option value = "3">Ditolak</option>
               </select>
               </div>
 

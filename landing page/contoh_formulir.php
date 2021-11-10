@@ -101,10 +101,10 @@
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">No.Telp /HP</span><span style="width:10.67pt; display:inline-block;">&nbsp;</span><span style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..</span></p>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Alamat Lengkap</span><span style="width:27.7pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: &nbsp;</span></p>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
-                    <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Dengan ini mengajuakan permohonan pengunduran diri sebagai mahasiswa Politeknik Negeri Cilacap karena </span></p>
+                    <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Dengan ini mengajuakan permohonan pengunduran diri sebagai mahasiswa Politeknik Negeri Cilacap karena ........................... </span></p>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Demikian permohonan kami, atas perhatian dan kebijaksanaannya kami ucapkan terima kasih.</span></p>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
-                    <p style="margin-top:0pt; margin-left:288pt; margin-bottom:8pt; text-indent:36pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Cilacap, </span></p>
+                    <p style="margin-top:0pt; margin-left:288pt; margin-bottom:8pt; text-indent:36pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Cilacap, ............... </span></p>
                     <table cellpadding="0" cellspacing="0" style="width:469pt; border-collapse:collapse;">
                         <tbody>
                             <tr style="height:155.6pt;">
@@ -113,14 +113,14 @@
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">OrangTua/Wali</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';"></span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">nama orang tua</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">(......................)</span></p>
                                 </td>
                                 <td style="width:223.7pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                                 <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Pemohon</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';"></span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">nama mahasiswa</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">(......................)</span></p>
                                 </td>
                             </tr>
                         </tbody>
@@ -161,12 +161,12 @@
                                 <td style="width:224.1pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Ketua Jurusan</span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">nama jurusan</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Teknik ..........</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">nama ketua jurusan</span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">NPAK.xxxxxxxxxx</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">(...............................)</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">NPAK......................</span></p>
                                 </td>
                                 <td style="width:224.1pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
@@ -175,8 +175,8 @@
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Nama wali dosen&nbsp;</span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">NPAK.xxxxxxxx</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">(.................................)&nbsp;</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">NPAK....................</span></p>
                                 </td>
                             </tr>
                         </tbody>

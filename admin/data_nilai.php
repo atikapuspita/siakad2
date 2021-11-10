@@ -90,11 +90,11 @@
                             <tr>
                                 <td><center><?= $i ?></center></td>
                                 <td><?php echo $row['nama_mhs']; ?></td>
-                                <td><center><a href="img/smt1/<?php echo $row['nilai_smt1'];?>" class ="badge badge-success">Unduh Nilai</center></td>
-                                <td><center><a href="img/smt2/<?php echo $row['nilai_smt2'];?>" class ="badge badge-success">Unduh Nilai</center></center></td>
-                                <td><center><a href="img/smt3/<?php echo $row['nilai_smt3'];?>" class ="badge badge-success">Unduh Nilai</center></center></td>
-                                <td><center><a href="img/smt4/<?php echo $row['nilai_smt4'];?>" class ="badge badge-success">Unduh Nilai</center></td>
-                                <td><center><a href="img/smt5/<?php echo $row['nilai_smt5'];?>" class ="badge badge-success">Unduh Nilai</center></center></td>
+                                <td><center><a href="img/smt1/<?php echo $row['nilai_smt1'];?>" class ="badge badge-success">Unduh KHS Semester I</center></td>
+                                <td><center><a href="img/smt2/<?php echo $row['nilai_smt2'];?>" class ="badge badge-success">Unduh KHS Semester II</center></center></td>
+                                <td><center><a href="img/smt3/<?php echo $row['nilai_smt3'];?>" class ="badge badge-success">Unduh KHS Semester III</center></center></td>
+                                <td><center><a href="img/smt4/<?php echo $row['nilai_smt4'];?>" class ="badge badge-success">Unduh KHS Semester IV</center></td>
+                                <td><center><a href="img/smt5/<?php echo $row['nilai_smt5'];?>" class ="badge badge-success">Unduh KHS Semester V</center></center></td>
                                 <td><center>
                                   <!-- <a data-toggle ="modal" data-target ="#myModal<?php echo $row['id_nilai']; ?>" class = "btn btn-primary"><i class="nav-icon fas fa-edit"></i>Update</a> -->
                                   <a href="hapus_nilai.php?id_nilai=<?= $row["id_nilai"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>                                

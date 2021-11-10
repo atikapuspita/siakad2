@@ -84,8 +84,7 @@
                   
                     <tbody>
                       <?php $i = 1; ?>
-                      
-                      <?php foreach ($user as $row) : ?>
+                          <?php foreach ($user as $row) : ?>
                           <tr>
                             <td><center><?= $i ?></center></td>
                             <td><?php echo $row['nama_pegawai']; ?></td>

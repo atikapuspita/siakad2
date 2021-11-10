@@ -38,12 +38,6 @@
                         <a class="nav-link link tebel-sedang" href="home.php">About &nbsp;&nbsp;</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link tebel-sedang" href="#">Services &nbsp;&nbsp;</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link link tebel-sedang" href="#">Contact &nbsp;&nbsp;</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link active tebel-sedang rounded-pill bg-ungu shadow" href="../koneksi/login.php">Log In</a>
                     </li>
                 </ul>
@@ -67,7 +61,11 @@
                         <li>Mahasiswa Mengisi Formulir Pengunduran Diri</li>
                         <li>Formulir di upload dan kemudian di ajukan untuk selanjutnya mendapat persetujuan Dosen Wali</li>
                         <li>Formulir yang sudah mendapat persetujuan dosen wali kemudian di ajukan untuk selanjutnya mendapat persetujuan Ketua Jurusan</li>
-                        <li></li>
+                        <li>Mahasiswa mengecek apakah pengajuannya di setujui oleh Ketua Jurusan</li>
+                        <li>Pengajuan di cek oleh Admin</li>
+                        <li>Admin mengeluarkan nomor Sk</li>
+                        <li>Mahasiswa dan Admin dapat mencetak formulir serta surat keputusan</li>
+                        <li>Mahasiswa dapat mengunduh KHS</li>
                     </ol>
                 </div>
 
