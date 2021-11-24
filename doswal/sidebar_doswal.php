@@ -63,6 +63,14 @@ $user = mysqli_query($koneksi, "SELECT * FROM tb_pegawai WHERE nip_npak = '$user
           </li>
 
           <li class="nav-item">
+            <a href="data_verifikasi.php" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>Verifikasi</p>
+            </a>
+          </li>
+
+          <li class="nav-header">AKSI</li>
+          <li class="nav-item">
             <a href="../koneksi/logout.php" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>Logout</p>

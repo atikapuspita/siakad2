@@ -16,19 +16,25 @@ session_start();
  ?>
 
 <?php
-    $data_pengajuan = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan");
+    $data_pengajuan = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan WHERE status_pengajuan =''");
     $jumlah_pengajuan = mysqli_num_rows($data_pengajuan);
 ?>
 
 <?php
-    $data_verifikasi = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan WHERE status_pengajuan = 'Disetujui Dosen Wali'");
-    $jumlah_verifikasi = mysqli_num_rows($data_verifikasi);
+    $data_doswal = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan WHERE status_pengajuan = '1'");
+    $jumlah_doswal = mysqli_num_rows($data_doswal);
 ?>
 
 <?php
-    $data_kajur = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan WHERE status_pengajuan = 'Disetujui Ketua Jurusan'");
+    $data_kajur = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan WHERE status_pengajuan = '2'");
     $jumlah_kajur = mysqli_num_rows($data_kajur);
 ?>
+
+<?php
+    $data_verifikasi = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan WHERE status_pengajuan = '3'");
+    $jumlah_verifikasi = mysqli_num_rows($data_verifikasi);
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -98,24 +104,37 @@ session_start();
                 </div>
 
                 <div class="col-lg-3 col-4">
-                    <div class="small-box bg-warning">
+                    <div class="small-box bg-success">
                         <div class="inner">
-                            <h3><?php echo $jumlah_verifikasi; ?></h3>
-                            <p>Di Verifikasi Dosen Wali</p>
+                            <h3><?php echo $jumlah_doswal; ?></h3>
+                            <p>Verifikasi Dosen Wali</p>
                         </div>  
                         <div class="icon">
                             <i class="ion ion-easel"></i>
                         </div>
-                        <a href="data_verifikasi.php" class="small-box-footer">More info <i class="fas fa-arrow-alt-circle-right"></i></a>
+                        <a href="data_verifikasi_doswal.php" class="small-box-footer">More info <i class="fas fa-arrow-alt-circle-right"></i></a>
                     </div>
                 </div>
 
                 
             <div class="col-lg-3 col-4">
-                    <div class="small-box bg-success">
+                    <div class="small-box bg-warning">
                         <div class="inner">
                             <h3><?php echo $jumlah_kajur; ?></h3>
-                            <p>Di Verifikasi Ketua Jurusan</p>
+                            <p>Verifikasi Ketua Jurusan</p>
+                        </div>  
+                        <div class="icon">
+                            <i class="ion ion-easel"></i>
+                        </div>
+                        <a href="data_verifikasi_kajur.php" class="small-box-footer">More info <i class="fas fa-arrow-alt-circle-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-4">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3><?php echo $jumlah_verifikasi; ?></h3>
+                            <p>Data Verifikasi</p>
                         </div>  
                         <div class="icon">
                             <i class="ion ion-easel"></i>
@@ -124,35 +143,6 @@ session_start();
                     </div>
                 </div>
             </div>
-
-                <div class="col-4">
-                    <div class="card card-secondary">
-                        <div class="card-header">
-                            <h3 class="card-title">Profil</h3>
-                        </div> 
-                        <div class="card card-secondary card-outline">
-                            <div class="card-body box-profile">
-                                <ul class="list-group list-group-unbordered mb-3">
-                                <center>
-                                    <img src="img/foto_pegawai/<?php echo $tik['foto_pegawai'];?>" alt="Foto" width="150" class="rounded-circle"></center><br>
-                                    <li class="list-group-item">
-                                        <b>NIP/NPAK</b> <a class="float-right text-secondary"><td><?php echo $tik['nip_npak']; ?></td></a>
-                                    </li>
-
-                                    <li class="list-group-item">
-                                        <b>Nama Lengkap</b> <a class="float-right text-secondary"><td><?php echo $tik['nama_pegawai']; ?></td></a>
-                                    </li>
-
-                                    <li class="list-group-item">
-                                        <b>No.Telp</b> <a class="float-right text-secondary"><td><?php echo $tik['no_telp_pegawai']; ?></td></a>
-                                    </li>
-                                </ul>
-                                <a data-toggle ="modal" data-target="#myModal<?php echo $tik['nip_npak']; ?>" class="btn btn-secondary btn-block"><b>Edit Profil</b></a>
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                    </div>
-                </div>
                 
             </div>
     </section>

@@ -9,14 +9,15 @@ if(isset($_POST['tambah'])){
     $alasan = $_POST['alasan'];
     $tgl_pengajuan = $_POST['tgl_pengajuan'];
     $nama_ortu = $_POST['nama_ortu'];
-    $status_pengajuan = $_POST['status_pengajuan'];
+    $semester = $_POST['semester'];
+    $status_pengajuan = $_POST['0'];
 
   //Membuat Variabel untuk menyimpan Foto atau Gambar
   
 	$lokasi_ttd_ortu=$_FILES['ttd_ortu']['tmp_name'];
 	$nama_ttd_ortu=$_FILES['ttd_ortu']['name'];
 	$tipe_ttd_ortu=$_FILES['ttd_ortu']['type'];
-	$folder="img/ttd_orangtua/$nama_ttd_ortu";
+	$folder="../admin/img/ttd_orangtua/$nama_ttd_ortu";
 	
 	//Membuat Nofitikasi upload Foto atau Gambar
 	if(!empty($lokasi_ttd_ortu))
@@ -25,8 +26,8 @@ if(isset($_POST['tambah'])){
 	}
 
 // jalankan query INSERT untuk menambah data ke database pastikan sesuai urutan (id tidak perlu karena dibikin otomatis)
-$query = "INSERT INTO tb_pengajuan (`id_pengajuan`, `npm`, `alasan`, `tgl_pengajuan`, `nama_ortu`,`status_pengajuan`,`ttd_ortu`) 
-         VALUES ('$id_pengajuan', '$npm', '$alasan', '$tgl_pengajuan', '$nama_ortu','$status_pengajuan', '$nama_ttd_ortu')";
+$query = "INSERT INTO tb_pengajuan (`id_pengajuan`, `npm`, `alasan`, `tgl_pengajuan`, `nama_ortu`,`status_pengajuan`,`ttd_ortu`,`semester`) 
+         VALUES ('$id_pengajuan', '$npm', '$alasan', '$tgl_pengajuan', '$nama_ortu','0', '$nama_ttd_ortu', '$semester')";
 
 $result = mysqli_query($koneksi, $query);
     if(!$result){

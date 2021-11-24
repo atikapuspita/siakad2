@@ -33,7 +33,8 @@
       include "header_admin.php";
       include "sidebar_admin.php";
       
-      $user = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa INNER JOIN tb_pengajuan ON tb_pengajuan.npm = tb_mahasiswa.npm");
+      $user = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa INNER JOIN tb_pengajuan ON tb_pengajuan.npm = tb_mahasiswa.npm
+                          INNER JOIN tb_verifikasi ON tb_pengajuan.id_pengajuan = tb_verifikasi.id_pengajuan WHERE tb_verifikasi.status_pengajuan = '3'");
   ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -71,9 +72,10 @@
                       <tr>
                           <th><center>No</center></th>
                           <th><center>Nama Mahasiswa</center></th>
-                          <th><center>Alasan</center></th>
+                          <th><center>Perihal</center></th>
                           <th><center>Tanggal Pengajuan</center></th>
                           <th><center>Status Verifikasi</center></th>
+                          <th><center>Tanggal Verifikasi</center></th>
                           <th><center>Aksi</center></th>
                       </tr>
                     </thead>
@@ -87,10 +89,39 @@
                               <td><?php echo $row['nama_mhs']; ?></td>
                               <td><?php echo $row['alasan']; ?></td>
                               <td><?php echo $row['tgl_pengajuan']; ?></td>
-                              <td><?php echo $row["status_pengajuan"];?></td>
+                              <?php 
+                              if (empty($row['status_pengajuan'])) {
+                                  $status_pengajuan = "Belum diverifikasi";
+                                  $warna = 'warning';
+                              } else {
+                                  if ($row['status_pengajuan'] == "1") {
+                                      $status_pengajuan = "Diiverifikasi Dosen Wali";
+                                      $warna = 'info';
+                                  } elseif ($row['status_pengajuan'] == "2") {
+                                      $status_pengajuan = "Diiverifikasi Ketua Jurusan";
+                                      $warna = 'secondary';
+                                  } elseif ($row['status_pengajuan'] == "3") {
+                                      $status_pengajuan = "Selesai diverifikasi";
+                                      $warna = 'success';
+                                  } elseif ($row['status_pengajuan'] == "4") {
+                                      $status_pengajuan = "Ditolak";
+                                      $warna = 'danger';
+                                  } else {
+                                      $status_pengajuan = "Status not found";
+                                      $warna = '';
+                                  }
+                              } ?>
+                              <td><center><?php echo "<a class='badge badge-".$warna."'>".$status_pengajuan."</a>"; ?></center></td>
+                              <td><?php echo $row['tgl_verifikasi']; ?></td>
                               <td><center>
                                 <a class="btn btn-app" href="formulir.php?id_pengajuan=<?= $row["id_pengajuan"]; ?>"><i  class="fas fa-save"></i>Formulir</a>
-                                <a class="btn btn-app" href="surat_keputusan.php?id_pengajuan=<?= $row["id_pengajuan"]; ?>"><i  class="fas fa-save"></i>SK</a>
+                                <?php
+                                  if ($row['status_pengajuan'] == "3") { ?>
+                                      <a class="btn btn-app" href="surat_keputusan.php?id_pengajuan=<?= $row["id_pengajuan"]; ?>"><i  class="fas fa-save"></i>SK</a>
+                                  <?php } else {
+                                     
+                                  }
+                                  ?>
                               </td></center>
                           </tr>
                           

@@ -56,6 +56,14 @@ $user = mysqli_query($koneksi, "SELECT * FROM tb_pegawai WHERE nip_npak = '$user
           </li> 
 
           <li class="nav-item">
+                  <a href="profile_admin.php" class="nav-link">
+                  <i class="nav-icon fas fa-user-friends"></i>
+                    <p> Profile</p>
+                  </a>
+                </li>
+
+
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-mail-bulk"></i>
               <p>
@@ -129,6 +137,8 @@ $user = mysqli_query($koneksi, "SELECT * FROM tb_pegawai WHERE nip_npak = '$user
             </a>
           </li>
           </li>
+
+          <li class="nav-header">AKSI</li>
           <li class="nav-item">
             <a href="../koneksi/logout.php" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>

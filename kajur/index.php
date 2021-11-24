@@ -15,12 +15,12 @@ session_start();
  ?>
 
 <?php
-    $data_pengajuan = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan WHERE status_pengajuan = 'Disetujui Dosen Wali'");
+    $data_pengajuan = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan WHERE status_pengajuan = '1'");
     $jumlah_pengajuan = mysqli_num_rows($data_pengajuan);
 ?>
 
 <?php
-    $data_verifikasi = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan");
+    $data_verifikasi = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan WHERE status_pengajuan = '2'");
     $jumlah_verifikasi = mysqli_num_rows($data_verifikasi);
 ?>
 
@@ -78,7 +78,7 @@ session_start();
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-3 col-6">
+                <div class=" col-6">
                     <div class="small-box bg-info">
                         <div class="inner">
                             <h3><?php echo $jumlah_pengajuan; ?></h3>
@@ -91,7 +91,7 @@ session_start();
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-6">
+                <div class=" col-6">
                     <div class="small-box bg-info">
                         <div class="inner">
                             <h3><?php echo $jumlah_verifikasi; ?></h3>
@@ -123,15 +123,15 @@ session_start();
                                     </li>
 
                                     <li class="list-group-item">
-                                        <b>Username</b> <a class="float-right text-secondary"><td><?php echo $tik['username_kajur']; ?></td></a>
+                                        <b>Nama Jurusan</b> <a class="float-right text-secondary"><td><?php echo $tik['nama_jurusan']; ?></td></a>
                                     </li>
 
                                     <li class="list-group-item">
-                                        <b>Password</b> <a class="float-right text-secondary"><td><?php echo $tik['password_kajur']; ?></td></a>
+                                        <b>Tahun Jabatan</b> <a class="float-right text-secondary"><td><?php echo $tik['thn_jabatan_kajur']; ?></td></a>
                                     </li>
 
                                     <li class="list-group-item">
-                                        <b>No.Telp</b> <a class="float-right text-secondary"><td><?php echo $tik['no_telp_pegawai']; ?></td></a>
+                                        <b>Status</b> <a class="float-right text-secondary"><td><?php echo $tik['status_kajur']; ?></td></a>
                                     </li>
                                 </ul>
                                 <a data-toggle ="modal" data-target="#myModal<?php echo $tik['id_jurusan']; ?>" class="btn btn-secondary btn-block"><b>Edit Profil</b></a>
@@ -165,12 +165,12 @@ session_start();
               while ($bio= mysqli_fetch_array($result)) {
             ?>
             
-            <div class="form-group">
+            <div class="form-group" hidden>
               <label>Id Ketua Jurusan</label>
               <input name = "id_jurusan" type="text" class="form-control" value="<?php echo $bio['id_jurusan']; ?>" readonly/>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" hidden>
               <label>NIP/NPAK</label>
               <input name = "nip_npak" type="text" class="form-control" value="<?php echo $bio['nip_npak']; ?>" readonly/>
             </div>
@@ -206,7 +206,7 @@ session_start();
               <input name = "thn_jabatan_kajur" type="text" class="form-control" value="<?php echo $bio['thn_jabatan_kajur']; ?>">
             </div>
 
-            <div class="form-group">
+            <div class="form-group" hidden>
               <label for ="status_kajur">Status</label>
               <select class = "custom-select rounded-0" id ="status_kajur" name ="status_kajur" required>
                 <option><?php echo $bio['status_kajur']; ?></option>
@@ -229,6 +229,7 @@ session_start();
         <!-- /.modal-dialog -->
       </div>
       <!-- /.modal -->
+              </div>
               </div>
       <?php endforeach ?>
 

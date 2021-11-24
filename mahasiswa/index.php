@@ -7,8 +7,8 @@ session_start();
 ?>
 
 <?php
- $username_mhs = $_SESSION["username_mhs"];
- $user = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa WHERE username_mhs = '$username_mhs'");
+ $username_mhs = $_SESSION["npm"];
+ $user = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa WHERE npm = '$username_mhs'");
  ?>
 
 <?php

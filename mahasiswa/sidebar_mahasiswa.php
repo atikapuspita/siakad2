@@ -4,8 +4,8 @@ include "../AdminLTE/rel.html";
 include "../AdminLTE/script.html";
 
 
-$username_mhs = $_SESSION["username_mhs"];
-$user = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa WHERE username_mhs = '$username_mhs'")
+$username_mhs = $_SESSION["npm"];
+$user = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa WHERE npm = '$username_mhs'")
 ?>
 
   <!-- Main Sidebar Container -->
@@ -76,6 +76,7 @@ $user = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa WHERE username_mhs = 
                   </a>
                 </li>
 
+            <li class="nav-header">AKSI</li>
             <li class="nav-item">
               <a href="../koneksi/logout.php" class="nav-link">
                 <i class="nav-icon fas fa-sign-out-alt"></i>

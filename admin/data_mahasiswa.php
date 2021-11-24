@@ -71,7 +71,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-success" style ="width : 10%"><i class="fas fa-plus-circle"></i>  Tambah Data</a> <br>
+              <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-secondary" style ="width : 12%"><i class="fas fa-plus-circle"></i>  Tambah Data</a> <br>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -82,7 +82,6 @@
                       <th><center>Program Studi</center></th>
                       <th><center>Tahun Akademik</center></th>
                       <th><center>No.Telp</center></th>
-                      <th><center>Foto</center></th>
                       <th><center>Aksi</center></th>
                   </tr>
                   </thead>
@@ -99,12 +98,21 @@
                                 <td><?php echo $row['nama_prodi']; ?></td>
                                 <td><center><?php echo $row['thn_angkatan']; ?></center></td>
                                 <td><?php echo $row['no_telp_mhs']; ?></td>
-                                <td><img src="img/foto_mahasiswa/<?php echo $row['foto_mhs'];?>"width="100px" height="100px"></td>
                                 <td><center>
-                                    <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['npm']; ?>" class ="btn btn-primary"><i class="far fa-eye"></i><br> Details</a> 
-                                    <a data-toggle ="modal" data-target="#myModal<?php echo $row['npm']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i><br> Update</a>
-                                    <a href="hapus_mahasiswa.php?npm=<?= $row["npm"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i><br> Delete</a>                                
-                                </td></center>
+                                  <div class = "row">
+                                    <div class="col">
+                                      <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['npm']; ?>" class = "btn btn-default"> <i class="fas fa-eye"></i> </a>
+                                    </div>
+                                    
+                                    <div class="col">
+                                      <a data-toggle ="modal" data-target="#myModal<?php echo $row['npm']; ?>" class = "btn btn-default"><i class="nav-icon fas fa-edit"></i> </a>
+                                    </div>
+                                    
+                                    <div class="col">
+                                      <a href="hapus_mahasiswa.php?npm=<?= $row["npm"]; ?>"class = "btn btn-default"><i class="fas fa-trash-alt"></i> </a>                                
+                                      </div>
+                                    </div>
+                                  </td></center>
                             </tr>
                         <?php $i++ ; ?>
  
@@ -175,21 +183,7 @@
                     </select>
                   </div>
 
-              <div class="form-group col-4">
-                  <label for="exampleSelectRounded0">Nama Kelas</label>
-                    <select type="text" class="form-control" aria-describedby="emailHelp" name="id_doswal" id="id_doswal">
-                      <option> Pilih Kelas</option>
-                        <?php $kelas = mysqli_query($koneksi, "SELECT * FROM tb_doswal ");
-                          foreach ($kelas as $kls) : 
-                        ?>
-                          <option value="<?php echo $kls['id_doswal'] ?>" nama_kelas="<?php echo $kls['nama_kelas'] ?>"><?php echo $kls['nama_kelas'] ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                  </div>
-            </div>
-
-            <div class="form-row">
-            <div class="form-group col-4">
+                  <div class="form-group col-4">
                   <label for="exampleSelectRounded0">Nama Program Studi</label>
                     <select type="text" class="form-control" aria-describedby="emailHelp" name="id_prodi" id="id_prodi">
                       <option> Pilih Program Studi</option>
@@ -200,10 +194,24 @@
                         <?php endforeach; ?>
                     </select>
                   </div>
+            </div>
+
+            <div class="form-row">
+            <div class="form-group col-4">
+                  <label for="exampleSelectRounded0">Nama Kelas</label>
+                    <select type="text" class="form-control" aria-describedby="emailHelp" name="id_doswal" id="id_doswal">
+                      <option> Pilih Kelas</option>
+                        <?php $kelas = mysqli_query($koneksi, "SELECT * FROM tb_doswal ");
+                          foreach ($kelas as $kls) : 
+                        ?>
+                          <option value="<?php echo $kls['id_doswal'] ?>" nama_kelas="<?php echo $kls['nama_kelas'] ?>"><?php echo $kls['nama_kelas'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                  </div>
 
             <div class="form-group col-4">
-                  <label>Tempat, tanggal lahir</label>
-                  <input name = "ttl" type="text" class="form-control" id="ttl" placeholder="Ex : 3 (Tiga)" required/>
+                  <label>Tanggal lahir</label>
+                  <input name = "ttl" type="date" class="form-control" id="ttl" required/>
               </div>
 
               <div class="form-group col-4">
@@ -222,14 +230,14 @@
               </select>
             </div>
             
-            <div class="form-group col-4">
-                  <label for="alamat">Alamat</label>
-                  <textarea rows="3" input name = "alamat" type="text" class="form-control" id="alamat" placeholder="alamat" required/></textarea>
-              </div>
-            
               <div class="form-group col-4">
                   <label>No.Telp</label>
                   <input name = "no_telp_mhs" type="number" class="form-control" id="no_telp_mhs" placeholder="Ex : 05857468xxxx" required/>
+              </div>
+
+              <div class="form-group col-4">
+                  <label for="alamat">Alamat</label>
+                  <textarea rows="3" input name = "alamat" type="text" class="form-control" id="alamat" placeholder="alamat" required/></textarea>
               </div>
             </div>
 
@@ -309,19 +317,17 @@
                   <input type="checkbox" onclick="myFunction()"> Lihat Password
               </div>
             
-              <div class="form-group col-4">
+              <div class="form-group col-4" hidden>
                   <label>Id Jurusan</label>
                   <input name = "id_jurusan" type="text" class="form-control" value="<?php echo $bio['id_jurusan']; ?>">
               </div>
 
-            <div class="form-group col-4">
+            <div class="form-group col-4"hidden>
                   <label>Id Dosen Wali</label>
                   <input name = "id_doswal" type="text" class="form-control" value="<?php echo $bio['id_doswal']; ?>">
               </div>
-            </div>
 
-            <div class="form-row" >
-              <div class="form-group col-4">
+              <div class="form-group col-4" hidden>
                   <label>Id Prodi</label>
                   <input name = "id_prodi" type="text" class="form-control" value="<?php echo $bio['id_prodi']; ?>">
               </div>
@@ -332,8 +338,8 @@
               </div>
 
             <div class="form-group col-4">
-                  <label>Tempat, tanggal lahir</label>
-                  <input name = "ttl" type="text" class="form-control" value="<?php echo $bio['ttl']; ?>">
+                  <label>Tanggal lahir</label>
+                  <input name = "ttl" type="date" class="form-control" value="<?php echo $bio['ttl']; ?>">
               </div>
             </div>
 
@@ -347,13 +353,14 @@
               </select>
               </div>
 
-            <div class="form-group col-4">
-                  <label for="alamat">Alamat</label>
-                  <input name = "alamat" type="text" class="form-control" value="<?php echo $bio['alamat']; ?>">
-              </div>
               <div class="form-group col-4">
                   <label>No.Telp</label>
                   <input name = "no_telp_mhs" type="number" class="form-control" value="<?php echo $bio['no_telp_mhs']; ?>">
+              </div>
+              
+            <div class="form-group col-4">
+                  <label for="alamat">Alamat</label>
+                  <input name = "alamat" type="text" class="form-control" value="<?php echo $bio['alamat']; ?>">
               </div>
             </div>
 
@@ -415,69 +422,28 @@
               $npm=$row['npm'];
               $result= mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa where npm='$npm'");                
               while ($bio= mysqli_fetch_array($result)) {
-            ?>
-                <form>
-                <div class="card-body box-profile">
-                  <div class="text-center"></div>
-                  <center>
-                  <img src="img/foto_mahasiswa/<?php echo $row['foto_mhs'];?>" alt="Foto" width="100" class="rounded-circle"></center><br>
-                    <h3 class="profile-username text-center"><?php echo $row['nama_mhs'] ?></h3>
-                        <ul class="list-group list-group-unbordered mb-3">
-                          <div class = "form-row">
-                          <li class="list-group-item col-6">
-                            <b>NPM</b> <a class="float-right"><?php echo $row['npm'] ?></a>
-                          </li>
+                ?>
 
-                          <li class="list-group-item col-6">
-                            <b>Jurusan</b> <a class="float-right"><?php echo $row['nama_jurusan'] ?></a>
-                          </li>
-                          </div>
-
-                          <div class ="form-row">
-                          <li class="list-group-item col-6">
-                            <b>Kelas</b> <a class="float-right"><?php echo $row['nama_kelas'] ?></a>
-                          </li>
-
-                          <li class="list-group-item col-6">
-                            <b>TTL</b> <a class="float-right"><?php echo $row['ttl'] ?></a>
-                          </li>
-                          </div>
-
-                          <div class ="form-row">
-                          <li class="list-group-item col-6">
-                            <b>Username</b> <a class="float-right"><?php echo $row['username_mhs'] ?></a>
-                          </li>
-
-                          <li class="list-group-item col-6">
-                            <b>Password</b> <a class="float-right"><?php echo $row['password_mhs'] ?></a>
-                          </li>
-                          </div>
-
-                          <div class ="form-row">
-                          <li class="list-group-item col-6">
-                            <b>Jenis Kelamin</b> <a class="float-right"><?php echo $row['jk'] ?></a>
-                          </li>
-
-                          <li class="list-group-item col-6">
-                            <b>Tahun Angkatan</b> <a class="float-right"><?php echo $row['thn_angkatan'] ?></a>
-                          </li>
-                          </div>
-
-                          <div class ="form-row">
-                          <li class="list-group-item col-6">
-                            <b>Alamat</b> <a class="float-right"><?php echo $row['alamat'] ?></a>
-                          </li>
-
-                          <li class="list-group-item col-6">
-                            <b>No.Telp</b> <a class="float-right"><?php echo $row['no_telp_mhs'] ?></a>
-                          </li>
-                          </div>
-
-                          <li class="list-group-item">
-                            <b>Tanda Tangan</b> <img src="img/ttd_mahasiswa/<?php echo $row['ttd_mhs'];?>" alt="Foto" width="50px" height="50px" class="float-right">
-                          </li>
-                        </ul>
-                </div>
+              <div class="row container">
+                            <div class="col d-flex align-items-center">
+                                <img src="img/foto_mahasiswa/<?php echo $row['foto_mhs'];?>" alt="Foto" width="100">
+                            </div>
+                            <div class="col-10">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><span class="float-left">NPM</span><span class="float-right"><b><?= $row["npm"]; ?></b></span></li>
+                                    <li class="list-group-item"><span class="float-left">Nama</span><span class="float-right"><b><?= $row["nama_mhs"]; ?></b></span></li>
+                                    <li class="list-group-item"><span class="float-left">Username</span><span class="float-right"><b><?= $row["username_mhs"]; ?></b></span></li>
+                                    <li class="list-group-item"><span class="float-left">Password</span><span class="float-right"><b><?= $row["password_mhs"]; ?></b></span></li>
+                                    <li class="list-group-item"><span class="float-left">Jenis Kelamin</span><span class="float-right"><b><?= $row["jk"]; ?></b></span></li>
+                                    <li class="list-group-item"><span class="float-left">Tanggal Lahir</span><span class="float-right"><b><?= $row["ttl"]; ?></b></span></li>
+                                    <li class="list-group-item"><span class="float-left">Jurusan</span><span class="float-right"><b><?= $row["nama_jurusan"]; ?></b></span></li>
+                                    <li class="list-group-item"><span class="float-left">Kelas</span><span class="float-right"><b><?= $row["nama_kelas"]; ?></b></span></li>
+                                    <li class="list-group-item"><span class="float-left">Tahun Akademik</span><span class="float-right"><b><?= $row["thn_angkatan"]; ?></b></span></li>
+                                    <li class="list-group-item"><span class="float-left">Alamat</span><span class="float-right"><b><?= $row["alamat"]; ?></b></span></li>
+                                    <li class="list-group-item"><span class="float-left">No.Telephone</span><span class="float-right"><b><?= $row["no_telp_mhs"]; ?></b></span></li>
+                                </ul>
+                            </div>
+                        </div>
               
               <?php
                   }

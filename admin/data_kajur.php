@@ -23,9 +23,9 @@
   <link rel="stylesheet" href="../AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="../AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../AdminLTE/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="../css/a.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../AdminLTE/dist/css/adminlte.min.css">
-
 
 </head>
 
@@ -74,6 +74,7 @@
                     <thead>
                       <tr>
                           <th><center>No</center></th>
+                          <th><center>NIP/NPAK</center></th>
                           <th><center>Nama Pegawai</center></th>
                           <th><center>Jurusan</center></th>
                           <th><center>Masa Jabatan</center></th>
@@ -87,14 +88,15 @@
                           <?php foreach ($user as $row) : ?>
                           <tr>
                             <td><center><?= $i ?></center></td>
+                            <td><?php echo $row['nip_npak']; ?></td>
                             <td><?php echo $row['nama_pegawai']; ?></td>
                             <td><?php echo $row['nama_jurusan']; ?></td>
                             <td><center><?php echo $row["thn_jabatan_kajur"]; ?></center></td>
                             <td><?php echo $row["status_kajur"]; ?></td>
                             <td><center>
-                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row["id_jurusan"]; ?>" class ="btn btn-primary"><i class="far fa-eye"></i><br> Details</a> 
-                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_jurusan']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i><br> Update</a>
-                                <a href="hapus_kajur.php?id_jurusan=<?= $row["id_jurusan"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i><br> Delete</a>
+                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row["id_jurusan"]; ?>" class = "btn btn-default"><i class="far fa-eye"></i></a> 
+                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_jurusan']; ?>" class = "btn btn-default"><i class="nav-icon fas fa-edit"></i> </a>
+                                <a href="hapus_kajur.php?id_jurusan=<?= $row["id_jurusan"]; ?>" class = "btn btn-default"><i class="fas fa-trash-alt"></i> </a>
                             </td></center>
                           </tr>
                           
@@ -215,7 +217,7 @@ foreach ($user as $row) : $no++; ?>
               <input name = "id_jurusan" type="text" class="form-control" value="<?php echo $bio['id_jurusan']; ?>" readonly/>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" hidden>
               <label>NIP/NPAK</label>
               <input name = "nip_npak" type="text" class="form-control" value="<?php echo $bio['nip_npak']; ?>" readonly/>
             </div>
@@ -287,41 +289,20 @@ foreach ($user as $row) : $no++; ?>
                 $result= mysqli_query($koneksi, "SELECT * FROM tb_jurusan INNER JOIN tb_pegawai ON tb_jurusan.nip_npak = tb_pegawai.nip_npak WHERE id_jurusan = $row[id_jurusan]");                
                 while ($bio= mysqli_fetch_array($result)) {
               ?>
-
-<form>
-                <div class="card-body box-profile">
-                  <div class="text-center"></div>
-                    <h3 class="profile-username text-center"><?php echo $row['nama_pegawai'] ?></h3>
-                        <ul class="list-group list-group-unbordered mb-3">
-                          <li class="list-group-item">
-                            <b>ID</b> <a class="float-right"><?php echo $row['id_jurusan'] ?></a>
-                          </li>
-
-                          <li class="list-group-item">
-                            <b>NIP/NPAK</b> <a class="float-right"><?php echo $row['nip_npak'] ?></a>
-                          </li>
-
-                          <li class="list-group-item">
-                            <b>Username</b> <a class="float-right"><?php echo $row['username_kajur'] ?></a>
-                          </li>
-
-                          <li class="list-group-item">
-                            <b>Password</b> <a class="float-right"><?php echo $row['password_kajur'] ?></a>
-                          </li>
-
-                          <li class="list-group-item">
-                            <b>Nama Jurusan</b> <a class="float-right"><?php echo $row['nama_jurusan'] ?></a>
-                          </li>
-
-                          <li class="list-group-item">
-                            <b>Tahun Jabatan</b> <a class="float-right"><?php echo $row['thn_jabatan_kajur'] ?></a>
-                          </li>
-
-                          <li class="list-group-item">
-                            <b>Status</b> <a class="float-right"><?php echo $row['status_kajur'] ?></a>
-                          </li>
-                          </ul>
+                          <div class="row container">
+                            <div class="col-12">
+                                <ul class="list-group">
+                                <li class="list-group-item"><span class="float-left">Id Jurusan</span><span class="float-right"><b><?= $row['id_jurusan']; ?></b></span></li>
+                                    <li class="list-group-item"><span class="float-left">NIP/NPAK</span><span class="float-right"><b><?= $row['nip_npak']; ?></b></span></li>
+                                    <li class="list-group-item"><span class="float-left">Nama Pegawai</span><span class="float-right"><b><?= $row['nama_pegawai']; ?></b></span></li>
+                                    <li class="list-group-item"><span class="float-left">Username</span><span class="float-right"><b><?= $row['username_kajur']; ?></b></span></li>
+                                    <li class="list-group-item"><span class="float-left">Password</span><span class="float-right"><b><?= $row['password_kajur']; ?></b></span></li>
+                                    <li class="list-group-item"><span class="float-left">Nama Jurusan</span><span class="float-right"><b><?= $row['nama_jurusan']; ?></b></span></li>
+                                    <li class="list-group-item"><span class="float-left">Tahun Jabatan</span><span class="float-right"><b><?= $row['thn_jabatan_kajur']; ?></b></span></li>
+                                    <li class="list-group-item"><span class="float-left">Status</span><span class="float-right"><b><?= $row['status_kajur']; ?></b></span></li>
+                                  </ul>
                 </div>
+                          </div>
               
               <?php
                   }
@@ -330,7 +311,6 @@ foreach ($user as $row) : $no++; ?>
             </div>
             <div class="modal-footer justify-content-between">
                 <a href="index.php" type="submit" class="btn btn-secondary" data-dismiss="modal">Close</a>
-                </form>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -341,9 +321,7 @@ foreach ($user as $row) : $no++; ?>
 <?php endforeach ?>
 
 
-  <?php
-  include "../AdminLTE/footer.php"
-  ?>
+  <?php include "../AdminLTE/footer.php" ?>
 
 </div>
 
@@ -368,6 +346,37 @@ foreach ($user as $row) : $no++; ?>
 <script src="../AdminLTE/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../AdminLTE/dist/js/demo.js"></script>
+
+<!-- jQuery UI 1.11.4 -->
+<script src="../AdminLTE/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="../AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="../AdminLTE/plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="../AdminLTE/plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="../AdminLTE/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="../AdminLTE/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="../AdminLTE/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="../AdminLTE/plugins/moment/moment.min.js"></script>
+<script src="../AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="../AdminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="../AdminLTE/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="../AdminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="../AdminLTE/dist/js/pages/dashboard.js"></script>
+
+
 <!-- Page specific script -->
 <script>
   $(function () {

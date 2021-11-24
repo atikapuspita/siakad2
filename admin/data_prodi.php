@@ -69,7 +69,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-success" style ="width : 10%"><i class="fas fa-plus-circle"></i>  Tambah Data</a> <br>
+                <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-secondary" style ="width : 12%"><i class="fas fa-plus-circle"></i>  Tambah Data</a> <br>
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
@@ -87,8 +87,8 @@
                             <td><center><?= $i ?></center></td>
                             <td><?php echo $row['nama_prodi']; ?></td>
                             <td><center>
-                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_prodi']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i><br> Update</a>
-                                <a href="hapus_prodi.php?id_prodi=<?= $row["id_prodi"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i><br> Delete</a>                                
+                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_prodi']; ?>" class = "btn btn-default"><i class="fas fa-edit"></i> </a>
+                                <a href="hapus_prodi.php?id_prodi=<?= $row["id_prodi"]; ?>" class = "btn btn-default"><i class="fas fa-trash-alt"></i> </a>                                
                             </td></center>
                           </tr>
                           

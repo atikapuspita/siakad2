@@ -6,12 +6,12 @@
 
     // membuat variabel untuk menampung data dari form
     $npm = $_POST['npm'];
-    $id_jurusan = $_POST['id_jurusan'];
-    $id_doswal = $_POST['id_doswal'];
+    // $id_jurusan = $_POST['id_jurusan'];
+    // $id_doswal = $_POST['id_doswal'];
     $username_mhs = $_POST['username_mhs'];
     $password_mhs = $_POST['password_mhs'];
     $nama_mhs = $_POST['nama_mhs'];
-    $id_prodi = $_POST['id_prodi'];
+    // $id_prodi = $_POST['id_prodi'];
     $jk = $_POST['jk'];
     $thn_angkatan = $_POST['thn_angkatan'];
     $alamat = $_POST['alamat'];
@@ -39,8 +39,8 @@
  
  if($nama_file AND $nama_file1 != '')
  {
-   $update = mysqli_query($koneksi, "UPDATE tb_mahasiswa SET npm='$npm',id_jurusan='$id_jurusan',id_doswal='$id_doswal',username_mhs='$username_mhs',password_mhs='$password_mhs',
-             nama_mhs='$nama_mhs',jk='$jk',ttl='$ttl',thn_angkatan='$thn_angkatan',alamat='$alamat',id_prodi='$id_prodi',no_telp_mhs='$no_telp_mhs',
+   $update = mysqli_query($koneksi, "UPDATE tb_mahasiswa SET npm='$npm',username_mhs='$username_mhs',password_mhs='$password_mhs',
+             nama_mhs='$nama_mhs',jk='$jk',ttl='$ttl',thn_angkatan='$thn_angkatan',alamat='$alamat',no_telp_mhs='$no_telp_mhs',
              foto_mhs='$nama_file',ttd_mhs='$nama_file1' WHERE npm='$npm'");
    if($update) {
      echo "<script> 
@@ -54,7 +54,7 @@
  }
  else
  {
-   $update = mysqli_query($koneksi, "UPDATE tb_mahasiswa SET npm='$npm',id_jurusan='$id_jurusan',id_doswal='$id_doswal',username_mhs='$username_mhs',password_mhs='$password_mhs',
+   $update = mysqli_query($koneksi, "UPDATE tb_mahasiswa SET npm='$npm',username_mhs='$username_mhs',password_mhs='$password_mhs',
              nama_mhs='$nama_mhs',jk='$jk',ttl='$ttl',thn_angkatan='$thn_angkatan',alamat='$alamat',no_telp_mhs='$no_telp_mhs' WHERE npm='$npm'");
    if($update) {
      echo "<script> 

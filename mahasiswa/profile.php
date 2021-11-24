@@ -7,8 +7,9 @@ session_start();
 ?>
 
 <?php
- $username_mhs = $_SESSION["username_mhs"];
- $user = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa INNER JOIN tb_jurusan ON tb_mahasiswa.id_jurusan = tb_jurusan.id_jurusan WHERE username_mhs = '$username_mhs'");
+ $username_mhs = $_SESSION["npm"];
+ $user = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa INNER JOIN tb_jurusan ON tb_mahasiswa.id_jurusan = tb_jurusan.id_jurusan WHERE npm = '$username_mhs'");
+ $tik = mysqli_fetch_array($user);
  ?>
 
 <!DOCTYPE html>
@@ -59,7 +60,7 @@ session_start();
     <section class="content">
         <div class="container-fluid">
             <div class="row col-12">
-                <div class="col-lg-3 col-6">
+                <div class="col-6">
                     <div class="card card-secondary">
                         <div class="card-header">
                             <h3 class="card-title">Profile Mahasiswa</h3>
@@ -68,29 +69,30 @@ session_start();
                             <div class="card-body box-profile">
                                 <ul class="list-group list-group-unbordered mb-3">
                                 <center>
-                                    <img src="../admin/img/foto_mahasiswa/<?php echo $row['foto_mhs'];?>" alt="Foto" width="150" class="rounded-circle"></center><br>
+                                    <img src="../admin/img/foto_mahasiswa/<?php echo $tik['foto_mhs'];?>" alt="Foto" width="100" class="rounded-circle"></center><br>
                                     
                                 <li class="list-group-item">
-                                        <b>NPM</b> <a class="float-right text-secondary"><td><?php echo $row['npm']; ?></td></a>
+                                        <b>NPM</b> <a class="float-right text-secondary"><td><?php echo $tik['npm']; ?></td></a>
                                     </li>
 
                                     <li class="list-group-item">
-                                        <b>Nama Lengkap</b> <a class="float-right text-secondary"><td><?php echo $row['nama_mhs']; ?></td></a>
+                                        <b>Nama Lengkap</b> <a class="float-right text-secondary"><td><?php echo $tik['nama_mhs']; ?></td></a>
                                     </li>
 
                                     <li class="list-group-item">
-                                        <b>Tahun Anggkatan</b> <a class="float-right text-secondary"><td><?php echo $row['thn_angkatan']; ?></td></a>
+                                        <b>Tahun Anggkatan</b> <a class="float-right text-secondary"><td><?php echo $tik['thn_angkatan']; ?></td></a>
                                     </li>
 
                                     <li class="list-group-item">
-                                        <b>Alamat</b> <a class="float-right text-secondary"><td><?php echo $row['alamat']; ?></td></a>
+                                        <b>Alamat</b> <a class="float-right text-secondary"><td><?php echo $tik['alamat']; ?></td></a>
                                     </li>
 
                                     <li class="list-group-item">
-                                        <b>No.Telp</b> <a class="float-right text-secondary"><td><?php echo $row['no_telp_mhs']; ?></td></a>
+                                        <b>No.Telp</b> <a class="float-right text-secondary"><td><?php echo $tik['no_telp_mhs']; ?></td></a>
                                     </li>
                                 </ul>
-                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['npm']; ?>" class="btn btn-secondary btn-block"><b>Edit Profil</b></a>
+                                <a data-toggle ="modal" data-target="#editpw<?php echo $tik['npm']; ?>" class="btn btn-secondary"><b>Ubah Password</b></a>
+                                <a data-toggle ="modal" data-target="#myModal<?php echo $tik['npm']; ?>" class="btn btn-secondary"><b>Edit Profil</b></a>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -102,7 +104,7 @@ session_start();
                  <!-- / modal edit  -->
                  <?php $no = 0;
       foreach ($user as $row) : $no++; ?>
-      <div class="modal fade" id="myModal<?php echo $row['npm']; ?>" role="dialog">
+      <div class="modal fade" id="myModal<?php echo $tik['npm']; ?>" role="dialog">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -114,34 +116,33 @@ session_start();
             <form role="form" action="c_editmahasiswa.php" method="post" enctype="multipart/form-data">
             <div class="modal-body">
             <?php
-              $npm=$row['npm'];
+              $npm=$tik['npm'];
               $result= mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa where npm='$npm'");                
               while ($bio= mysqli_fetch_array($result)) {
             ?>
-            <div class="form-row">
-              <div class="form-group col-6">
+              <div class="form-group col-6" hidden>
                   <label>NPM</label>
                   <input name = "npm" type="text" class="form-control" value="<?php echo $bio['npm']; ?>" readonly>
               </div>
 
-              <div class="form-grou col-6">
+              <div class="form-row">
+              <div class="form-group col-6">
                   <label for="nama_mhs">Nama Mahasiswa</label>
                   <input name = "nama_mhs" type="text" class="form-control" value="<?php echo $bio['nama_mhs']; ?>">
               </div>
-            </div>
 
-            <div class="form-row">
+            
               <div class="form-group col-6">
                   <label>Username</label>
-                  <input name = "username_mhs" type="text" class="form-control" value="<?php echo $bio['username_mhs']; ?>" readonly>
+                  <input name = "username_mhs" type="text" class="form-control" value="<?php echo $bio['username_mhs']; ?>">
+              </div>
               </div>
 
-              <div class="form-grou col-6">
+              <div class="form-group col-6" hidden>
                   <label>Password</label><span class="text-red">*</span></label>
                   <input type="password" class="form-control" name="password_mhs" placeholder="Password" id="myPassword" value="<?php echo $bio['password_mhs']; ?>">
                   <input type="checkbox" onclick="myFunction()"> Lihat Password
               </div>
-            </div>
             
             <div class="form-row" hidden>
               <div class="form-group col-6">
@@ -220,6 +221,68 @@ session_start();
         <!-- /.modal-dialog -->
       </div>
       <!-- /.modal -->
+              </div>
+      <?php endforeach ?>
+
+             <!-- edit password -->
+        <!-- / modal edit  -->
+<?php $no = 0;
+foreach ($user as $row) : $no++; ?>
+  <div class="modal fade" id="editpw<?php echo $tik['npm']; ?>" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Edit Data Mahasiswa</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+
+          <form role="form" action="c_editpassword.php" method="get">
+            <div class="modal-body">
+              <?php
+                $npm=$tik['npm'];
+                $result= mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa where npm='$npm'");                
+                while ($bio= mysqli_fetch_array($result)) {
+              ?>
+
+            <div class="form-group" hidden>
+              <label>NPM</label>
+              <input name = "npm" type="text" class="form-control" value="<?php echo $bio['npm']; ?>">
+            </div>
+
+              <div class="form-group">
+                  <label>Password Lama</label><span class="text-red">*</span></label>
+                  <input type="password" class="form-control" name="passwordLama" placeholder="Password" id="myPassword" value="<?php echo $bio['password_mhs']; ?>">
+                  <input type="checkbox" onclick="myFunction()"> Lihat Password
+              </div>
+
+              <div class="form-group">
+                  <label>Password Baru</label><span class="text-red">*</span></label>
+                  <input type="password" class="form-control" name="password1" id="password1" placeholder="Masukan password baru" >
+              </div>
+
+              <div class="form-group">
+                  <label>Ulangi Password Baru</label><span class="text-red">*</span></label>
+                  <input type="password" class="form-control" name="password2" id="password2" placeholder="Ulangi password baru" >
+              </div>
+
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" name = "edit">Save changes</button>
+              </div>
+              <?php 
+                }
+              ?>  
+            </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+      </div>
               </div>
       <?php endforeach ?>
 

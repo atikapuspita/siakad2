@@ -33,7 +33,6 @@
 <div class="wrapper">
 
 <?php
-    
     include "header_admin.php";
     include "sidebar_admin.php";
     
@@ -71,7 +70,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-success" style ="width : 10%"><i class="fas fa-plus-circle"></i>  Tambah Data</a> 
+              <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-secondary" style ="width : 12%"><i class="fas fa-plus-circle"></i>  Tambah Data</a> 
               <br>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
@@ -81,7 +80,6 @@
                       <th><center>Nama Pegawai</center></th>
                       <th><center>Jabatan</center></th>
                       <th><center>No.Telp</center></th>
-                      <th><center>Foto</center></th>
                       <th><center>Aksi</center></th>
                   </tr>
                   </thead>
@@ -96,11 +94,10 @@
                                 <td><?php echo $row['nama_pegawai']; ?></td>
                                 <td><?php echo $row["jabatan"]; ?></td>
                                 <td><?php echo $row["no_telp_pegawai"]; ?></td>
-                                <td><center><img src="img/foto_pegawai/<?php echo $row['foto_pegawai'];?>"width="100px" height="100px"></center></td>
                                 <td><center>
-                                    <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['nip_npak']; ?>" class ="btn btn-primary"><i class="far fa-eye"></i><br> Details</a> 
-                                    <a data-toggle ="modal" data-target="#myModal<?php echo $row['nip_npak']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i><br> Update</a>
-                                    <a href="hapus_pegawai.php?nip_npak=<?= $row["nip_npak"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i><br> Delete</a>                                
+                                    <a data-toggle ="modal" data-target="#modaldetail<?php echo $row['nip_npak']; ?>" class = "btn btn-default"><i class="far fa-eye"></i> </a> 
+                                    <a data-toggle ="modal" data-target="#myModal<?php echo $row['nip_npak']; ?>" class = "btn btn-default"><i class="nav-icon fas fa-edit"></i> </a>
+                                    <a href="hapus_pegawai.php?nip_npak=<?= $row["nip_npak"]; ?>"class = "btn btn-default"><i class="fas fa-trash-alt"></i> </a>                                
                                 </td></center>
                             </tr>
                         <?php $i++ ; ?>

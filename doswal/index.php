@@ -15,12 +15,12 @@ session_start();
  ?>
 
 <?php
-    $data_pengajuan = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan");
+    $data_pengajuan = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan WHERE status_pengajuan = '0'");
     $jumlah_pengajuan = mysqli_num_rows($data_pengajuan);
 ?>
 
 <?php
-    $data_verifikasi = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan WHERE status_pengajuan = 'Disetujui Dosen Wali'");
+    $data_verifikasi = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan WHERE status_pengajuan = '1'");
     $jumlah_verifikasi = mysqli_num_rows($data_verifikasi);
 ?>
 
@@ -79,7 +79,7 @@ session_start();
     <section class="content">
         <div class="container-fluid">
             <div class="row col-12">
-                <div class="col-lg-3 col-6">
+                <div class="col-6">
                     <div class="small-box bg-info">
                         <div class="inner">
                             <h3><?php echo $jumlah_pengajuan; ?></h3>
@@ -92,11 +92,11 @@ session_start();
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-6">
-                    <div class="small-box bg-info">
+                <div class="col-6">
+                    <div class="small-box bg-warning">
                         <div class="inner">
                             <h3><?php echo $jumlah_verifikasi; ?></h3>
-                            <p>Verifikasi Pengunduran Diri</p>
+                            <p>Verifikasi</p>
                         </div>  
                         <div class="icon">
                             <i class="ion ion-easel"></i>
@@ -110,7 +110,7 @@ session_start();
                 <div class="col-lg-4 col-6">
                     <div class="card card-secondary">
                         <div class="card-header">
-                            <h3 class="card-title">Profil</h3>
+                            <h3 class="card-title">Profil </h3>
                         </div> 
                         <div class="card card-secondary card-outline">
                             <div class="card-body box-profile">
@@ -123,13 +123,22 @@ session_start();
                                     <li class="list-group-item">
                                         <b>Nama Lengkap</b> <a class="float-right text-secondary"><td><?php echo $tik['nama_pegawai']; ?></td></a>
                                     </li>
+                                    
+                                    <li class="list-group-item">
+                                        <b>Nama Kelas</b> <a class="float-right text-secondary"><td><?php echo $tik['nama_kelas']; ?></td></a>
+                                    </li>
 
                                     <li class="list-group-item">
-                                        <b>No.Telp</b> <a class="float-right text-secondary"><td><?php echo $tik['no_telp_pegawai']; ?></td></a>
+                                        <b>Tahun Jabatan</b> <a class="float-right text-secondary"><td><?php echo $tik['thn_jabatan']; ?></td></a>
+                                    </li>
+
+                                    <li class="list-group-item">
+                                        <b>Status</b> <a class="float-right text-secondary"><td><?php echo $tik['status_doswal']; ?></td></a>
                                     </li>
                                 </ul>
-                                <a data-toggle ="modal" data-target="#myModal<?php echo $tik['id_doswal']; ?>" class="btn btn-secondary btn-block"><b>Edit Profil</b></a>
-                            </div>
+                                <a data-toggle ="modal" data-target="#myModal<?php echo $tik['id_doswal']; ?>" class="btn btn-secondary"><b>Edit Profil</b></a>
+                                <a data-toggle ="modal" data-target="#editpw<?php echo $tik['id_doswal']; ?>" class="btn btn-secondary"><b>Ubah Password</b></a>
+                              </div>
                             <!-- /.card-body -->
                         </div>
                     </div>
@@ -160,12 +169,12 @@ foreach ($user as $row) : $no++; ?>
                 while ($bio= mysqli_fetch_array($result)) {
               ?>
 
-            <div class="form-group">
+            <div class="form-group" hidden>
               <label>Id Dosen Wali</label>
               <input name = "id_doswal" type="text" class="form-control" value="<?php echo $bio['id_doswal']; ?>" readonly/>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" hidden>
               <label>NIP/NPAK</label>
               <input name = "nip_npak" type="text" class="form-control" value="<?php echo $bio['nip_npak']; ?>" readonly/>
             </div>
@@ -175,13 +184,18 @@ foreach ($user as $row) : $no++; ?>
               <label>Nama Kelas</label>
               <input name = "nama_kelas" type="text" class="form-control" value="<?php echo $bio['nama_kelas']; ?>" >
             </div>
+
+            <div class="form-group">
+              <label>Nama Lengkap</label>
+              <input name = "nama_pegawai" type="text" class="form-control" value="<?php echo $bio['nama_pegawai']; ?>" >
+            </div>
  
             <div class="form-group">
               <label>Username</label>
               <input name = "username_doswal" type="text" class="form-control" value="<?php echo $bio['username_doswal']; ?>">
             </div>
 
-            <div class="form-group">
+            <div class="form-group"hidden>
               <label>Password</label><span class="text-red">*</span></label>
                   <input type="password" class="form-control" name="password_doswal" placeholder="Password" id="myPassword" value="<?php echo $bio['password_doswal']; ?>">
                   <input type="checkbox" onclick="myFunction()"> Lihat Password
@@ -224,6 +238,69 @@ foreach ($user as $row) : $no++; ?>
                 </div>
 </div>
         <?php endforeach; ?>
+
+
+        <!-- edit password -->
+        <!-- / modal edit  -->
+<?php $no = 0;
+foreach ($user as $row) : $no++; ?>
+  <div class="modal fade" id="editpw<?php echo $tik['id_doswal']; ?>" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Edit Data Dosen Wali</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+
+          <form role="form" action="c_editpassword.php" method="get">
+            <div class="modal-body">
+              <?php
+                $id_doswal=$tik['id_doswal'];
+                $result= mysqli_query($koneksi, "SELECT * FROM tb_doswal where id_doswal='$id_doswal'");                
+                while ($bio= mysqli_fetch_array($result)) {
+              ?>
+
+            <div class="form-group" hidden>
+              <label>Id Dosen Wali</label>
+              <input name = "id_doswal" type="text" class="form-control" value="<?php echo $bio['id_doswal']; ?>" readonly/>
+            </div>
+
+              <div class="form-group">
+                  <label>Password Lama</label><span class="text-red">*</span></label>
+                  <input type="password" class="form-control" name="passwordLama" placeholder="Password" id="myPassword" value="<?php echo $bio['password_doswal']; ?>">
+                  <input type="checkbox" onclick="myFunction()"> Lihat Password
+              </div>
+
+              <div class="form-group">
+                  <label>Password Baru</label><span class="text-red">*</span></label>
+                  <input type="password" class="form-control" name="password1" id="password1" placeholder="Masukan password baru" >
+              </div>
+
+              <div class="form-group">
+                  <label>Ulangi Password Baru</label><span class="text-red">*</span></label>
+                  <input type="password" class="form-control" name="password2" id="password2" placeholder="Ulangi password baru" >
+              </div>
+
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" name = "edit">Save changes</button>
+              </div>
+              <?php 
+                }
+              ?>  
+            </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+      </div>
+              </div>
+      <?php endforeach ?>
 
 
 

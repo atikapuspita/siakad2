@@ -67,7 +67,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-success" style ="width : 10%"><i class="fas fa-plus-circle"></i>  Tambah Data</a>
+              <a data-toggle ="modal" data-target ="#modal-tambah" class = "btn btn-block btn-secondary" style ="width : 12%"><i class="fas fa-plus-circle"></i>  Tambah Data</a>
               <br>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
@@ -97,7 +97,7 @@
                                 <td><center><a href="img/smt5/<?php echo $row['nilai_smt5'];?>" class ="badge badge-success">Unduh KHS Semester V</center></center></td>
                                 <td><center>
                                   <!-- <a data-toggle ="modal" data-target ="#myModal<?php echo $row['id_nilai']; ?>" class = "btn btn-primary"><i class="nav-icon fas fa-edit"></i>Update</a> -->
-                                  <a href="hapus_nilai.php?id_nilai=<?= $row["id_nilai"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>                                
+                                  <a href="hapus_nilai.php?id_nilai=<?= $row["id_nilai"]; ?>"class ="btn btn-default"><i class="fas fa-trash-alt"></i></a>                                
                                 </td></center>
                             </tr>
                         <?php $i++ ; ?>

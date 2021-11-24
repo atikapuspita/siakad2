@@ -15,10 +15,12 @@ $nip_npak = $data['nip_npak'];
 
 $login2 = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa WHERE username_mhs = '$username' AND password_mhs = '$password'");
 $cek2 = mysqli_num_rows($login2);
+
+$data2 = mysqli_fetch_assoc($login2);
 $npm = $data2['npm'];
 
 if ($cek2 > 0) {
-    $data2 = mysqli_fetch_assoc($login2);
+
         $_SESSION['username_mhs'] = $username;
         $_SESSION['password_mhs'] = $password;
         $_SESSION['npm'] = $npm;

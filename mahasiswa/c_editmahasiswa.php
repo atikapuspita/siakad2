@@ -42,12 +42,12 @@
              foto_mhs='$nama_file',ttd_mhs='$nama_file1' WHERE npm='$npm'");
    if($update) {
      echo "<script> 
-           alert ('Data Berhasil di Update'); window.location = 'index.php' </script> ";
+           alert ('Data Berhasil di Update'); window.location = 'profile.php' </script> ";
    }
    else 
    {
      echo "<script> 
-           alert ('Data Gagal di Update'); window.location = 'index.php' </script> ";
+           alert ('Data Gagal di Update'); window.location = 'profile.php' </script> ";
    }
  }
  else
@@ -56,12 +56,12 @@
              nama_mhs='$nama_mhs',jk='$jk',thn_angkatan='$thn_angkatan',alamat='$alamat',no_telp_mhs='$no_telp_mhs' WHERE npm='$npm'");
    if($update) {
      echo "<script> 
-           alert ('Data Berhasil di Update'); window.location = 'index.php' </script> ";
+           alert ('Data Berhasil di Update'); window.location = 'profile.php' </script> ";
    }
    else 
    {
      echo "<script> 
-           alert ('Data Gagal di Update'); window.location = 'index.php' </script> ";
+           alert ('Data Gagal di Update'); window.location = 'profile.php' </script> ";
    }
  }
   }

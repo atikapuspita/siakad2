@@ -6,6 +6,36 @@
     $query = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan INNER JOIN tb_mahasiswa ON tb_pengajuan.npm = tb_mahasiswa.npm WHERE id_pengajuan = '$id_pengajuan'");
     $data  = mysqli_fetch_array($query);
 
+    $t = substr($data['tgl_pengajuan'],0,4);
+    $b = substr($data['tgl_pengajuan'],5,2);
+    $h = substr($data['tgl_pengajuan'],8,2);
+
+        if($b == "01"){
+            $nm = "Januari";
+        } elseif($b == "02"){
+            $nm = "Februari";
+        } elseif($b == "03"){
+            $nm = "Maret";
+        } elseif($b == "04"){
+            $nm = "April";
+        } elseif($b == "05"){
+            $nm = "Mei";
+        } elseif($b == "06"){
+            $nm = "Juni";
+        } elseif($b == "07"){
+            $nm = "Juli";
+        } elseif($b == "08"){
+            $nm = "Agustus";
+        } elseif($b == "09"){
+            $nm = "September";
+        } elseif($b == "10"){
+            $nm = "Oktober";
+        } elseif($b == "11"){
+            $nm = "November";
+        } elseif($b == "12"){
+            $nm = "Desember";
+        }
+
     $jurusan = mysqli_query($koneksi, "SELECT * FROM tb_jurusan INNER JOIN tb_mahasiswa ON tb_jurusan.id_jurusan = tb_mahasiswa.id_jurusan");
     $j = mysqli_fetch_array($jurusan);
 
@@ -122,7 +152,7 @@
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Dengan ini mengajuakan permohonan pengunduran diri sebagai mahasiswa Politeknik Negeri Cilacap karena <?php echo $data['alasan']; ?></span></p>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Demikian permohonan kami, atas perhatian dan kebijaksanaannya kami ucapkan terima kasih.</span></p>
                     <p style="margin-top:0pt; margin-bottom:8pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
-                    <p style="margin-top:0pt; margin-left:288pt; margin-bottom:8pt; text-indent:36pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Cilacap, <?php echo $data['tgl_pengajuan']; ?></span></p>
+                    <p style="margin-top:0pt; margin-left:288pt; margin-bottom:8pt; text-indent:36pt; text-align:justify; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">Cilacap, <?php echo  "<a>". $h." ". $nm. " ". $t. "</a>" ?></span></p>
                     <table cellpadding="0" cellspacing="0" style="width:469pt; border-collapse:collapse;">
                         <tbody>
                             <tr style="height:155.6pt;">
@@ -193,7 +223,7 @@
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
-                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';"><?php echo $s['nama_pegawai']; ?>&nbsp;</span></p>
+                                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';"><?php echo $d['nama_pegawai']; ?>&nbsp;</span></p>
                                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:150%; font-size:12pt;"><span style="font-family:'Times New Roman';">NPAK.<?php echo $d['nip_npak']; ?></span></p>
                                 </td>
                             </tr>

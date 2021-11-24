@@ -34,7 +34,7 @@
       include "header_mahasiswa.php";
       include "sidebar_mahasiswa.php";
       
-      $user = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan INNER JOIN tb_mahasiswa ON tb_pengajuan.npm = tb_mahasiswa.npm;");
+      $user = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan INNER JOIN tb_mahasiswa ON tb_pengajuan.npm = tb_mahasiswa.npm ;");
   ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -103,9 +103,31 @@
                             <td><?php echo $d['alasan']; ?></td>
                             <td><?php echo $d['tgl_pengajuan']; ?></td>
                             <td><?php echo $d["nama_ortu"]; ?></td>
-                            <td><?php echo $d["status_pengajuan"]; ?></td>
+                            <?php 
+                              if ($d['status_pengajuan'] == "0" ) {
+                                  $status_pengajuan = "Belum diverifikasi";
+                                  $warna = 'warning';
+                              } else {
+                                  if ($d['status_pengajuan'] == "1") {
+                                      $status_pengajuan = "diiverifikasi dosen wali";
+                                      $warna = 'info';
+                                  } elseif ($d['status_pengajuan'] == "2") {
+                                      $status_pengajuan = "diiverifikasi ketua jurusan";
+                                      $warna = 'secondary';
+                                  } elseif ($d['status_pengajuan'] == "3") {
+                                      $status_pengajuan = "Selesai diverifikasi";
+                                      $warna = 'success';
+                                  } elseif ($d['status_pengajuan'] == "4") {
+                                      $status_pengajuan = "Ditolak";
+                                      $warna = 'danger';
+                                  } else {
+                                      $status_pengajuan = "Status not found";
+                                      $warna = '';
+                                  }
+                              } ?>
+                              <td><center><?php echo "<a class='badge badge-".$warna."'>".$status_pengajuan."</a>"; ?></center></td>
                             <td><center>
-                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $d['id_pengajuan']; ?>" class ="btn btn-primary"><i class="far fa-eye"></i> Details</a> 
+                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $d['id_pengajuan']; ?>" class ="btn btn-default"><i class="far fa-eye"></i></a> 
                             </td></center>
                           </tr>
                           

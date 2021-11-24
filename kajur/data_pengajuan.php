@@ -2,8 +2,11 @@
   include "../koneksi/config.php";
 
   include "c_editpengajuan.php";
+  include "function_verifikasi.php";
 
   session_start();
+  $nip_npak = $_SESSION['nip_npak'];
+  
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +38,10 @@
       include "header_kajur.php";
       include "sidebar_kajur.php";
       
-      $user = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan INNER JOIN tb_mahasiswa ON tb_pengajuan.npm = tb_mahasiswa.npm ;");
+      $user = mysqli_query($koneksi, "SELECT * FROM tb_pengajuan INNER JOIN tb_mahasiswa ON tb_pengajuan.npm = tb_mahasiswa.npm WHERE status_pengajuan = '1';");
+      $data = mysqli_query($koneksi, "SELECT * FROM tb_verifikasi INNER JOIN tb_pengajuan ON tb_verifikasi.id_pengajuan = tb_pengajuan.id_pengajuan");
+      $jabatan = mysqli_query($koneksi, "SELECT * FROM tb_pegawai WHERE nip_npak = '$nip_npak'");
+      $result = mysqli_fetch_array($jabatan);
   ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -57,6 +63,10 @@
       </div><!-- /.container-fluid -->
     </section>
 
+    <?php 
+    if( isset($_POST["verifikasi"]) ){
+    verifikasi($_POST);
+};?>
       <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -73,11 +83,9 @@
                       <tr>
                           <th><center>No</center></th>
                           <th><center>Nama Mahasiswa</center></th>
-                          <th><center>Alasan</center></th>
                           <th><center>Tanggal Pengajuan</center></th>
-                          <th><center>Nama Orang Tua </center></th>
                           <th><center>Status </center></th>
-                          <th><center>Aksi</center></th>
+                          <th width="16%"><center>Verifikasi</center></th>
                       </tr>
                     </thead>
                   
@@ -88,13 +96,59 @@
                           <tr>
                             <td><center><?= $i ?></center></td>
                             <td><?php echo $row['nama_mhs']; ?></td>
-                            <td><?php echo $row['alasan']; ?></td>
                             <td><?php echo $row['tgl_pengajuan']; ?></td>
-                            <td><?php echo $row["nama_ortu"]; ?></td>
-                            <td><?php echo $row["status_pengajuan"]; ?></td>
-                            <td><center>
-                            <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_pengajuan']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i><br> Update</a>
-                            </td></center>
+                              <?php 
+                              if (empty($row['status_pengajuan'])) {
+                                  $status_pengajuan = "Belum diverifikasi";
+                                  $warna = 'warning';
+                              } else {
+                                  if ($row['status_pengajuan'] == "1") {
+                                      $status_pengajuan = "Diiverifikasi Dosen Wali";
+                                      $warna = 'info';
+                                  } elseif ($row['status_pengajuan'] == "2") {
+                                      $status_pengajuan = "Diiverifikasi Ketua Jurusan";
+                                      $warna = 'brown';
+                                  } elseif ($row['status_pengajuan'] == "3") {
+                                      $status_pengajuan = "Selesai diverifikasi";
+                                      $warna = 'success';
+                                  } elseif ($row['status_pengajuan'] == "4") {
+                                      $status_pengajuan = "Ditolak";
+                                      $warna = 'danger';
+                                  } else {
+                                      $status_pengajuan = "Status not found";
+                                      $warna = '';
+                                  }
+                              } ?>
+                              <td><center><?php echo "<a class='badge badge-".$warna."'>".$status_pengajuan."</a>"; ?></center></td>
+                              <td>
+                              <?php
+                                  if ($row['status_pengajuan'] == "1") { ?>
+                              <div class="row text-center d-flex justify-content-center">
+                                <div class="col">
+                              <form action="" method="post">
+                                <input type="hidden" name="id_pengajuan" value="<?= $row['id_pengajuan']; ?>">
+                                <input type="hidden" name="nip_npak" value="<?= $nip_npak; ?>">
+                                <input type="hidden" name="status_verifikasi" value="Diverifikasi">
+                                  <button type ="submit" class = "btn btn-outline-success btn-block btn-sm" name="verifikasi" value="verifikasi"  onclick="return confirm('Anda yakin menerima pengajuan ini?')" >
+                                        <i class = "fa fa-check-circle"></i> Terima</button>
+                              </form>
+                              </div>
+
+                              <div class="col">
+                              <form action="" method="post">
+                                <input type="hidden" name="id_pengajuan" value="<?= $row['id_pengajuan']; ?>">
+                                <input type="hidden" name="nip_npak" value="<?= $nip_npak; ?>">
+                                <input type="hidden" name="status_verifikasi" value="Ditolak">
+                                <button type ="submit" class = "btn btn-outline-danger btn-block btn-sm" name="verifikasi" value="verifikasi"  onclick="return confirm('Anda yakin menolak pengajuan ini?')" >
+                                        <i class = "fa fa-check-circle"></i> Tolak</button>
+                              </form>
+                              </div>
+                              </div>
+                                  <?php } else {
+                                      echo "<a class = 'badge badge-info'>Terverifikasi</a>";
+                                  }
+                                  ?>
+                            </td>
                           </tr>
                           
                             <?php $i++ ; ?>
@@ -117,7 +171,7 @@
     </div>
     <!-- /.content-wrapper -->
   </div>
-
+  
          <!-- / modal edit  -->
          <?php $no = 0;
       foreach ($user as $row) : $no++; ?>
@@ -178,9 +232,10 @@
               <label for ="status">Status</label>
               <select class = "custom-select rounded-0" id ="status_pengajuan" name ="status_pengajuan" required>
                 <option><?php echo $bio['status_pengajuan']; ?></option>
-                <option value = "0">Ditolak</option>
+                <option value = "0">Belum Diverifikasi</option>
                 <option value = "1">Disetujui Dosen Wali</option>
                 <option value = "2">Disetujui Ketua Jurusan</option>
+                <option value = "3">Ditolak</option>
               </select>
               </div>
 

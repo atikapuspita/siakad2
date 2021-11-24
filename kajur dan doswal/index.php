@@ -27,7 +27,7 @@ session_start();
 
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition">
 <div class="wrapper">
 
     <!-- Content Wrapper. Contains page content -->

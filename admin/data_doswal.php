@@ -74,6 +74,7 @@
                     <thead>
                       <tr>
                           <th><center>No</center></th>
+                          <th><center>NIP/NPAK</center></th>
                           <th><center>Nama Pegawai</center></th>
                           <th><center>Kelas</center></th>
                           <th><center>Masa Jabatan</center></th>
@@ -88,14 +89,15 @@
                       <?php foreach ($user as $row) : ?>
                           <tr>
                             <td><center><?= $i ?></center></td>
+                            <td><?php echo $row['nip_npak']; ?></td>
                             <td><?php echo $row['nama_pegawai']; ?></td>
                             <td><?php echo $row['nama_kelas']; ?></td>
                             <td><center><?php echo $row["thn_jabatan"]; ?></center></td>
                             <td><?php echo $row["status_doswal"]; ?></td>
                             <td><center>
-                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row["id_doswal"]; ?>" class ="btn btn-primary"><i class="far fa-eye"></i><br> Details</a>
-                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_doswal']; ?>" class ="btn btn-success"><i class="nav-icon fas fa-edit"></i><br> Update</a>
-                                <a href="hapus_doswal.php?id_doswal=<?= $row["id_doswal"]; ?>"class ="btn btn-danger"><i class="fas fa-trash-alt"></i><br> Delete</a>                                
+                                <a data-toggle ="modal" data-target="#modaldetail<?php echo $row["id_doswal"]; ?>" class = "btn btn-default"><i class="far fa-eye"></i></a>
+                                <a data-toggle ="modal" data-target="#myModal<?php echo $row['id_doswal']; ?>" class = "btn btn-default"><i class="nav-icon fas fa-edit"></i></a>
+                                <a href="hapus_doswal.php?id_doswal=<?= $row["id_doswal"]; ?>" class = "btn btn-default"><i class="fas fa-trash-alt"></i></a>                                
                             </td></center>
                           </tr>
                           
@@ -215,7 +217,7 @@ foreach ($user as $row) : $no++; ?>
               <input name = "id_doswal" type="text" class="form-control" value="<?php echo $bio['id_doswal']; ?>" readonly/>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" hidden>
               <label>NIP/NPAK</label>
               <input name = "nip_npak" type="text" class="form-control" value="<?php echo $bio['nip_npak']; ?>" readonly/>
             </div>
